@@ -6,7 +6,7 @@
       "merge": {},
       "resources": {
         "manifest": {
-          "eTag": "b7d6ca64d1cbbca6192d5d35320ec8af"
+          "eTag": "c83125761631a6576933fe88ce290257"
         },
         "interactionModel": {
           "en-US": {
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
             "handler": "index.handler",
-            "revisionId": "f23fb7db-7fca-4087-8a86-737476c600e7",
+            "revisionId": "ca4227c7-7232-49d3-aef6-169b8e6d2940",
             "runtime": "nodejs10.x"
           }
         ]
