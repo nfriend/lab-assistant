@@ -40,8 +40,8 @@
             "management",
             "status"
           ],
-          "smallIconUri": "file://assets/images/gitlab-logo-108.png",
-          "largeIconUri": "file://assets/images/gitlab-logo-512.png",
+          "smallIconUri": "https://gitlab.com/nfriend/lab-assistant/raw/master/Lab_Assistant/assets/images/en-US_smallIcon.png",
+          "largeIconUri": "https://gitlab.com/nfriend/lab-assistant/raw/master/Lab_Assistant/assets/images/en-US_largeIcon.png",
           "name": "Lab Assistant"
         }
       },
