@@ -3,19 +3,54 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Sample Short Description",
+          "summary": "Manage your open-source projects hosted on GitLab.com using your voice.",
           "examplePhrases": [
-            "Alexa open hello world",
-            "hello",
-            "help"
+            "TODO: add example phrases",
+            "TODO: add example phrases"
           ],
-          "name": "Lab Assistant",
-          "description": "Sample Full Description"
+          "keywords": [
+            "gitlab",
+            "github",
+            "bitbucket",
+            "open",
+            "source",
+            "git",
+            "source",
+            "control",
+            "software",
+            "development",
+            "engineering",
+            "atlassian",
+            "microsoft",
+            "google",
+            "aws",
+            "compute",
+            "kubernetes",
+            "devops",
+            "devsecops",
+            "merge",
+            "request",
+            "issue",
+            "todo",
+            "pipeline",
+            "project",
+            "management",
+            "repository",
+            "continuous",
+            "integration",
+            "deployment",
+            "delivery",
+            "management",
+            "status"
+          ],
+          "smallIconUri": "file://assets/images/gitlab-logo-108.png",
+          "largeIconUri": "file://assets/images/gitlab-logo-512.png",
+          "name": "Lab Assistant"
         }
       },
       "isAvailableWorldwide": true,
-      "testingInstructions": "Sample Testing Instructions.",
-      "category": "KNOWLEDGE_AND_TRIVIA",
+      "testingInstructions": "TODO: add testing instructions here",
+      "category": "ORGANIZERS_AND_ASSISTANTS",
       "distributionCountries": []
     },
     "apis": {
