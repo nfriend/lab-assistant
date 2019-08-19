@@ -9,7 +9,7 @@
 # Run this script under skill root folder
 
 # The script does the following:
-#  - Run "npm install" in each sourceDir in skill.json
+#  - Run "npm install" and "npm run build" in each sourceDir in skill.json
 
 SKILL_NAME=$1
 DO_DEBUG=${2:-false}
@@ -21,7 +21,12 @@ then
 fi
 
 install_dependencies() {
-    npm install --prefix "$1" >/dev/null 2>&1 
+    npm install --prefix "$1" > /dev/null 2>&1
+    return $?
+}
+
+build() {
+    npm run build --prefix "$1" > /dev/null 2>&1
     return $?
 }
 
@@ -32,9 +37,16 @@ echo "###########################"
 if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
     grep "sourceDir" ./skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,//g' | while read -r SOURCE_DIR; do
         if install_dependencies $SOURCE_DIR; then
-            echo "Codebase ($SOURCE_DIR) built successfully."
+            echo "Succesfully installed dependencies for ($SOURCE_DIR)."
         else
             echo "There was a problem installing dependencies for ($SOURCE_DIR)."
+            exit 1
+        fi
+
+        if build $SOURCE_DIR; then
+            echo "Succesfully built ($SOURCE_DIR)."
+        else
+            echo "There was a problem building ($SOURCE_DIR)."
             exit 1
         fi
     done
