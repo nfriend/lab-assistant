@@ -11,13 +11,14 @@ const LaunchRequestHandler: Alexa.RequestHandler = {
   },
   handle(handlerInput) {
     const speakOutput =
-      'Welcome, you can say Hello or Help. Which would you like to try?';
+      'Welcome, you can say "hello", "help", or "log in". Which would you like to try?';
     return handlerInput.responseBuilder
       .speak(speakOutput)
       .reprompt(speakOutput)
       .getResponse();
   },
 };
+
 const HelloWorldIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
     return (
@@ -35,6 +36,34 @@ const HelloWorldIntentHandler: Alexa.RequestHandler = {
     );
   },
 };
+
+const LoginIntentHandler: Alexa.RequestHandler = {
+  canHandle(handlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'LoginIntent'
+    );
+  },
+  handle(handlerInput) {
+    const accessToken =
+      handlerInput.requestEnvelope.context.System.user.accessToken;
+
+    if (accessToken == undefined) {
+      const speechText =
+        'Sure. Open your Alexa app to finish connecting your GitLab.com account.';
+
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .withLinkAccountCard()
+        .getResponse();
+    } else {
+      const speechText = "You've already connected your GitLab.com account!";
+
+      return handlerInput.responseBuilder.speak(speechText).getResponse();
+    }
+  },
+};
+
 const HelpIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
     return (
@@ -51,6 +80,7 @@ const HelpIntentHandler: Alexa.RequestHandler = {
       .getResponse();
   },
 };
+
 const CancelAndStopIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
     return (
@@ -66,6 +96,7 @@ const CancelAndStopIntentHandler: Alexa.RequestHandler = {
     return handlerInput.responseBuilder.speak(speakOutput).getResponse();
   },
 };
+
 const SessionEndedRequestHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
     return (
@@ -127,6 +158,7 @@ export const handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     LaunchRequestHandler,
     HelloWorldIntentHandler,
+    LoginIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,

@@ -29,6 +29,11 @@
           ]
         },
         {
+          "name": "LoginIntent",
+          "slots": [],
+          "samples": ["log in"]
+        },
+        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         }
