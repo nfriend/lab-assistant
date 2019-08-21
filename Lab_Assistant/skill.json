@@ -4,9 +4,11 @@
       "locales": {
         "en-US": {
           "summary": "Manage your open-source projects hosted on GitLab.com using your voice.",
+          "description": "TODO: Add description here",
           "examplePhrases": [
-            "TODO: add example phrases",
-            "TODO: add example phrases"
+            "Alexa, TODO add an example phrase",
+            "Alexa, TODO add another",
+            "Alexa, TODO and one more"
           ],
           "keywords": [
             "gitlab",
@@ -49,6 +51,19 @@
       "testingInstructions": "TODO: add testing instructions here",
       "category": "ORGANIZERS_AND_ASSISTANTS",
       "distributionCountries": []
+    },
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "usesPersonalInfo": false,
+      "isChildDirected": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "locales": {
+        "en-US": {
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/Lab_Assistant/lambda/custom/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/Lab_Assistant/lambda/custom/terms-of-use.md"
+        }
+      }
     },
     "apis": {
       "custom": {
