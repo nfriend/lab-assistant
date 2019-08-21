@@ -20,13 +20,22 @@ then
     exec > /dev/null 2>&1
 fi
 
+# Install _all_ dependencies
 install_dependencies() {
-    npm install --prefix "$1" > /dev/null 2>&1
+    npm install > /dev/null 2>&1
     return $?
 }
 
+# Run the build
 build() {
-    npm run build --prefix "$1" > /dev/null 2>&1
+    npm run build > /dev/null 2>&1
+    return $?
+}
+
+# Remove all devDependencies (to decrease the size of
+# the bundle that we will upload to lambda)
+prune() {
+    npm prune --production > /dev/null 2>&1
     return $?
 }
 
@@ -36,19 +45,33 @@ echo "###########################"
 
 if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
     grep "sourceDir" ./skill.json | cut -d: -f2 |  sed 's/"//g' | sed 's/,//g' | while read -r SOURCE_DIR; do
-        if install_dependencies $SOURCE_DIR; then
+
+        # change directory to the current skill's lambda function
+        cd "$SOURCE_DIR"
+
+        if install_dependencies; then
             echo "Succesfully installed dependencies for ($SOURCE_DIR)."
         else
             echo "There was a problem installing dependencies for ($SOURCE_DIR)."
             exit 1
         fi
 
-        if build $SOURCE_DIR; then
+        if build; then
             echo "Succesfully built ($SOURCE_DIR)."
         else
             echo "There was a problem building ($SOURCE_DIR)."
             exit 1
         fi
+
+        if prune; then
+            echo "Succesfully pruned ($SOURCE_DIR)."
+        else
+            echo "There was a problem removing devDependencies for ($SOURCE_DIR)."
+            exit 1
+        fi
+
+        # go back to where we were
+        cd -
     done
     echo "###########################"
 fi
