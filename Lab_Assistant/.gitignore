@@ -4,3 +4,7 @@ package-lock.json
 
 # Ignore build output from the TypeScript compiler
 build/
+
+# Ignore temporary files that are sometime created by the 
+# ASK CLI (when operations fail)
+asktemp_*
