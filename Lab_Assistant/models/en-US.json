@@ -34,6 +34,16 @@
           "samples": ["log in"]
         },
         {
+          "name": "TodoIntent",
+          "slots": [],
+          "samples": [
+            "to-do",
+            "to-dos",
+            "how many to-dos to I have",
+            "check my to-dos"
+          ]
+        },
+        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         }

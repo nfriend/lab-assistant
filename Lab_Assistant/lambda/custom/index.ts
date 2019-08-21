@@ -2,6 +2,7 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 import * as Alexa from 'ask-sdk-core';
+import * as rp from 'request-promise';
 
 const LaunchRequestHandler: Alexa.RequestHandler = {
   canHandle(handlerInput: any) {
@@ -50,14 +51,48 @@ const LoginIntentHandler: Alexa.RequestHandler = {
 
     if (accessToken == undefined) {
       const speechText =
-        'Sure. Open your Alexa app to finish connecting your GitLab.com account.';
+        'Sure. Open your Alexa app to finish connecting your gitlab.com account.';
 
       return handlerInput.responseBuilder
         .speak(speechText)
         .withLinkAccountCard()
         .getResponse();
     } else {
-      const speechText = "You've already connected your GitLab.com account!";
+      const speechText = "You've already connected your gitlab.com account!";
+
+      return handlerInput.responseBuilder.speak(speechText).getResponse();
+    }
+  },
+};
+
+const TodoIntentHandler: Alexa.RequestHandler = {
+  canHandle(handlerInput) {
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'TodoIntent'
+    );
+  },
+  async handle(handlerInput) {
+    const accessToken =
+      handlerInput.requestEnvelope.context.System.user.accessToken;
+
+    if (accessToken == undefined) {
+      const speechText =
+        'You need to connect your gitlab.com account in order to check your to-dos.';
+
+      return handlerInput.responseBuilder
+        .speak(speechText)
+        .withLinkAccountCard()
+        .getResponse();
+    } else {
+      const todos = await rp.get('https://gitlab.com/api/v4/todos', {
+        auth: {
+          bearer: accessToken,
+        },
+        json: true,
+      });
+
+      const speechText = `You have ${todos.length} to-dos`;
 
       return handlerInput.responseBuilder.speak(speechText).getResponse();
     }
@@ -159,6 +194,7 @@ export const handler = Alexa.SkillBuilders.custom()
     LaunchRequestHandler,
     HelloWorldIntentHandler,
     LoginIntentHandler,
+    TodoIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
