@@ -32,6 +32,12 @@ build() {
     return $?
 }
 
+# Generate translation files
+translate() {
+    npm run translate > /dev/null 2>&1
+    return $?
+}
+
 # Remove all devDependencies (to decrease the size of
 # the bundle that we will upload to lambda)
 prune() {
@@ -60,6 +66,13 @@ if [[ $TARGET == "all" || $TARGET == "lambda" ]]; then
             echo "Succesfully built ($SOURCE_DIR)."
         else
             echo "There was a problem building ($SOURCE_DIR)."
+            exit 1
+        fi
+
+        if translate; then
+            echo "Succesfully generated translation files for ($SOURCE_DIR)."
+        else
+            echo "There was a problem generating translation files for ($SOURCE_DIR)."
             exit 1
         fi
 

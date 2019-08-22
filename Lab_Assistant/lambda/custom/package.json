@@ -1,24 +1,33 @@
 {
-  "name": "hello-world",
-  "version": "1.1.0",
-  "description": "alexa utility for quickly building skills",
-  "main": "index.js",
+  "name": "lab-assistant",
+  "version": "0.0.1",
+  "description": "An Alexa skill for managing your open-source projects hosted on GitLab.com using your voice",
   "scripts": {
     "build": "tsc",
+    "build-and-translate": "npm run build && npm run translate",
+    "translate": "i18next-scanner --config build/i18next-scanner.config.js --output ./build 'build/lib/**/*.js'",
+    "deploy": "cd ../.. && ask deploy && cd -",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Amazon Alexa",
-  "license": "ISC",
+  "author": "Nathan Friend",
+  "license": "MIT",
   "dependencies": {
     "ask-sdk-core": "^2.6.0",
     "ask-sdk-model": "^1.18.0",
     "aws-sdk": "^2.326.0",
+    "i18next": "^17.0.11",
+    "i18next-sprintf-postprocessor": "^0.2.2",
+    "lodash": "^4.17.15",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
+    "@types/i18next-sprintf-postprocessor": "^0.2.0",
+    "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "@types/request-promise": "^4.1.44",
+    "chalk": "^2.4.2",
+    "i18next-scanner": "^2.10.2",
     "typescript": "^3.5.3"
   }
 }

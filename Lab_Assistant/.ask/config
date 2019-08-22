@@ -22,8 +22,8 @@
             "awsRegion": "us-east-1",
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
-            "handler": "build/index.handler",
-            "revisionId": "3ce5648c-202b-4555-b3de-cea0d8cf3e71",
+            "handler": "build/lib/index.handler",
+            "revisionId": "62a08fb8-f8e9-4639-981e-e4df979316b3",
             "runtime": "nodejs10.x"
           }
         ]
