@@ -1,3 +1,5 @@
+const path = require('path');
+
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
@@ -155,7 +157,10 @@ module.exports = {
   // testRegex: [],
 
   // This option allows the use of a custom results processor
-  // testResultsProcessor: null,
+  testResultsProcessor: path.resolve(
+    __dirname,
+    'node_modules/jest-junit-reporter',
+  ),
 
   // This option allows use of a custom test runner
   // testRunner: "jasmine2",

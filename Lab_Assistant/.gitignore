@@ -8,3 +8,6 @@ build/
 # Ignore temporary files that are sometime created by the 
 # ASK CLI (when operations fail)
 asktemp_*
+
+# Ignore test coverage reports
+test-report.xml
