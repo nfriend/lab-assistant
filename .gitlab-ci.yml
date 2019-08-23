@@ -1,0 +1,24 @@
+image: node:latest
+
+stages:
+  - test
+
+# Cache npm modules in between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - Lab_Assistant/lambda/custom/node_modules/
+
+before_script:
+  - cd Lab_Assistant/lambda/custom
+  - npm install
+
+jest:
+  stage: test
+  script:
+    - npm run test
+  artifacts:
+    paths:
+      - Lab_Assistant/lambda/custom/test-report.xml
+    reports:
+      junit: Lab_Assistant/lambda/custom/test-report.xml
