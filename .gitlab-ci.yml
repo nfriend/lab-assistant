@@ -30,7 +30,6 @@ lint translations:
   stage: lint
   script:
     - npm run build-and-translate
-    - git checkout -- package-lock.json
     - git diff-index --quiet HEAD -- ||
       (
       echo "New text has been added! Please run \"npm run translate\" and commit these changes." &&
