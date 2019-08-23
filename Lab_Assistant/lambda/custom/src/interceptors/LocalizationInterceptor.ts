@@ -7,7 +7,7 @@ import * as path from 'path';
 
 const readdirAsync = util.promisify(fs.readdir);
 
-const I18N_DIR = path.resolve(__dirname, '../../../i18n');
+const I18N_DIR = path.resolve(__dirname, '../../i18n');
 
 /** A promise that returns an object containing all available translations */
 const translationsPromise = (async () => {

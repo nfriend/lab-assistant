@@ -5,9 +5,10 @@
   "scripts": {
     "build": "tsc",
     "build-and-translate": "npm run build && npm run translate",
-    "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/lib/**/*.js'",
+    "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/**/*.js'",
     "deploy": "cd ../.. && ask deploy && cd - && npm install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test-watch": "jest --watch"
   },
   "author": "Nathan Friend",
   "license": "MIT",
@@ -23,12 +24,15 @@
   },
   "devDependencies": {
     "@types/i18next-sprintf-postprocessor": "^0.2.0",
+    "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "@types/request-promise": "^4.1.44",
     "chalk": "^2.4.2",
     "i18next-scanner": "^2.10.2",
+    "jest": "^24.9.0",
     "lambda-local": "^1.6.3",
+    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }
 }
