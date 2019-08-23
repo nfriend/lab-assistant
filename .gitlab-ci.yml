@@ -25,7 +25,11 @@ lint translations:
   stage: lint
   script:
     - npm run translate
-    - git diff-index --quiet HEAD -- || echo "New text has been added! Please run \"npm run translate\" and commit these changes."
+    - git diff-index --quiet HEAD -- ||
+      (
+      echo "New text has been added! Please run \"npm run translate\" and commit these changes." &&
+      exit 1
+      )
 
 build:
   stage: build
