@@ -1,7 +1,9 @@
 image: node:latest
 
 stages:
+  - lint
   - test
+  - deploy
 
 # Cache npm modules in between jobs
 cache:
@@ -13,6 +15,11 @@ before_script:
   - cd Lab_Assistant/lambda/custom
   - npm install
 
+lint:
+  stage: lint
+  script:
+    - npm run lint
+
 jest:
   stage: test
   script:
@@ -22,3 +29,10 @@ jest:
       - Lab_Assistant/lambda/custom/test-report.xml
     reports:
       junit: Lab_Assistant/lambda/custom/test-report.xml
+
+deploy:
+  stage: deploy
+  script:
+    - npm run deploy
+  only:
+    - deploy@nfriend/lab-assistant

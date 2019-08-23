@@ -1,4 +1,5 @@
 import * as Alexa from 'ask-sdk-core';
+import { isNil } from 'lodash';
 
 export const LoginIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
@@ -11,7 +12,7 @@ export const LoginIntentHandler: Alexa.RequestHandler = {
     const accessToken =
       handlerInput.requestEnvelope.context.System.user.accessToken;
 
-    if (accessToken == undefined) {
+    if (isNil(accessToken)) {
       const speechText =
         'Sure. Open your Alexa app to finish connecting your gitlab.com account.';
 

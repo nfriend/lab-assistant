@@ -1,4 +1,4 @@
-import { shuffle, first } from 'lodash';
+import { first, shuffle } from 'lodash';
 
 /**
  * Randomly returns one item from the list

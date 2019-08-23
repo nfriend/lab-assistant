@@ -1,9 +1,9 @@
 import * as Alexa from 'ask-sdk-core';
+import * as fs from 'fs';
 import * as i18n from 'i18next';
 import * as sprintf from 'i18next-sprintf-postprocessor';
-import * as fs from 'fs';
-import * as util from 'util';
 import * as path from 'path';
+import * as util from 'util';
 
 const readdirAsync = util.promisify(fs.readdir);
 

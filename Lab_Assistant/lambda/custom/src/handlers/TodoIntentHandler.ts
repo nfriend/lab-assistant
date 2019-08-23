@@ -1,4 +1,5 @@
 import * as Alexa from 'ask-sdk-core';
+import { isNil } from 'lodash';
 import * as rp from 'request-promise';
 
 export const TodoIntentHandler: Alexa.RequestHandler = {
@@ -12,7 +13,7 @@ export const TodoIntentHandler: Alexa.RequestHandler = {
     const accessToken =
       handlerInput.requestEnvelope.context.System.user.accessToken;
 
-    if (accessToken == undefined) {
+    if (isNil(accessToken)) {
       const speechText =
         'You need to connect your gitlab.com account in order to check your to-dos.';
 

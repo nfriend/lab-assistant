@@ -8,7 +8,13 @@
     "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/**/*.js'",
     "deploy": "cd ../.. && ask deploy && cd - && npm install",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch",
+    "tslint": "tslint -c tslint.json -p .",
+    "tslint-fix": "tslint -c tslint.json -p . --fix",
+    "prettier": "prettier --check '**/*.ts'",
+    "prettier-fix": "prettier --write '**/*.ts'",
+    "lint": "npm run prettier; npm run tslint",
+    "lint-fix": "npm run prettier-fix; npm run tslint-fix"
   },
   "author": "Nathan Friend",
   "license": "MIT",
@@ -33,7 +39,9 @@
     "jest": "^24.9.0",
     "jest-junit-reporter": "^1.1.0",
     "lambda-local": "^1.6.3",
+    "prettier": "1.18.2",
     "ts-jest": "^24.0.2",
+    "tslint": "^5.19.0",
     "typescript": "^3.5.3"
   }
 }
