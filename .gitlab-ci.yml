@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - lint
+  - build
   - test
   - deploy
 
@@ -15,10 +16,21 @@ before_script:
   - cd Lab_Assistant/lambda/custom
   - npm install
 
-lint:
+lint code:
   stage: lint
   script:
     - npm run lint
+
+lint translations:
+  stage: lint
+  script:
+    - npm run translate
+    - git diff-index --quiet HEAD -- || echo "New text has been added! Please run \"npm run translate\" and commit these changes."
+
+build:
+  stage: build
+  script:
+    - npm run build
 
 jest:
   stage: test
