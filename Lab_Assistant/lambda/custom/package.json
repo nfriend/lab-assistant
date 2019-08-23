@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "build-and-translate": "npm run build && npm run translate",
-    "translate": "i18next-scanner --config build/i18next-scanner.config.js --output ./build 'build/lib/**/*.js'",
+    "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/lib/**/*.js'",
     "deploy": "cd ../.. && ask deploy && cd -",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -28,6 +28,7 @@
     "@types/request-promise": "^4.1.44",
     "chalk": "^2.4.2",
     "i18next-scanner": "^2.10.2",
+    "lambda-local": "^1.6.3",
     "typescript": "^3.5.3"
   }
 }
