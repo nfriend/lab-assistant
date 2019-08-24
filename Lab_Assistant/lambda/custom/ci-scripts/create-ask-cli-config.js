@@ -27,7 +27,7 @@ const config = {
 };
 
 console.log('config:');
-console.log(SON.stringify(config, null, 2));
+console.log(JSON.stringify(config, null, 2));
 
 // write the configuration JSON to cli_config
 fs.writeFileSync(
