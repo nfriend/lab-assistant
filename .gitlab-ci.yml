@@ -30,7 +30,10 @@ lint translations:
   stage: lint
   script:
     - npm run build-and-translate
-    - git diff-index HEAD -- ||
+    - (
+      git status &&
+      git diff-index HEAD --
+      ) ||
       (
       echo "New text has been added! Please run \"npm run translate\" and commit these changes." &&
       exit 1
