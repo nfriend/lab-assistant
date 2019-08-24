@@ -1,6 +1,7 @@
 import * as Alexa from 'ask-sdk-core';
 import { isNil } from 'lodash';
 import * as rp from 'request-promise';
+import { promptToConnectAccount } from '../util/promt-to-connect-account';
 
 export const TodoIntentHandler: Alexa.RequestHandler = {
   canHandle(handlerInput) {
@@ -14,24 +15,13 @@ export const TodoIntentHandler: Alexa.RequestHandler = {
       handlerInput.requestEnvelope.context.System.user.accessToken;
 
     if (isNil(accessToken)) {
-      const speechText =
-        'You need to connect your gitlab.com account in order to check your to-dos.';
-
-      return handlerInput.responseBuilder
-        .speak(speechText)
-        .withLinkAccountCard()
-        .getResponse();
-    } else {
-      const todos = await rp.get('https://gitlab.com/api/v4/todos', {
-        auth: {
-          bearer: accessToken,
-        },
-        json: true,
-      });
-
-      const speechText = `You have ${todos.length} to-dos`;
-
-      return handlerInput.responseBuilder.speak(speechText).getResponse();
+      return promptToConnectAccount(handlerInput);
     }
+
+    const todos = await rp.get('https://gitlab.com/api/v4/todos');
+
+    const speechText = `You have ${todos.length} to-dos`;
+
+    return handlerInput.responseBuilder.speak(speechText).getResponse();
   },
 };

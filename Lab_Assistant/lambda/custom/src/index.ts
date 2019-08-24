@@ -7,7 +7,14 @@ import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
 import { LoginIntentHandler } from './handlers/LoginIntentHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
 import { TodoIntentHandler } from './handlers/TodoIntentHandler';
+
+import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { LocalizationInterceptor } from './interceptors/LocalizationInterceptor';
+
+import * as rp from 'request-promise';
+rp.defaults({
+  json: true,
+});
 
 export const handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
@@ -23,5 +30,6 @@ export const handler = Alexa.SkillBuilders.custom()
     IntentReflectorHandler,
   )
   .addRequestInterceptors(LocalizationInterceptor)
+  .addRequestInterceptors(AuthInterceptor)
   .addErrorHandlers(ErrorHandler)
   .lambda();

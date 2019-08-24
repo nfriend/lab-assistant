@@ -1,5 +1,20 @@
 {
+  "And that's it! ": "And that's it! ",
+  "Before you can do that, you'll need to connect your gitlab.com account. ": "Before you can do that, you'll need to connect your gitlab.com account. ",
+  "But be sure to check back in regularly as I'll be getting smarter every day.": "But be sure to check back in regularly as I'll be getting smarter every day.",
   "Happy gitlabing! How can I help? You can say \"help\" if you're not sure what to do.": "Happy gitlabing! How can I help? You can say \"help\" if you're not sure what to do.",
+  "Have a feature you'd like to see added? Feel free to open an issue on the Lab Assistant Gitlab repo.": "Have a feature you'd like to see added? Feel free to open an issue on the Lab Assistant Gitlab repo.",
   "Hello! What would you like to do? Just say \"help\" for a list of things you can ask me.": "Hello! What would you like to do? Just say \"help\" for a list of things you can ask me.",
-  "Welcome! How can I help? To get a list of what you can ask me, just say \"help\".": "Welcome! How can I help? To get a list of what you can ask me, just say \"help\"."
+  "I know it's not much, but much more is coming soon!": "I know it's not much, but much more is coming soon!",
+  "I'd love your ideas for other things I should do.          Feel free to open an issue on the Lab Assistant Gitlab repo.": "I'd love your ideas for other things I should do.          Feel free to open an issue on the Lab Assistant Gitlab repo.",
+  "If you have ideas for other things I should do, please open an issue on the Lab Assistant Gitlab repo.": "If you have ideas for other things I should do, please open an issue on the Lab Assistant Gitlab repo.",
+  "Looks like you haven't connected your gitlab.com account yet. ": "Looks like you haven't connected your gitlab.com account yet. ",
+  "Open your Alexa app to finish this setup.": "Open your Alexa app to finish this setup.",
+  "Please open your Alexa app to finish this setup.": "Please open your Alexa app to finish this setup.",
+  "That's all I can do at the moment! ": "That's all I can do at the moment! ",
+  "That's it for now! ": "That's it for now! ",
+  "To get information about your to-dos, say       <break strength=\"strong\"/> <prosody pitch=\"+10%\">\"do I have any to-dos?\"</prosody>. ": "To get information about your to-dos, say       <break strength=\"strong\"/> <prosody pitch=\"+10%\">\"do I have any to-dos?\"</prosody>. ",
+  "Welcome! How can I help? To get a list of what you can ask me, just say \"help\".": "Welcome! How can I help? To get a list of what you can ask me, just say \"help\".",
+  "You can finish this setup in your Alexa app.": "You can finish this setup in your Alexa app.",
+  "You'll need to connect your gitlab.com account first. ": "You'll need to connect your gitlab.com account first. "
 }
