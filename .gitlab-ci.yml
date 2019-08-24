@@ -20,16 +20,22 @@ build:
   stage: build
   script:
     - npm run build
+  except:
+    - deploy@nfriend/lab-assistant
 
 lint code:
   stage: lint
   script:
     - npm run lint
+  except:
+    - deploy@nfriend/lab-assistant
 
 lint translations:
   stage: lint
   script:
     - ./ci-scripts/check-for-new-translations.sh
+  except:
+    - deploy@nfriend/lab-assistant
 
 jest:
   stage: test
@@ -40,6 +46,8 @@ jest:
       - Lab_Assistant/lambda/custom/test-report.xml
     reports:
       junit: Lab_Assistant/lambda/custom/test-report.xml
+  except:
+    - deploy@nfriend/lab-assistant
 
 deploy:
   stage: deploy
