@@ -54,6 +54,9 @@ deploy:
   script:
     - npm install -g ask-cli
     - ./ci-scripts/create-ask-cli-config.js
+      --access-token ${ACCESS_TOKEN}
+      --refresh-token ${REFRESH_TOKEN}
+      --vendor-id ${VENDOR_ID}
     - npm run deploy
   only:
     - deploy@nfriend/lab-assistant
