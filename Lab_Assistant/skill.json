@@ -60,8 +60,8 @@
       "containsAds": false,
       "locales": {
         "en-US": {
-          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/Lab_Assistant/lambda/custom/privacy-policy.md",
-          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/Lab_Assistant/lambda/custom/terms-of-use.md"
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
         }
       }
     },
