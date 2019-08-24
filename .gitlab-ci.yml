@@ -1,7 +1,6 @@
 image: node:latest
 
 stages:
-  - first
   - build
   - lint
   - test
@@ -28,7 +27,7 @@ lint code:
     - npm run lint
 
 lint translations:
-  stage: first
+  stage: lint
   script:
     - ./ci-scripts/check-for-new-translations.sh
 
