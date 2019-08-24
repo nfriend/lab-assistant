@@ -30,7 +30,7 @@ lint code:
 lint translations:
   stage: first
   script:
-    - ../../../ci-scripts/check-for-new-translations.sh
+    - ./ci-scripts/check-for-new-translations.sh
 
 jest:
   stage: test
