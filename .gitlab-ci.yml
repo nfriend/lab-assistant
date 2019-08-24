@@ -52,6 +52,7 @@ jest:
 deploy:
   stage: deploy
   script:
+    - npm install -g ask-cli
     - npm run deploy
   only:
     - deploy@nfriend/lab-assistant
