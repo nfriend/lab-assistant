@@ -19,6 +19,9 @@ export const LaunchRequestHandler: Alexa.RequestHandler = {
       i18n.t(
         'Happy gitlabing! How can I help? You can say "help" if you\'re not sure what to do.',
       ),
+      i18n.t(
+        'This is a test!',
+      ),
     );
 
     return handlerInput.responseBuilder
