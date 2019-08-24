@@ -52,6 +52,7 @@ jest:
 deploy:
   stage: deploy
   script:
+    - npm run build
     - npm install -g ask-cli
     - ./ci-scripts/create-ask-aws-configs.js
       --ask-access-token ${ASK_ACCESS_TOKEN}
