@@ -11,8 +11,7 @@ export const HelpIntentHandler: Alexa.RequestHandler = {
   },
   handle(handlerInput) {
     let speakOutput = i18n.t(
-      'To get information about your to-dos, say \
-      <break strength="strong"/> <prosody pitch="+10%">"do I have any to-dos?"</prosody>. ',
+      'To get information about your to-dos, say <break strength="strong"/> <prosody pitch="+10%">"do I have any to-dos?"</prosody>. ',
     );
 
     speakOutput += chooseOne(
@@ -30,8 +29,7 @@ export const HelpIntentHandler: Alexa.RequestHandler = {
         'If you have ideas for other things I should do, please open an issue on the Lab Assistant Gitlab repo.',
       ),
       i18n.t(
-        "I'd love your ideas for other things I should do. \
-         Feel free to open an issue on the Lab Assistant Gitlab repo.",
+        "I'd love your ideas for other things I should do. Feel free to open an issue on the Lab Assistant Gitlab repo.",
       ),
       i18n.t(
         "Have a feature you'd like to see added? Feel free to open an issue on the Lab Assistant Gitlab repo.",
