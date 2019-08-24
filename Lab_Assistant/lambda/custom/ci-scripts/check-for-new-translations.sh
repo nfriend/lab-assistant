@@ -8,9 +8,9 @@ npm run build-and-translate
 git status
 
 if git diff-index --quiet HEAD --; then
-    echo "All translation files are up to date 👍"
+    echo -e "\033[32;1mAll translation files are up to date 👍\033[0m"
     exit 0
 else
-    echo "New text has been added! Please run \"npm run translate\" and commit these changes."
+    echo -e "\033[31;1m⚠️  New text has been added! Please run \"npm run translate\" and commit these changes. ⚠️\033[0m"
     exit 1
 fi
