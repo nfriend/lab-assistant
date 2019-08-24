@@ -53,7 +53,7 @@ deploy:
   stage: deploy
   script:
     - npm install -g ask-cli
-    - ./ci-scripts/create-ask-config.js
+    - ./ci-scripts/create-ask-cli-config.js
     - npm run deploy
   only:
     - deploy@nfriend/lab-assistant
