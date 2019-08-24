@@ -54,9 +54,9 @@ deploy:
   script:
     - npm install -g ask-cli
     - ./ci-scripts/create-ask-aws-configs.js
-      --ask-access-token ${ACCESS_TOKEN}
-      --ask-refresh-token ${REFRESH_TOKEN}
-      --ask-vendor-id ${VENDOR_ID}
+      --ask-access-token ${ASK_ACCESS_TOKEN}
+      --ask-refresh-token ${ASK_REFRESH_TOKEN}
+      --ask-vendor-id ${ASK_VENDOR_ID}
       --aws-access-key-id ${AWS_ACCESS_KEY_ID}
       --aws-secret-access-key ${AWS_SECRET_ACCESS_KEY}
     - npm run deploy

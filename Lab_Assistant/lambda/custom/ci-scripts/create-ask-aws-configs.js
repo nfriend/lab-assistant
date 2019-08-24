@@ -27,9 +27,6 @@ const askCliCconfig = {
   },
 };
 
-console.log('askCliCconfig:');
-console.log(JSON.stringify(askCliCconfig, null, 2));
-
 fs.writeFileSync(
   path.resolve(ASK_DIR, 'cli_config'),
   JSON.stringify(askCliCconfig, null, 2),
@@ -48,9 +45,6 @@ const awsConfig = [
   ''
 ].join('\n');
 
-console.log('awsConfig:');
-console.log(JSON.stringify(awsConfig, null, 2));
-
 fs.writeFileSync(path.resolve(AWS_DIR, 'config'), askCliCconfig);
 
 const awsCredentials = [
@@ -59,8 +53,5 @@ const awsCredentials = [
   `aws_secret_access_key = ${argv.awsSecretAccessKey}`,
   '',
 ].join('\n');
-
-console.log('awsCredentials:');
-console.log(JSON.stringify(awsCredentials, null, 2));
 
 fs.writeFileSync(path.resolve(AWS_DIR, 'credentials'), awsCredentials);
