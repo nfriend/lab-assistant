@@ -20,6 +20,10 @@ export const AuthInterceptor: Alexa.RequestInterceptor = {
       defaults.auth = { bearer: accessToken };
     }
 
-    rp.defaults(defaults);
+    const attributes = handlerInput.attributesManager.getRequestAttributes();
+
+    // the properly defaulted version of request-promise will now be
+    // available in handlers as handlerInput.attributesManager.getRequestAttributes().rp
+    attributes.rp = rp.defaults(defaults);
   },
 };
