@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Build the skill and regenerate all translation files
 npm run build-and-translate
 
