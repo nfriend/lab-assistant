@@ -6,7 +6,7 @@
     "build": "tsc",
     "build-and-translate": "npm run build && npm run translate",
     "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/**/*.js'",
-    "deploy": "cd ../.. && ask deploy && cd - && npm install",
+    "deploy": "cd ../.. && ask deploy --force && cd - && npm install",
     "test": "jest",
     "test-watch": "jest --watch",
     "tslint": "tslint -c tslint.json -p .",
