@@ -17,7 +17,7 @@ export const LaunchRequestHandler: Alexa.RequestHandler = {
         'Hello! What would you like to do? Just say "help" for a list of things you can ask me.',
       ),
       i18n.t(
-        'Happy gitlabing! How can I help? You can say "help" if you\'re not sure what to do.',
+        'Happy gitlabing! How can I help? You can say "help" if you\'re not sure what to do!',
       ),
     );
 
