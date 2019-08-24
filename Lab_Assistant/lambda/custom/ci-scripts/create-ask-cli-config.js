@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const argv = require('yargs').argv;
 
 const ASK_DIR = '/root/.ask';
 
@@ -13,13 +14,13 @@ const config = {
   profiles: {
     default: {
       token: {
-        access_token: 'access token here',
-        refresh_token: 'refresh token here',
+        access_token: argv.accessToken,
+        refresh_token: argv.refreshToken,
         token_type: 'bearer',
         expires_in: 3600,
         expires_at: '2019-08-23T12:30:49.193Z',
       },
-      vendor_id: 'vender ID here',
+      vendor_id: argv.vendorId,
       aws_profile: 'default',
     },
   },
