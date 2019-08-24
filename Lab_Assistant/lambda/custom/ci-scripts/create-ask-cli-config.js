@@ -26,6 +26,9 @@ const config = {
   },
 };
 
+console.log('config:');
+console.log(SON.stringify(config, null, 2));
+
 // write the configuration JSON to cli_config
 fs.writeFileSync(
   path.resolve(ASK_DIR, 'cli_config'),
