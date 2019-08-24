@@ -11,7 +11,7 @@ export const HelpIntentHandler: Alexa.RequestHandler = {
   },
   handle(handlerInput) {
     let speakOutput = i18n.t(
-      'To get information about your to-dos, say <break strength="strong"/> <prosody pitch="+10%">"do I have any to-dos?"</prosody>. ',
+      'To get information about your to-dos, say <break strength="strong"/> <prosody pitch="+10%">"do I have any to-dos?"</prosody> ',
     );
 
     speakOutput += chooseOne(
