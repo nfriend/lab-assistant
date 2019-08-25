@@ -3,10 +3,14 @@ import * as path from 'path';
 import { createAlexaEvent } from './create-alexa-event';
 jest.mock('../../src/util/choose-one');
 
-test('LaunchRequestHandler', async () => {
+test('IntentRequestHandler', async () => {
   const event = createAlexaEvent({
     request: {
-      type: 'LaunchRequest',
+      type: 'IntentRequest',
+      intent: {
+        name: 'NotARealIntent',
+        confirmationStatus: 'NONE',
+      },
     },
   });
 
@@ -16,6 +20,6 @@ test('LaunchRequestHandler', async () => {
   });
 
   expect(result.response.outputSpeech.ssml).toBe(
-    '<speak>Welcome! How can I help?</speak>',
+    "<speak>You just triggered NotARealIntent. It's not yet implemented.</speak>",
   );
 });

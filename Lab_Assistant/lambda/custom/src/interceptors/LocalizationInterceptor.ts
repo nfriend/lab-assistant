@@ -5,38 +5,42 @@ import * as sprintf from 'i18next-sprintf-postprocessor';
 import * as path from 'path';
 import * as util from 'util';
 
-const readdirAsync = util.promisify(fs.readdir);
+export class LocalizationInterceptor implements Alexa.RequestInterceptor {
+  private translationsPromise: Promise<{ [lang: string]: any }>;
 
-const I18N_DIR = path.resolve(__dirname, '../../i18n');
+  constructor() {
+    const readdirAsync = util.promisify(fs.readdir);
 
-/** A promise that returns an object containing all available translations */
-const translationsPromise = (async () => {
-  const langs = (await readdirAsync(I18N_DIR, {
-    withFileTypes: true,
-  }))
-    .filter(dirent => dirent.isDirectory())
-    .map(dirent => dirent.name);
+    const I18N_DIR = path.resolve(__dirname, '../../i18n');
 
-  const translations: { [lang: string]: any } = {};
+    /** A promise that returns an object containing all available translations */
+    this.translationsPromise = (async () => {
+      const langs = (await readdirAsync(I18N_DIR, {
+        withFileTypes: true,
+      }))
+        .filter(dirent => dirent.isDirectory())
+        .map(dirent => dirent.name);
 
-  langs.forEach(l => {
-    translations[l] = {
-      translation: require(path.resolve(I18N_DIR, l, 'translation.json')),
-    };
-  });
+      const translations: { [lang: string]: any } = {};
 
-  return translations;
-})();
+      langs.forEach(l => {
+        translations[l] = {
+          translation: require(path.resolve(I18N_DIR, l, 'translation.json')),
+        };
+      });
 
-export const LocalizationInterceptor: Alexa.RequestInterceptor = {
-  async process(handlerInput) {
+      return translations;
+    })();
+  }
+
+  async process(handlerInput: Alexa.HandlerInput) {
     await i18n.use(sprintf).init({
       lng: handlerInput.requestEnvelope.request.locale,
       fallbackLng: 'en',
-      resources: await translationsPromise,
+      resources: await this.translationsPromise,
       returnEmptyString: false,
       keySeparator: false,
       nsSeparator: false,
     });
-  },
-};
+  }
+}

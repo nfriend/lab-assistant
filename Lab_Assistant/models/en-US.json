@@ -16,26 +16,28 @@
           "samples": []
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "ConnectAccountIntent",
           "slots": [],
           "samples": [
-            "hello",
-            "how are you",
-            "say hi world",
-            "say hi",
-            "hi",
-            "say hello world",
-            "say hello"
+            "connect my gitlab account",
+            "log in to my gitlab account",
+            "log in to my gitlab.com account",
+            "connect to gitlab.com",
+            "connect my gitlab.com account",
+            "connect",
+            "connect my account",
+            "log in to gitlab.com",
+            "log in"
           ]
         },
         {
-          "name": "LoginIntent",
-          "slots": [],
-          "samples": ["log in"]
-        },
-        {
           "name": "TodoIntent",
-          "slots": [],
+          "slots": [
+            {
+              "name": "shouldReadTodos",
+              "type": "YesNoSlot"
+            }
+          ],
           "samples": [
             "to-do",
             "to-dos",
@@ -46,9 +48,60 @@
         {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
+        },
+        {
+          "name": "ReadTodosIntent",
+          "slots": [],
+          "samples": ["read me my to-dos", "read to-dos", "read my to-dos"]
         }
       ],
-      "types": []
+      "types": [
+        {
+          "name": "YesNoSlot",
+          "values": [
+            {
+              "id": "yes",
+              "name": {
+                "value": "Yes",
+                "synonyms": [
+                  "that would be great",
+                  "hell yes",
+                  "i do",
+                  "fine",
+                  "i guess",
+                  "why not",
+                  "please",
+                  "please do",
+                  "yes please",
+                  "you know it",
+                  "i sure do",
+                  "okay",
+                  "sure",
+                  "yep",
+                  "yeah"
+                ]
+              }
+            },
+            {
+              "id": "no",
+              "name": {
+                "value": "No",
+                "synonyms": [
+                  "please don't",
+                  "hell no",
+                  "heck no",
+                  "no thanks",
+                  "no thank you",
+                  "i sure don't",
+                  "i do not",
+                  "no",
+                  "nope"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   }
 }

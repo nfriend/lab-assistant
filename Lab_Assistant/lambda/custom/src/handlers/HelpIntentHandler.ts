@@ -2,14 +2,14 @@ import * as Alexa from 'ask-sdk-core';
 import * as i18n from 'i18next';
 import { chooseOne } from '../util/choose-one';
 
-export const HelpIntentHandler: Alexa.RequestHandler = {
-  canHandle(handlerInput) {
+export class HelpIntentHandler implements Alexa.RequestHandler {
+  canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
       Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.HelpIntent'
     );
-  },
-  handle(handlerInput) {
+  }
+  handle(handlerInput: Alexa.HandlerInput) {
     let speakOutput = i18n.t(
       'To get information about your to-dos, say <break strength="strong"/> <prosody pitch="+10%">"do I have any to-dos?"</prosody> ',
     );
@@ -40,5 +40,5 @@ export const HelpIntentHandler: Alexa.RequestHandler = {
       .speak(speakOutput)
       .reprompt(speakOutput)
       .getResponse();
-  },
-};
+  }
+}

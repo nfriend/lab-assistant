@@ -4,7 +4,7 @@ import { ErrorHandler } from './handlers/ErrorHandler';
 import { HelpIntentHandler } from './handlers/HelpIntentHandler';
 import { IntentReflectorHandler } from './handlers/IntentReflectorHandler';
 import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
-import { LoginIntentHandler } from './handlers/LoginIntentHandler';
+import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
 import { TodoIntentHandler } from './handlers/TodoIntentHandler';
 
@@ -18,18 +18,18 @@ rp.defaults({
 
 export const handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
-    LaunchRequestHandler,
-    LoginIntentHandler,
-    TodoIntentHandler,
-    HelpIntentHandler,
-    CancelAndStopIntentHandler,
-    SessionEndedRequestHandler,
+    new LaunchRequestHandler(),
+    new ConnectAccountHandler(),
+    new TodoIntentHandler(),
+    new HelpIntentHandler(),
+    new CancelAndStopIntentHandler(),
+    new SessionEndedRequestHandler(),
 
     // IntentReflectorHandler needs to be last so that it doesn't
     // override any custom intent handlers
-    IntentReflectorHandler,
+    new IntentReflectorHandler(),
   )
-  .addRequestInterceptors(LocalizationInterceptor)
-  .addRequestInterceptors(AuthInterceptor)
-  .addErrorHandlers(ErrorHandler)
+  .addRequestInterceptors(new LocalizationInterceptor())
+  .addRequestInterceptors(new AuthInterceptor())
+  .addErrorHandlers(new ErrorHandler())
   .lambda();

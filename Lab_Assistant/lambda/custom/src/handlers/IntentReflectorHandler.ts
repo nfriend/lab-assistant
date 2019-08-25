@@ -1,19 +1,23 @@
 import * as Alexa from 'ask-sdk-core';
+import * as i18n from 'i18next';
 
 /**
  * A debugging tool that echos back the name of intents that
  * are triggered but not yet implemented.
  */
-export const IntentReflectorHandler: Alexa.RequestHandler = {
-  canHandle(handlerInput) {
+export class IntentReflectorHandler implements Alexa.RequestHandler {
+  canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
     );
-  },
-  handle(handlerInput) {
+  }
+  handle(handlerInput: Alexa.HandlerInput) {
     const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-    const speakOutput = `You just triggered ${intentName}.  It's not yet implemented.`;
+    const speakOutput = i18n.t(
+      "You just triggered %s. It's not yet implemented.",
+      { postProcess: 'sprintf', sprintf: [intentName] },
+    );
 
     return handlerInput.responseBuilder.speak(speakOutput).getResponse();
-  },
-};
+  }
+}
