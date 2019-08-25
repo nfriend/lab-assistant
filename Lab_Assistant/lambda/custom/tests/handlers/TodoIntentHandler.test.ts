@@ -3,15 +3,13 @@ import * as path from 'path';
 import { createAlexaEvent } from './create-alexa-event';
 jest.mock('../../src/util/choose-one');
 
-jest.mock('request-promise', () => {
-  const requestPromiseMock = () => {
-    return [{ id: 1 }];
-  };
-
-  requestPromiseMock.defaults = () => {};
-
-  return requestPromiseMock;
-});
+jest.mock('request-promise', () => ({
+  defaults: () => ({
+    get: () => {
+      return [{ id: 1 }];
+    },
+  }),
+}));
 
 test('IntentRequestHandler', async () => {
   const event = createAlexaEvent({
@@ -20,6 +18,12 @@ test('IntentRequestHandler', async () => {
       intent: {
         name: 'TodoIntent',
         confirmationStatus: 'NONE',
+        slots: {
+          shouldReadTodos: {
+            name: 'shouldReadTodos',
+            confirmationStatus: 'NONE',
+          },
+        },
       },
     },
   });
@@ -30,6 +34,6 @@ test('IntentRequestHandler', async () => {
   });
 
   expect(result.response.outputSpeech.ssml).toBe(
-    "<speak>You just triggered NotARealIntent. It's not yet implemented.</speak>",
+    '<speak>You only have one to-do. Would you like me to read it?</speak>',
   );
 });

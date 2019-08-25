@@ -22,6 +22,7 @@ export const createAlexaEvent = (diffs: any) => {
         user: {
           userId:
             'amzn1.ask.account.AGTLTFSXVMA6ZWIHWFDQDDSD7XG23ZH5RMCYLGI6MCICYKPRVEJT7PZRQPPMZMEO5FEBDMV5TXPW2OYQQ2MQMNJILYRTSS4UKQIPVAODLIPWEA2BFBZEWBW5GHB5ZNUAVJYPNTGO4GPOIUW2DC57ZBAF6NT7UCZHFKEJCX7B73PKTMQ5APZ42HJJCICDFJQ5NBJAZXFALJUXXNY',
+          accessToken: 'test-access-token',
         },
         device: {
           deviceId:
