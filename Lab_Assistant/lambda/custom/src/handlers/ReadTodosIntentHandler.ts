@@ -7,33 +7,14 @@ import { chooseOne } from '../util/choose-one';
 
 export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
-    if (
-      Alexa.getRequestType(handlerInput.requestEnvelope) !== 'IntentRequest'
-    ) {
-      return false;
-    }
-
-    if (
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-      'ReadTodosIntentHandler'
-    ) {
-      return true;
-    }
-
-    if (
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        'TodoIntentHandler' &&
-      (<IntentRequest>handlerInput.requestEnvelope.request).intent.slots
-        .shouldReadTodos.value === 'yes'
-    ) {
-      return true;
-    }
-
-    return false;
+    return (
+      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'ReadTodosIntent'
+    );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
     return handlerInput.responseBuilder
-      .speak('This is where I read the todos to you')
+      .speak('This is where I read the to-dos to you')
       .getResponse();
   }
 }

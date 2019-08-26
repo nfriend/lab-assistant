@@ -7,6 +7,9 @@ import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
 import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
 import { TodoIntentHandler } from './handlers/TodoIntentHandler';
+import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
+import { YesIntentHandler } from './handlers/YesIntentHandler';
+import { NoIntentHandler } from './handlers/NoIntentHandler';
 
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { LocalizationInterceptor } from './interceptors/LocalizationInterceptor';
@@ -24,6 +27,9 @@ export const handler = Alexa.SkillBuilders.custom()
     new HelpIntentHandler(),
     new CancelAndStopIntentHandler(),
     new SessionEndedRequestHandler(),
+    new ReadTodosIntentHandler(),
+    new YesIntentHandler(),
+    new NoIntentHandler(),
 
     // IntentReflectorHandler needs to be last so that it doesn't
     // override any custom intent handlers

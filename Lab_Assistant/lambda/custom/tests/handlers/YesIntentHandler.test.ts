@@ -5,10 +5,15 @@ jest.mock('../../src/util/choose-one');
 
 test('IntentRequestHandler', async () => {
   const event = createAlexaEvent({
+    session: {
+      attributes: {
+        YesIntentQuestion: 'ShouldReadTodos',
+      },
+    },
     request: {
       type: 'IntentRequest',
       intent: {
-        name: 'NotARealIntent',
+        name: 'AMAZON.YesIntent',
         confirmationStatus: 'NONE',
       },
     },

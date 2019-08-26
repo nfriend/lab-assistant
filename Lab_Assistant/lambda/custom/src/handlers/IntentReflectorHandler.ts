@@ -14,7 +14,7 @@ export class IntentReflectorHandler implements Alexa.RequestHandler {
   handle(handlerInput: Alexa.HandlerInput) {
     const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
     const speakOutput = i18n.t(
-      "You just triggered %s. It's not yet implemented.",
+      'You just triggered %s, but no handler was able to handle the request.',
       { postProcess: 'sprintf', sprintf: [intentName] },
     );
 

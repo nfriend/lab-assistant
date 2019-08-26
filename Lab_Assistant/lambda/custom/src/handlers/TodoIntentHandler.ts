@@ -4,14 +4,13 @@ import * as requestPromise from 'request-promise';
 import * as i18n from 'i18next';
 import { chooseOne } from '../util/choose-one';
 import { IntentRequest } from 'ask-sdk-model';
+import { YesIntentQuestion } from './YesIntentHandler';
 
 export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) === 'TodoIntent' &&
-      (<IntentRequest>handlerInput.requestEnvelope.request).intent.slots
-        .shouldReadTodos.value !== 'yes'
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'TodoIntent'
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
@@ -39,6 +38,8 @@ export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
 
       return handlerInput.responseBuilder.speak(speechText).getResponse();
     } else {
+      let repromptText: string;
+
       if (todos.length === 1) {
         speechText = chooseOne(
           i18n.t('You only have one to-do. '),
@@ -47,6 +48,7 @@ export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
         );
 
         speechText += i18n.t('Would you like me to read it?');
+        repromptText = i18n.t('Would you like me to read your to-do');
       } else {
         speechText = i18n.t('You have %d to-dos. ', {
           postProcess: 'sprintf',
@@ -54,11 +56,16 @@ export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
         });
 
         speechText += i18n.t('Would you like me to read them to you?');
+        repromptText = i18n.t('Would you like me to read your to-dos');
       }
+
+      handlerInput.attributesManager.setSessionAttributes({
+        YesIntentQuestion: YesIntentQuestion.ShouldReadTodos,
+      });
 
       return handlerInput.responseBuilder
         .speak(speechText)
-        .addElicitSlotDirective('shouldReadTodos')
+        .reprompt(repromptText)
         .getResponse();
     }
   }

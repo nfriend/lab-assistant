@@ -32,12 +32,7 @@
         },
         {
           "name": "TodoIntent",
-          "slots": [
-            {
-              "name": "shouldReadTodos",
-              "type": "YesNoSlot"
-            }
-          ],
+          "slots": [],
           "samples": [
             "to-do",
             "to-dos",
@@ -53,55 +48,17 @@
           "name": "ReadTodosIntent",
           "slots": [],
           "samples": ["read me my to-dos", "read to-dos", "read my to-dos"]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
         }
       ],
-      "types": [
-        {
-          "name": "YesNoSlot",
-          "values": [
-            {
-              "id": "yes",
-              "name": {
-                "value": "Yes",
-                "synonyms": [
-                  "that would be great",
-                  "hell yes",
-                  "i do",
-                  "fine",
-                  "i guess",
-                  "why not",
-                  "please",
-                  "please do",
-                  "yes please",
-                  "you know it",
-                  "i sure do",
-                  "okay",
-                  "sure",
-                  "yep",
-                  "yeah"
-                ]
-              }
-            },
-            {
-              "id": "no",
-              "name": {
-                "value": "No",
-                "synonyms": [
-                  "please don't",
-                  "hell no",
-                  "heck no",
-                  "no thanks",
-                  "no thank you",
-                  "i sure don't",
-                  "i do not",
-                  "no",
-                  "nope"
-                ]
-              }
-            }
-          ]
-        }
-      ]
+      "types": []
     }
   }
 }
