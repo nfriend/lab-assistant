@@ -1,6 +1,6 @@
 import * as Alexa from 'ask-sdk-core';
-import { isNil } from 'lodash';
 import * as i18n from 'i18next';
+import { isNil } from 'lodash';
 
 export class ConnectAccountHandler implements Alexa.RequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {

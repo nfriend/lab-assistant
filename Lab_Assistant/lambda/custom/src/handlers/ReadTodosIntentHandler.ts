@@ -1,9 +1,9 @@
 import * as Alexa from 'ask-sdk-core';
 import { IntentRequest } from 'ask-sdk-model';
-import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
-import * as requestPromise from 'request-promise';
 import * as i18n from 'i18next';
+import * as requestPromise from 'request-promise';
 import { chooseOne } from '../util/choose-one';
+import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
 
 export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {

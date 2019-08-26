@@ -1,9 +1,9 @@
 import * as Alexa from 'ask-sdk-core';
-import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
-import * as requestPromise from 'request-promise';
-import * as i18n from 'i18next';
-import { chooseOne } from '../util/choose-one';
 import { IntentRequest } from 'ask-sdk-model';
+import * as i18n from 'i18next';
+import * as requestPromise from 'request-promise';
+import { chooseOne } from '../util/choose-one';
+import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
 import { YesIntentQuestion } from './YesIntentHandler';
 
 export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {

@@ -1,15 +1,15 @@
 import * as Alexa from 'ask-sdk-core';
 import { CancelAndStopIntentHandler } from './handlers/CancelAndStopIntentHandler';
+import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
 import { ErrorHandler } from './handlers/ErrorHandler';
 import { HelpIntentHandler } from './handlers/HelpIntentHandler';
 import { IntentReflectorHandler } from './handlers/IntentReflectorHandler';
 import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
-import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
+import { NoIntentHandler } from './handlers/NoIntentHandler';
+import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
 import { TodoIntentHandler } from './handlers/TodoIntentHandler';
-import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
 import { YesIntentHandler } from './handlers/YesIntentHandler';
-import { NoIntentHandler } from './handlers/NoIntentHandler';
 
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
 import { LocalizationInterceptor } from './interceptors/LocalizationInterceptor';

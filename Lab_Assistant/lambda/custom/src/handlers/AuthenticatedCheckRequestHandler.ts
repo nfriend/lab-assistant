@@ -1,8 +1,8 @@
 import * as Alexa from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
+import * as i18n from 'i18next';
 import { isNil } from 'lodash';
 import { chooseOne } from '../util/choose-one';
-import * as i18n from 'i18next';
 
 export abstract class AuthenticatedCheckRequestHandler
   implements Alexa.RequestHandler {
