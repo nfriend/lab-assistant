@@ -8,7 +8,8 @@
     "arrow-parens": [true, "ban-single-arg-parens"],
     "object-literal-sort-keys": false,
     "max-line-length": false,
-    "member-access": false
+    "member-access": false,
+    "interface-name": [true, "never-prefix"]
   },
   "rulesDirectory": []
 }

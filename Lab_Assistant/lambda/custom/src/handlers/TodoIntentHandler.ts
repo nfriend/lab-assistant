@@ -1,7 +1,7 @@
 import * as Alexa from 'ask-sdk-core';
-import { IntentRequest } from 'ask-sdk-model';
 import * as i18n from 'i18next';
 import * as requestPromise from 'request-promise';
+import { Todo } from '../api-interfaces/Todo';
 import { chooseOne } from '../util/choose-one';
 import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
 import { YesIntentQuestion } from './YesIntentHandler';
@@ -17,7 +17,7 @@ export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
     const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
       .rp;
 
-    const todos: any[] = await rp.get('https://gitlab.com/api/v4/todos');
+    const todos: Todo[] = await rp.get('https://gitlab.com/api/v4/todos');
 
     let speechText: string;
 
