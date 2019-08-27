@@ -40,6 +40,9 @@ export class LocalizationInterceptor implements Alexa.RequestInterceptor {
       returnEmptyString: false,
       keySeparator: false,
       nsSeparator: false,
+      interpolation: {
+        escapeValue: false,
+      },
     });
   }
 }

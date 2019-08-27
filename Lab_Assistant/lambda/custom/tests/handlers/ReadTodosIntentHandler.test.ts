@@ -46,7 +46,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.Mentioned,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -58,7 +58,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You mentioned yourself on merge request #5: test</speak>',
+      '<speak>You mentioned yourself on merge request number 5: test</speak>',
     );
   });
 
@@ -73,7 +73,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.DirectlyAddressed,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -85,7 +85,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You directly addressed yourself on merge request #5: test</speak>',
+      '<speak>You directly addressed yourself on merge request number 5: test</speak>',
     );
   });
 
@@ -100,7 +100,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.DirectlyAddressed,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -112,7 +112,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend directly addressed you on merge request #5: test</speak>',
+      '<speak>Nathan Friend directly addressed you on merge request number 5: test</speak>',
     );
   });
 
@@ -127,7 +127,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.Assigned,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -139,7 +139,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You assigned merge request #5 to yourself</speak>',
+      '<speak>You assigned merge request number 5 to yourself</speak>',
     );
   });
 
@@ -154,7 +154,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.Assigned,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -166,7 +166,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend assigned you merge request #5</speak>',
+      '<speak>Nathan Friend assigned you merge request number 5</speak>',
     );
   });
 
@@ -181,7 +181,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.BuildFailed,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -193,7 +193,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>The build failed for merge request #5</speak>',
+      '<speak>The build failed for merge request number 5</speak>',
     );
   });
 
@@ -208,7 +208,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.Marked,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -220,7 +220,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You added a to-do for merge request #5</speak>',
+      '<speak>You added a to-do for merge request number 5</speak>',
     );
   });
 
@@ -235,7 +235,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.Unmergeable,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -247,7 +247,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Could not merge merge request #5</speak>',
+      '<speak>Could not merge merge request number 5</speak>',
     );
   });
 
@@ -262,7 +262,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.ApprovalRequired,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -274,7 +274,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You set yourself as an approver for merge request #5</speak>',
+      '<speak>You set yourself as an approver for merge request number 5</speak>',
     );
   });
 
@@ -289,7 +289,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: TodoAction.ApprovalRequired,
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -301,7 +301,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend set you as an approver for merge request #5</speak>',
+      '<speak>Nathan Friend set you as an approver for merge request number 5</speak>',
     );
   });
 
@@ -316,7 +316,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: 'not_a_real_type',
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -341,7 +341,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: 'not_a_real_type',
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -354,7 +354,7 @@ describe('ReadTodosIntentHandler', () => {
         action_name: 'not_a_real_type',
         target_type: 'MergeRequest',
         target: {
-          id: 5,
+          iid: 5,
         },
         body: 'test',
       },
@@ -367,6 +367,60 @@ describe('ReadTodosIntentHandler', () => {
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>test<break time="1s"/>test</speak>',
+    );
+  });
+
+  test('for targets with IDs less that 100', async () => {
+    response = [
+      {
+        id: 2,
+        author: {
+          id: 4,
+          name: 'Nathan Friend',
+        },
+        action_name: TodoAction.Mentioned,
+        target_type: 'MergeRequest',
+        target: {
+          iid: 88,
+        },
+        body: 'test',
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toBe(
+      '<speak>Nathan Friend mentioned you on merge request number 88: test</speak>',
+    );
+  });
+
+  test('for targets with IDs greater than or equal to that 100', async () => {
+    response = [
+      {
+        id: 2,
+        author: {
+          id: 4,
+          name: 'Nathan Friend',
+        },
+        action_name: TodoAction.Mentioned,
+        target_type: 'MergeRequest',
+        target: {
+          iid: 882,
+        },
+        body: 'test',
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toBe(
+      '<speak>Nathan Friend mentioned you on merge request number <say-as interpret-as="digits">882</say-as>: test</speak>',
     );
   });
 });
