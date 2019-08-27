@@ -5,15 +5,22 @@ import * as requestPromise from 'request-promise';
  * Manipulates the provided text to make it more speakable
  * @param text The text to transform
  * @param rp A request-promise instance that is setup to
+ * @param summarize Whether to "summarize" the text by returning only the first sentence
  * make authenticated calls to the GitLab.com API
  */
 export const makeSpeakable = async (
   text: string,
   rp: typeof requestPromise,
+  summarize: boolean = false,
 ): Promise<string> => {
   text = await replaceUserNames(text, rp);
   text = expandAcronymns(text);
   text = stripEmojis(text);
+
+  if (summarize) {
+    text = getSummary(text);
+  }
+
   return text;
 };
 
@@ -140,4 +147,22 @@ const stripEmojis = (text: string): string => {
  */
 const escapeRegExp = (str: string) => {
   return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+};
+
+/**
+ * Cuts off the string after the first punctuation
+ * @param str The text to transform
+ */
+const getSummary = (str: string): string => {
+  const cutoffCharacters = ['.', '!', '?', ';'];
+
+  let earliestIndex = Number.MAX_VALUE;
+  for (const char of cutoffCharacters) {
+    const charIndex = str.indexOf(char);
+    if (charIndex !== -1 && charIndex < earliestIndex) {
+      earliestIndex = charIndex;
+    }
+  }
+
+  return str.substring(0, earliestIndex + 1);
 };

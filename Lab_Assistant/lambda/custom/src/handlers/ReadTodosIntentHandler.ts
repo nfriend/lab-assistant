@@ -45,7 +45,7 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
             : `<say-as interpret-as="digits">${todo.target.iid}</say-as>`,
 
         author: todo.author.name,
-        body: await makeSpeakable(todo.body, rp),
+        body: await makeSpeakable(todo.body, rp, true),
       };
 
       if (todo.action_name === TodoAction.Mentioned) {
