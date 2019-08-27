@@ -23,13 +23,11 @@
     "ask-sdk-model": "^1.18.0",
     "aws-sdk": "^2.326.0",
     "i18next": "^17.0.11",
-    "i18next-sprintf-postprocessor": "^0.2.2",
     "lodash": "^4.17.15",
     "request": "^2.88.0",
     "request-promise": "^4.2.4"
   },
   "devDependencies": {
-    "@types/i18next-sprintf-postprocessor": "^0.2.0",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",

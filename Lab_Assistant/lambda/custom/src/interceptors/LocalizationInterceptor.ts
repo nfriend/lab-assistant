@@ -1,7 +1,6 @@
 import * as Alexa from 'ask-sdk-core';
 import * as fs from 'fs';
 import * as i18n from 'i18next';
-import * as sprintf from 'i18next-sprintf-postprocessor';
 import * as path from 'path';
 import * as util from 'util';
 
@@ -34,7 +33,7 @@ export class LocalizationInterceptor implements Alexa.RequestInterceptor {
   }
 
   async process(handlerInput: Alexa.HandlerInput) {
-    await i18n.use(sprintf).init({
+    await i18n.init({
       lng: handlerInput.requestEnvelope.request.locale,
       fallbackLng: 'en',
       resources: await this.translationsPromise,

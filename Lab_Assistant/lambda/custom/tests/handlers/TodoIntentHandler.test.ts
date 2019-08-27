@@ -6,7 +6,12 @@ jest.mock('../../src/util/choose-one');
 jest.mock('request-promise', () => ({
   defaults: () => ({
     get: () => {
-      return [{ id: 1 }];
+      return {
+        body: [{ id: 1 }],
+        headers: {
+          'x-total': '1',
+        },
+      };
     },
   }),
 }));

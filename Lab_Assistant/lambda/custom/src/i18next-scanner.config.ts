@@ -1,6 +1,9 @@
 module.exports = {
   options: {
     debug: true,
+    func: {
+      list: ['i18next.t', 'i18n.t', 'mft'],
+    },
     removeUnusedKeys: true,
     sort: true,
 

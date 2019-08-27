@@ -3,7 +3,7 @@ import * as path from 'path';
 import { createAlexaEvent } from './create-alexa-event';
 jest.mock('../../src/util/choose-one');
 
-test('IntentRequestHandler', async () => {
+test('IntentReflectionHandler', async () => {
   const event = createAlexaEvent({
     request: {
       type: 'IntentRequest',
