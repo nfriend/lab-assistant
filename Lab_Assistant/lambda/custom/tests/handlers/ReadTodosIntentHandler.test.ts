@@ -8,6 +8,11 @@ jest.mock('../../src/util/choose-one');
 describe('ReadTodosIntentHandler', () => {
   let result: any;
   let response: any;
+  let headers: any = {
+    'x-page': '1',
+    'x-total': '1',
+    'x-per-page': '5',
+  };
 
   const event = createAlexaEvent({
     request: {
@@ -29,7 +34,10 @@ describe('ReadTodosIntentHandler', () => {
               id: 3,
             });
           } else {
-            return Promise.resolve(response);
+            return Promise.resolve({
+              body: response,
+              headers,
+            });
           }
         },
       },
@@ -366,7 +374,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>test<break time="1s"/>test</speak>',
+      '<speak>test\n<break time="1s"/>test</speak>',
     );
   });
 
@@ -421,6 +429,74 @@ describe('ReadTodosIntentHandler', () => {
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend mentioned you on merge request number <say-as interpret-as="digits">882</say-as>: test</speak>',
+    );
+  });
+
+  test('when there are 6 todos', async () => {
+    headers = {
+      'x-page': '1',
+      'x-total': '6',
+      'x-per-page': '5',
+      'x-next-page': '2',
+    };
+
+    response = [
+      {
+        id: 2,
+        author: {
+          id: 4,
+          name: 'Nathan Friend',
+        },
+        action_name: 'not_a_real_type',
+        target_type: 'MergeRequest',
+        target: {
+          iid: 5,
+        },
+        body: 'test',
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toContain(
+      '<speak>test\n<break time="1s"/>You have 1 more to-do. Would you like me to read it?</speak>',
+    );
+  });
+
+  test('when there are 7 todos', async () => {
+    headers = {
+      'x-page': '1',
+      'x-total': '7',
+      'x-per-page': '5',
+      'x-next-page': '2',
+    };
+
+    response = [
+      {
+        id: 2,
+        author: {
+          id: 4,
+          name: 'Nathan Friend',
+        },
+        action_name: 'not_a_real_type',
+        target_type: 'MergeRequest',
+        target: {
+          iid: 5,
+        },
+        body: 'test',
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toContain(
+      '<speak>test\n<break time="1s"/>You have 2 more to-dos. Would you like me to keep going?</speak>',
     );
   });
 });

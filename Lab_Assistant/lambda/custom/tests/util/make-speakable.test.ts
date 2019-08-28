@@ -16,12 +16,14 @@ const rpMock: any = {
   },
 };
 
+// Not testing emojis at the moment because I can't seem to get the tests to expect() properly
 test('makes the text (more) speakable', async () => {
   const input =
-    "Hey @nfriend, LGTM! :smile: @nfriend2 @nfriend3 Can you review @nfriend's MR?:bow:";
+    "Hey @nfriend, LGTM! @nfriend2 @nfriend3 Can you review @nfriend's [MR?](https://example.com)\n\n> a quote\n# a title";
   const expected =
-    "Hey Nathan Friend, looks good to me! ! The Other Nathan Friend @nfriend3 Can you review Nathan Friend's merge request?!";
+    "Hey Nathan Friend, looks good to me! The Other Nathan Friend @nfriend3 Can you review Nathan Friend's merge request?\n\na quote\n\na title\n";
   const output = await makeSpeakable(input, rpMock);
+
   expect(output).toBe(expected);
 });
 

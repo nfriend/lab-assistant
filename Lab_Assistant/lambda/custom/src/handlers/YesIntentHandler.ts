@@ -3,6 +3,7 @@ import { ReadTodosIntentHandler } from './ReadTodosIntentHandler';
 
 export enum YesIntentQuestion {
   ShouldReadTodos = 'ShouldReadTodos',
+  ShouldContinueReadingTodos = 'ShouldContinueReadingTodos',
 }
 
 export class YesIntentHandler implements Alexa.RequestHandler {
@@ -21,7 +22,10 @@ export class YesIntentHandler implements Alexa.RequestHandler {
     const question: YesIntentQuestion = handlerInput.attributesManager.getSessionAttributes()
       .YesIntentQuestion;
 
-    if (question === YesIntentQuestion.ShouldReadTodos) {
+    if (
+      question === YesIntentQuestion.ShouldReadTodos ||
+      question === YesIntentQuestion.ShouldContinueReadingTodos
+    ) {
       return new ReadTodosIntentHandler().handle(handlerInput);
     } else {
       throw new Error(`Unhandled YesIntentQuestion: "${question}"`);

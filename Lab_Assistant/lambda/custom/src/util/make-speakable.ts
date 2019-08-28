@@ -1,5 +1,12 @@
 import { first, uniq } from 'lodash';
+import * as remark from 'remark';
 import * as requestPromise from 'request-promise';
+const emoji = require('remark-emoji');
+const strip = require('strip-markdown');
+
+const processor = remark()
+  .use(strip)
+  .use(emoji);
 
 /**
  * Manipulates the provided text to make it more speakable
@@ -13,9 +20,9 @@ export const makeSpeakable = async (
   rp: typeof requestPromise,
   summarize: boolean = false,
 ): Promise<string> => {
+  text = await markdownToPlainText(text);
   text = await replaceUserNames(text, rp);
   text = expandAcronymns(text);
-  text = stripEmojis(text);
 
   if (summarize) {
     text = getSummary(text);
@@ -25,9 +32,25 @@ export const makeSpeakable = async (
 };
 
 /**
+ * Strips out all markdown syntax and replaces :emojis:
+ * @param text The text to transform
+ */
+const markdownToPlainText = async (text: string): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    processor.process(text, (err, file) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(String(file));
+      }
+    });
+  });
+};
+
+/**
  * Extracts all @-mentioned users from the text and replaces the
  * username with the user's actual name using the GitLab API
- * TODO: i18n?
+ * TODO: i18n? Doesn't currently work with characters outside of [a-zA-Z0-9]
  * @param text The text to transform
  */
 const replaceUserNames = async (
@@ -130,14 +153,6 @@ const expandAcronymns = (text: string): string => {
   });
 
   return text;
-};
-
-/**
- * Strips out all emojis and replaces them with "!"
- * @param text The text to transform
- */
-const stripEmojis = (text: string): string => {
-  return text.replace(/(?![a-z0-9]):[a-z0-9-_]+:(?![a-z0-9])/gi, '!');
 };
 
 /**
