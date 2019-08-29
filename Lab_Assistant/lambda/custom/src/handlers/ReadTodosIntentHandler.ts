@@ -4,8 +4,8 @@ import { isNaN } from 'lodash';
 import * as requestPromise from 'request-promise';
 import { Todo, TodoAction } from '../api-interfaces/Todo';
 import { User } from '../api-interfaces/User';
-import { chooseOne } from '../util/choose-one';
-import { makeSpeakable } from '../util/make-speakable';
+import { makeIdsSpeakable } from '../util/make-ids-speakable';
+import { makeMarkDownSpeakable } from '../util/make-markdown-speakable';
 import { mft } from '../util/mark-for-translation';
 import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
 import { YesIntentQuestion } from './YesIntentHandler';
@@ -44,17 +44,9 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
           todo.target_type === 'Issue'
             ? i18n.t('issue')
             : i18n.t('merge request'),
-
-        // For IDs less than 100, say the number normally (i.e. "eighty-seven")
-        // For IDs equal to or greater than 100, say the number as digits
-        // (i.e. "eight seven two")
-        id:
-          todo.target.iid < 100
-            ? todo.target.iid
-            : `<say-as interpret-as="digits">${todo.target.iid}</say-as>`,
-
+        id: makeIdsSpeakable(todo.target.iid),
         author: todo.author.name,
-        body: await makeSpeakable(todo.body, rp, true),
+        body: await makeMarkDownSpeakable(todo.body, rp, true),
       };
 
       if (todo.action_name === TodoAction.Mentioned) {

@@ -1,6 +1,8 @@
+import * as i18n from 'i18next';
 import { first, uniq } from 'lodash';
 import * as remark from 'remark';
 import * as requestPromise from 'request-promise';
+import { makeIdsSpeakable } from './make-ids-speakable';
 const emoji = require('remark-emoji');
 const strip = require('strip-markdown');
 
@@ -15,13 +17,14 @@ const processor = remark()
  * @param summarize Whether to "summarize" the text by returning only the first sentence
  * make authenticated calls to the GitLab.com API
  */
-export const makeSpeakable = async (
+export const makeMarkDownSpeakable = async (
   text: string,
   rp: typeof requestPromise,
   summarize: boolean = false,
 ): Promise<string> => {
   text = await markdownToPlainText(text);
   text = await replaceUserNames(text, rp);
+  text = replaceGitLabLinksAndRefs(text);
   text = expandAcronymns(text);
 
   if (summarize) {
@@ -162,6 +165,36 @@ const expandAcronymns = (text: string): string => {
  */
 const escapeRegExp = (str: string) => {
   return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1');
+};
+
+/**
+ * Replaces GitLab links and references to issues and merge requests
+ * with more speakable versions
+ * @param text The text to transform
+ */
+const replaceGitLabLinksAndRefs = (text: string): string => {
+  // matches a link to a GitLab issue or merge request, i.e. https://gitlab.com/nfriend/lab-assistant/issues/1
+  const linkRegex = /https&#x3A;\/\/gitlab\.com\/[^\s.,!?]*\/(issues|merge_requests)\/([0-9]+)[^\s.,!?]*/i;
+  // matches a reference to a GitLab issue or merge request. i.e. nfriend/lab-assistant#1
+  const refRegex = /[^\s.,!?]*\/[^\s.,!?]*(?:\/[^\s.,!?]*)*(#|!)([0-9]+)/i;
+
+  [linkRegex, refRegex].forEach(regex => {
+    let match: RegExpExecArray;
+
+    // tslint:disable-next-line:no-conditional-assignment
+    while ((match = regex.exec(text)) !== null) {
+      const type =
+        match[1].toLowerCase() === 'issues' || match[1] === '#'
+          ? i18n.t('issue')
+          : i18n.t('merge request');
+      const id = makeIdsSpeakable(parseInt(match[2], 10));
+      const speakable = i18n.t('{{type}} number {{id}}', { type, id });
+
+      text = text.replace(match[0], speakable);
+    }
+  });
+
+  return text;
 };
 
 /**

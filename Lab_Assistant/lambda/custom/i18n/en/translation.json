@@ -59,5 +59,6 @@
   "{{author}} directly addressed you on {{target}} number {{id}}: {{body}}": "{{author}} directly addressed you on {{target}} number {{id}}: {{body}}",
   "{{author}} mentioned you on {{target}} number {{id}}: {{body}}": "{{author}} mentioned you on {{target}} number {{id}}: {{body}}",
   "{{author}} set you as an approver for {{target}} number {{id}}": "{{author}} set you as an approver for {{target}} number {{id}}",
-  "{{body}}": "{{body}}"
+  "{{body}}": "{{body}}",
+  "{{type}} number {{id}}": "{{type}} number {{id}}"
 }
