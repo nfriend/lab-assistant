@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
             "handler": "build/index.handler",
-            "revisionId": "308d4a8c-1b97-43b4-b490-26688404643d",
+            "revisionId": "33bc3d47-0a98-4a22-ab5d-b90c7bd9de59",
             "runtime": "nodejs10.x"
           }
         ]

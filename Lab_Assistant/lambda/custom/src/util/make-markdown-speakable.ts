@@ -149,6 +149,18 @@ const expandAcronymns = (text: string): string => {
       regex: /\bmr\b/gi,
       replacement: 'merge request',
     },
+    {
+      regex: /\bfe\b/gi,
+      replacement: 'front end',
+    },
+    {
+      regex: /\bbe\b/gi,
+      replacement: 'back end',
+    },
+    {
+      regex: /\bdb\b/gi,
+      replacement: 'database',
+    },
   ];
 
   replacements.forEach(r => {
