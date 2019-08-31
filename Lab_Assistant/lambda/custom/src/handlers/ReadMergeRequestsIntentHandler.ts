@@ -2,7 +2,9 @@ import * as Alexa from 'ask-sdk-core';
 import * as i18n from 'i18next';
 import * as requestPromise from 'request-promise';
 import { MergeRequest } from '../api-interfaces/MergeRequest';
+import { User } from '../api-interfaces/User';
 import { getPagination } from '../util/get-pagination';
+import { getUsersName } from '../util/get-users-name';
 import { makeIdsSpeakable } from '../util/make-ids-speakable';
 import { makeMarkDownSpeakable } from '../util/make-markdown-speakable';
 import { mft } from '../util/mark-for-translation';
@@ -21,6 +23,8 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
     const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
       .rp;
 
+    const currentUser: User = await rp.get('https://gitlab.com/api/v4/user');
+
     const page =
       handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
     const result = await rp.get(
@@ -37,12 +41,22 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
     const mrSpeeches: string[] = [];
 
     for (const mr of mrs) {
-      const translationValues = {
+      const translationValues: { [key: string]: string } = {
         id: makeIdsSpeakable(mr.iid),
         title: await makeMarkDownSpeakable(mr.title, rp),
       };
 
-      const speech = mft('Number {{id}}: {{title}}');
+      let speech: string;
+      if (mr.author) {
+        translationValues.author =
+          mr.author.id === currentUser.id
+            ? i18n.t('you')
+            : await getUsersName(`@${mr.author.username}`, rp);
+
+        speech = mft('Number {{id}}, authored by {{author}}: {{title}}');
+      } else {
+        speech = mft('Number {{id}}: {{title}}');
+      }
 
       mrSpeeches.push(i18n.t(speech, translationValues));
     }

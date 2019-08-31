@@ -2,6 +2,7 @@ import * as i18n from 'i18next';
 import { first, uniq } from 'lodash';
 import * as remark from 'remark';
 import * as requestPromise from 'request-promise';
+import { getUsersName } from './get-users-name';
 import { makeIdsSpeakable } from './make-ids-speakable';
 const emoji = require('remark-emoji');
 const strip = require('strip-markdown');
@@ -55,6 +56,8 @@ const markdownToPlainText = async (text: string): Promise<string> => {
  * username with the user's actual name using the GitLab API
  * TODO: i18n? Doesn't currently work with characters outside of [a-zA-Z0-9]
  * @param text The text to transform
+ * @rp A request-promise instance that is setup to make
+ * authenticated calls to the GitLab.com API
  */
 const replaceUserNames = async (
   text: string,
@@ -76,22 +79,10 @@ const replaceUserNames = async (
   // replacements, like [{ username: 'nfriend', name: 'Nathan Friend' }]
   const replacements = await Promise.all(
     usernames.map(async un => {
-      const usernameWithoutAt = un.substring(1);
-      const users: any[] = await rp.get(
-        `https://gitlab.com/api/v4/users?username=${usernameWithoutAt}`,
-      );
-
-      if (users.length > 0) {
-        return {
-          username: un,
-          name: first(users).name,
-        };
-      } else {
-        return {
-          username: un,
-          name: un,
-        };
-      }
+      return {
+        username: un,
+        name: await getUsersName(un, rp),
+      };
     }),
   );
 
@@ -160,6 +151,10 @@ const expandAcronymns = (text: string): string => {
     {
       regex: /\bdb\b/gi,
       replacement: 'database',
+    },
+    {
+      regex: /\bwip\b/gi,
+      replacement: 'work in progress',
     },
   ];
 

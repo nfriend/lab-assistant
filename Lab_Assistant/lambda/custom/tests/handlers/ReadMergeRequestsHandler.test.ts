@@ -7,11 +7,7 @@ jest.mock('../../src/util/choose-one');
 describe('ReadMergeRequestsIntentHandler', () => {
   let result: any;
   let response: any;
-  let headers: any = {
-    'x-page': '1',
-    'x-total': '1',
-    'x-per-page': '5',
-  };
+  let headers: any;
 
   const event = createAlexaEvent({
     request: {
@@ -27,13 +23,33 @@ describe('ReadMergeRequestsIntentHandler', () => {
     () =>
       <any>{
         get: (url: string) => {
-          return Promise.resolve({
-            body: response,
-            headers,
-          });
+          if (url.includes('api/v4/user')) {
+            if (url.includes('test-user')) {
+              return [{ name: 'Test User' }];
+            } else {
+              return Promise.resolve({
+                id: 3,
+              });
+            }
+          } else {
+            return Promise.resolve({
+              body: response,
+              headers,
+            });
+          }
         },
       },
   );
+
+  beforeEach(() => {
+    result = undefined;
+    response = undefined;
+    headers = {
+      'x-page': '1',
+      'x-total': '1',
+      'x-per-page': '5',
+    };
+  });
 
   test('when you have one merge request', async () => {
     response = [{ iid: 2, title: 'test' }];
@@ -98,6 +114,49 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     expect(result.response.outputSpeech.ssml).toContain(
       '<speak>Number 2: test\n<break time="1s"/>You have 2 more merge requests. Would you like me to keep going?</speak>',
+    );
+  });
+
+  test('when the merge request is authored by you', async () => {
+    response = [
+      {
+        iid: 2,
+        title: 'test',
+        author: {
+          id: 3,
+        },
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toBe(
+      '<speak>Number 2, authored by you: test</speak>',
+    );
+  });
+
+  test('when the merge request is authored by someone else', async () => {
+    response = [
+      {
+        iid: 2,
+        title: 'test',
+        author: {
+          id: 4,
+          username: 'test-user',
+        },
+      },
+    ];
+
+    result = await lambdaLocal.execute({
+      event,
+      lambdaPath: path.join(__dirname, '../../src/index.ts'),
+    });
+
+    expect(result.response.outputSpeech.ssml).toBe(
+      '<speak>Number 2, authored by Test User: test</speak>',
     );
   });
 });
