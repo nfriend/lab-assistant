@@ -28,7 +28,6 @@ describe('ReadTodosIntentHandler', () => {
     () =>
       <any>{
         get: (url: string) => {
-          let result: any;
           if (url.includes('api/v4/user')) {
             return Promise.resolve({
               id: 3,
@@ -462,7 +461,7 @@ describe('ReadTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>test\n<break time="1s"/>You have 1 more to-do. Would you like me to read it?</speak>',
+      '<speak>test\n<break time="1s"/>You have one more to-do. Would you like me to read it?</speak>',
     );
   });
 

@@ -1,9 +1,12 @@
 import * as Alexa from 'ask-sdk-core';
+import { ReadMergeRequestsIntentHandler } from './ReadMergeRequestsIntentHandler';
 import { ReadTodosIntentHandler } from './ReadTodosIntentHandler';
 
 export enum YesIntentQuestion {
   ShouldReadTodos = 'ShouldReadTodos',
   ShouldContinueReadingTodos = 'ShouldContinueReadingTodos',
+  ShouldReadMergeRequests = 'ShouldReadMergeRequests',
+  ShouldContinueReadingMergeRequests = 'ShouldContinueReadingMergeRequests',
 }
 
 export class YesIntentHandler implements Alexa.RequestHandler {
@@ -27,6 +30,11 @@ export class YesIntentHandler implements Alexa.RequestHandler {
       question === YesIntentQuestion.ShouldContinueReadingTodos
     ) {
       return new ReadTodosIntentHandler().handle(handlerInput);
+    } else if (
+      question === YesIntentQuestion.ShouldReadMergeRequests ||
+      question === YesIntentQuestion.ShouldContinueReadingMergeRequests
+    ) {
+      return new ReadMergeRequestsIntentHandler().handle(handlerInput);
     } else {
       throw new Error(`Unhandled YesIntentQuestion: "${question}"`);
     }

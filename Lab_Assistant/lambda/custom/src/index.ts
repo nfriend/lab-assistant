@@ -1,14 +1,16 @@
 import * as Alexa from 'ask-sdk-core';
 import { CancelAndStopIntentHandler } from './handlers/CancelAndStopIntentHandler';
 import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
+import { CountMergeRequestsIntentHandler } from './handlers/CountMergeRequestsIntentHandler';
+import { CountTodosIntentHandler } from './handlers/CountTodosIntentHandler';
 import { ErrorHandler } from './handlers/ErrorHandler';
 import { HelpIntentHandler } from './handlers/HelpIntentHandler';
 import { IntentReflectorHandler } from './handlers/IntentReflectorHandler';
 import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
 import { NoIntentHandler } from './handlers/NoIntentHandler';
+import { ReadMergeRequestsIntentHandler } from './handlers/ReadMergeRequestsIntentHandler';
 import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
-import { CountTodosIntentHandler } from './handlers/CountTodosIntentHandler';
 import { YesIntentHandler } from './handlers/YesIntentHandler';
 
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
@@ -28,6 +30,8 @@ export const handler = Alexa.SkillBuilders.custom()
     new CancelAndStopIntentHandler(),
     new SessionEndedRequestHandler(),
     new ReadTodosIntentHandler(),
+    new CountMergeRequestsIntentHandler(),
+    new ReadMergeRequestsIntentHandler(),
     new YesIntentHandler(),
     new NoIntentHandler(),
 

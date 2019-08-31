@@ -4,7 +4,7 @@ import { createAlexaEvent } from './create-alexa-event';
 import * as rp from 'request-promise';
 jest.mock('../../src/util/choose-one');
 
-describe('CountTodosIntentHandler', () => {
+describe('CountMergeRequestsIntentHandler', () => {
   let response: any;
   let headers: any = {
     'x-page': '1',
@@ -16,7 +16,7 @@ describe('CountTodosIntentHandler', () => {
     request: {
       type: 'IntentRequest',
       intent: {
-        name: 'CountTodosIntent',
+        name: 'CountMergeRequestsIntent',
         confirmationStatus: 'NONE',
         slots: {},
       },
@@ -35,7 +35,7 @@ describe('CountTodosIntentHandler', () => {
       },
   );
 
-  test('when the user has no todos', async () => {
+  test('when the user has no merge requests', async () => {
     headers = {
       'x-page': '1',
       'x-total': '0',
@@ -48,11 +48,11 @@ describe('CountTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have no to-dos. Good job!</speak>',
+      '<speak>You have no open merge requests assigned to you.</speak>',
     );
   });
 
-  test('when the user has 1 todo', async () => {
+  test('when the user has 1 merge request', async () => {
     headers = {
       'x-page': '1',
       'x-total': '1',
@@ -65,11 +65,11 @@ describe('CountTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You only have one to-do. Would you like me to read it?</speak>',
+      '<speak>You only have one open merge request assigned to you. Would you like me to read it?</speak>',
     );
   });
 
-  test('when the user has 10 todos', async () => {
+  test('when the user has 10 merge requests', async () => {
     headers = {
       'x-page': '1',
       'x-total': '10',
@@ -82,7 +82,7 @@ describe('CountTodosIntentHandler', () => {
     });
 
     expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have 10 to-dos. Would you like me to read them to you?</speak>',
+      '<speak>You have 10 open merge requests assigned to you. Would you like me to read them to you?</speak>',
     );
   });
 });

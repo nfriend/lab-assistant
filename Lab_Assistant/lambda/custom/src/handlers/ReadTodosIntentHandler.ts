@@ -4,6 +4,7 @@ import { isNaN } from 'lodash';
 import * as requestPromise from 'request-promise';
 import { Todo, TodoAction } from '../api-interfaces/Todo';
 import { User } from '../api-interfaces/User';
+import { getPagination } from '../util/get-pagination';
 import { makeIdsSpeakable } from '../util/make-ids-speakable';
 import { makeMarkDownSpeakable } from '../util/make-markdown-speakable';
 import { mft } from '../util/mark-for-translation';
@@ -86,29 +87,18 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
       todoSpeeches.push(i18n.t(speech, translationValues));
     }
 
-    const nextPage = parseInt(result.headers['x-next-page'], 10);
-    const isMore = !isNaN(nextPage);
+    const paginationInfo = getPagination(
+      result.headers,
+      i18n.t('to-do'),
+      i18n.t('to-dos'),
+    );
 
-    if (isMore) {
-      const count = parseInt(result.headers['x-total'], 10);
-      const currentPage = parseInt(result.headers['x-page'], 10);
-      const perPage = parseInt(result.headers['x-per-page'], 10);
-      const remaining = count - currentPage * perPage;
-
-      const remainingText =
-        remaining === 1
-          ? mft(
-              'You have {{remaining}} more to-do. Would you like me to read it?',
-            )
-          : mft(
-              'You have {{remaining}} more to-dos. Would you like me to keep going?',
-            );
-
-      todoSpeeches.push(i18n.t(remainingText, { remaining }));
+    if (paginationInfo.isMore) {
+      todoSpeeches.push(paginationInfo.moreText);
 
       handlerInput.attributesManager.setSessionAttributes({
         YesIntentQuestion: YesIntentQuestion.ShouldContinueReadingTodos,
-        nextPage,
+        nextPage: paginationInfo.nextPage,
       });
     }
 
@@ -117,7 +107,7 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
 
     const builder = handlerInput.responseBuilder.speak(speechText);
 
-    if (isMore) {
+    if (paginationInfo.isMore) {
       builder.reprompt(i18n.t('Would you like me to keep going?'));
     }
 
