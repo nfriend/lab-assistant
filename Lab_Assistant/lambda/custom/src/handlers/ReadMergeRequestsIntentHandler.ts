@@ -34,10 +34,7 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
       },
     );
 
-    // Order merge requests starting at the most recently updated
-    const mrs = (result.body as MergeRequest[]).sort((a, b) => {
-      return (new Date(a.updated_at) as any) - (new Date(b.updated_at) as any);
-    });
+    const mrs = result.body as MergeRequest[];
     const mrSpeeches: string[] = [];
 
     for (const mr of mrs) {
