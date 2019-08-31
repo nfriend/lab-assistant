@@ -28,7 +28,7 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
     const page =
       handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
     const result = await rp.get(
-      `https://gitlab.com/api/v4/merge_requests?state=opened&scope=assigned_to_me&per_page=5&page=${page}`,
+      `https://gitlab.com/api/v4/merge_requests?state=opened&scope=assigned_to_me&order_by=updated_at&per_page=5&page=${page}`,
       {
         resolveWithFullResponse: true,
       },
