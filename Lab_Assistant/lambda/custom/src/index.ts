@@ -8,7 +8,7 @@ import { LaunchRequestHandler } from './handlers/LaunchRequestHandler';
 import { NoIntentHandler } from './handlers/NoIntentHandler';
 import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
-import { TodoIntentHandler } from './handlers/TodoIntentHandler';
+import { CountTodosIntentHandler } from './handlers/CountTodosIntentHandler';
 import { YesIntentHandler } from './handlers/YesIntentHandler';
 
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
@@ -23,7 +23,7 @@ export const handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     new LaunchRequestHandler(),
     new ConnectAccountHandler(),
-    new TodoIntentHandler(),
+    new CountTodosIntentHandler(),
     new HelpIntentHandler(),
     new CancelAndStopIntentHandler(),
     new SessionEndedRequestHandler(),

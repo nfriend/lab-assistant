@@ -31,13 +31,29 @@
           ]
         },
         {
-          "name": "TodoIntent",
+          "name": "CountTodosIntent",
           "slots": [],
           "samples": [
+            "will it be a busy day",
+            "what's on my plate for today",
+            "what's on my plate",
+            "what does my day look like",
+            "how does my day look",
+            "how is my day looking",
+            "do I have any notifications",
+            "do I have any to-dos",
+            "my notifications",
+            "notification",
+            "notifications",
+            "how many notifications do I have",
+            "check my notifications",
+            "my to-dos",
             "to-do",
             "to-dos",
             "how many to-dos to I have",
-            "check my to-dos"
+            "check my to-dos",
+            "any to-dos",
+            "any notifications"
           ]
         },
         {
@@ -56,6 +72,43 @@
         {
           "name": "AMAZON.NoIntent",
           "samples": []
+        },
+        {
+          "name": "CountMergeRequestsIntent",
+          "slots": [],
+          "samples": [
+            "merge requests",
+            "merge request",
+            "how many merge requests do I have",
+            "how many merge requests are assigned to me",
+            "what merge requests do I have",
+            "do I have any merge requests",
+            "any merge requests",
+
+            "M.Rs",
+            "M.R",
+            "how many M.Rs do I have",
+            "how many M.Rs are assigned to me",
+            "what M.Rs do I have",
+            "do I have any M.Rs",
+            "any merge M.Rs",
+
+            "pull requests",
+            "pull request",
+            "how many pull requests do I have",
+            "how many pull requests are assigned to me",
+            "what pull requests do I have",
+            "do I have any pull requests",
+            "any pull requests",
+
+            "P.Rs",
+            "P.R",
+            "how many P.Rs do I have",
+            "how many P.Rs are assigned to me",
+            "what P.Rs do I have",
+            "do I have any P.Rs",
+            "any merge P.Rs"
+          ]
         }
       ],
       "types": []

@@ -6,11 +6,11 @@ import { chooseOne } from '../util/choose-one';
 import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
 import { YesIntentQuestion } from './YesIntentHandler';
 
-export class TodoIntentHandler extends AuthenticatedCheckRequestHandler {
+export class CountTodosIntentHandler extends AuthenticatedCheckRequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) === 'TodoIntent'
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'CountTodosIntent'
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {

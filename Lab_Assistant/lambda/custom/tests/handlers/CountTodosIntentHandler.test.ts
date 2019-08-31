@@ -21,7 +21,7 @@ test('IntentRequestHandler', async () => {
     request: {
       type: 'IntentRequest',
       intent: {
-        name: 'TodoIntent',
+        name: 'CountTodosIntent',
         confirmationStatus: 'NONE',
         slots: {
           shouldReadTodos: {
