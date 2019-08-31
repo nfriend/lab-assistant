@@ -30,7 +30,10 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
       },
     );
 
-    const mrs: MergeRequest[] = result.body;
+    // Order merge requests starting at the most recently updated
+    const mrs = (result.body as MergeRequest[]).sort((a, b) => {
+      return (new Date(a.updated_at) as any) - (new Date(b.updated_at) as any);
+    });
     const mrSpeeches: string[] = [];
 
     for (const mr of mrs) {
@@ -54,7 +57,7 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
       mrSpeeches.push(paginationInfo.moreText);
 
       handlerInput.attributesManager.setSessionAttributes({
-        YesIntentQuestion: YesIntentQuestion.ShouldContinueReadingTodos,
+        YesIntentQuestion: YesIntentQuestion.ShouldContinueReadingMergeRequests,
         nextPage: paginationInfo.nextPage,
       });
     }
