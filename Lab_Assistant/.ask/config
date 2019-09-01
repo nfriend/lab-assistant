@@ -10,7 +10,7 @@
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "6ca8ee655486705ece13027126bbf345"
+            "eTag": "a89dba364c7ef780764d7a372d4444a6"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
             "handler": "build/index.handler",
-            "revisionId": "be1d473e-0ba6-4874-b039-30679e49b2a8",
+            "revisionId": "61987464-e808-45c2-a813-b634e8c3b96f",
             "runtime": "nodejs10.x"
           }
         ]
