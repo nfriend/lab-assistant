@@ -85,6 +85,10 @@ This project includes a [pipeline](https://gitlab.com/nfriend/lab-assistant/blob
 
 To deploy, run `npm run deploy`. This command uses the [Alexa Skills Kit (ASK) CLI](https://developer.amazon.com/docs/smapi/quick-start-alexa-skills-kit-command-line-interface.html) to update the latest **development** version of this skill. Production deployments/submissions are a manual process.
 
+#### A quick note
+
+You may notice that this project's [`.gitlab-ci.yml`](https://gitlab.com/nfriend/lab-assistant/blob/master/.gitlab-ci.yml) file includes references to automated deployments (i.e., a job and stage named `deploy`). These jobs (and the corresponding `deploy` branch) are _almost_ working, but ultimately were abandoned due to limitations with the ASK CLI tool. It's possible this automated deployment process will be reintroduced in the future if the ASK CLI makes this possible. For now, deployments are created by running the `npm run deploy` command locally as described above.
+
 ## Contributing
 
 Merge requests are welcome! :pray: :bow:
