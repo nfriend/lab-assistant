@@ -57,21 +57,17 @@
           ]
         },
         {
-          "name": "AMAZON.NavigateHomeIntent",
-          "samples": []
-        },
-        {
           "name": "ReadTodosIntent",
           "slots": [],
-          "samples": ["read me my to-dos", "read to-dos", "read my to-dos"]
-        },
-        {
-          "name": "AMAZON.YesIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.NoIntent",
-          "samples": []
+          "samples": [
+            "read me my to-dos",
+            "read to-dos",
+            "read my to-dos",
+
+            "read me my notifications",
+            "read notifications",
+            "read my notifications"
+          ]
         },
         {
           "name": "CountMergeRequestsIntent",
@@ -109,6 +105,39 @@
             "do I have any P.Rs",
             "any merge P.Rs"
           ]
+        },
+        {
+          "name": "ReadMergeRequestsIntent",
+          "slots": [],
+          "samples": [
+            "read me my merge requests",
+            "read merge requests",
+            "read my merge requests",
+
+            "read me my M.Rs",
+            "read M.Rs",
+            "read my M.Rs",
+
+            "read me my pull requests",
+            "read pull requests",
+            "read my pull requests",
+
+            "read me my P.Rs",
+            "read P.Rs",
+            "read my P.Rs"
+          ]
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
         }
       ],
       "types": []
