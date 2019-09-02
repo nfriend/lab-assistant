@@ -145,7 +145,7 @@ const expandAcronymns = (text: string): string => {
       replacement: 'front end',
     },
     {
-      regex: /\bbe\b/gi,
+      regex: /\bBE\b/g,
       replacement: 'back end',
     },
     {
