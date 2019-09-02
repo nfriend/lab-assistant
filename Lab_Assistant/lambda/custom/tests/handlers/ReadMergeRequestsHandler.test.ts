@@ -30,10 +30,6 @@ describe('ReadMergeRequestsIntentHandler', () => {
               mockedResponse: { id: 3 },
             },
             {
-              regex: /api\/v4\/users/,
-              mockedResponse: [{ name: 'Test User' }],
-            },
-            {
               regex: /api\/v4\/merge_requests/,
               mockedResponse: { body: response, headers },
             },

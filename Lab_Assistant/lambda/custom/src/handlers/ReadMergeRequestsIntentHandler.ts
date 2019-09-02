@@ -117,9 +117,7 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
         id: makeIdsSpeakable(mr.iid),
         title: await makeMarkDownSpeakable(mr.title, rp),
         author:
-          mr.author.id === currentUser.id
-            ? i18n.t('you')
-            : await getUsersName(`@${mr.author.username}`, rp),
+          mr.author.id === currentUser.id ? i18n.t('you') : mr.author.name,
         timeAgo: moment(mr.created_at).fromNow(),
         pipelineDescription,
       };

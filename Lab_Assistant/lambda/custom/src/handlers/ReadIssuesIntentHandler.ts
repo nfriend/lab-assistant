@@ -54,7 +54,7 @@ export class ReadIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
         author:
           issue.author.id === currentUser.id
             ? i18n.t('you')
-            : await getUsersName(`@${issue.author.username}`, rp),
+            : issue.author.name,
         timeAgo: moment(issue.created_at).fromNow(),
       };
 
