@@ -128,6 +128,28 @@
           ]
         },
         {
+          "name": "CountIssuesIntent",
+          "slots": [],
+          "samples": [
+            "issues",
+            "issue",
+            "how many issues do I have",
+            "how many issues are assigned to me",
+            "what issues do I have",
+            "do I have any issues",
+            "any issues"
+          ]
+        },
+        {
+          "name": "ReadIssuesIntent",
+          "slots": [],
+          "samples": [
+            "read me my issues",
+            "read merge issues",
+            "read my issues"
+          ]
+        },
+        {
           "name": "AMAZON.NavigateHomeIntent",
           "samples": []
         },
