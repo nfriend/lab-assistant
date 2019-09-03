@@ -1,4 +1,4 @@
-image: timbru31/java-node:latest
+image: node:latest
 
 stages:
   - build
@@ -38,7 +38,7 @@ lint translations:
     - deploy@nfriend/lab-assistant
 
 lint model:
-  image: java:latest
+  image: timbru31/java-node:latest
   stage: lint
   script:
     - ./ci-scripts/check-for-model-changes.sh
