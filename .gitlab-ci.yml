@@ -1,4 +1,4 @@
-image: node:latest
+image: timbru31/java-node:latest
 
 stages:
   - build
