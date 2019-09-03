@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Generate a new skill model
-npm run model
+# We can't use "npm run model" here as npm isn't available in the java image
+cd ../../models 
+java -jar alexa-generate.jar ./en-US.grammar ./en-US.json
 
 # Run "git status", because for some reason the command
 # below doesn't correct detect changes otherwise ¯\＿(ツ)＿/¯

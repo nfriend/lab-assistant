@@ -7,7 +7,7 @@
     "build-and-translate": "npm run build && npm run translate",
     "translate": "i18next-scanner --config build/i18next-scanner.config.js 'build/**/*.js'",
     "model": "cd ../../models && java -jar alexa-generate.jar ./en-US.grammar ./en-US.json",
-    "deploy": "cd ../.. && ask deploy --force && cd - && npm install",
+    "deploy": "cd ../.. && ask deploy --force && npm install",
     "test": "jest",
     "test-watch": "jest --watch",
     "tslint": "tslint -c tslint.json -p .",
