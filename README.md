@@ -102,5 +102,6 @@ If you'd like to contribute code, see the **Developing** section above.
 If you're interested in translating Lab Assistant into another language (thereby making it available in other Amazon stores), please open a merge request with translated versions of these files:
 
 - [./Lab_Assistant/lambda/custom/i18n/en/translation.json](./Lab_Assistant/lambda/custom/i18n/en/translation.json)
-- [./Lab_Assistant/models/en-US.json](./Lab_Assistant/models/en-US.json)
+- [en-US.grammar](./Lab_Assistant/models/en-US.grammar)
+  - This is used to generate [./Lab_Assistant/models/en-US.json](./Lab_Assistant/models/en-US.json)
 - [./Lab_Assistant/skill.json](./Lab_Assistant/skill.json)
