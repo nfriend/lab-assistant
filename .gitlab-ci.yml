@@ -37,6 +37,14 @@ lint translations:
   except:
     - deploy@nfriend/lab-assistant
 
+lint model:
+  image: java:latest
+  stage: lint
+  script:
+    - ./ci-scripts/check-for-model-changes.sh
+  except:
+    - deploy@nfriend/lab-assistant
+
 jest:
   stage: test
   script:

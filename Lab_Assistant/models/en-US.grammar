@@ -42,8 +42,19 @@ read {|me} {|my} {|list of} {issues} {|in detail}
 {issues}: issue, issues, bug, bugs, feature, features, feature request, feature requests, ticket, tickets, story, stories, task, tasks, card, cards
 
 RunPipelineIntent:
-{{PipelineVariable:AMAZON.SearchQuery}}
-{run|start|create|execute|begin|do|initiate|launch|commence|open|perform|process} {|a|the} {|new} {{PipelineVariable:AMAZON.SearchQuery}} {|pipeline|build|job|C.I. pipeline|C.D. pipeline|process}
+{{pipelineVariable}}
+{run|start|create|execute|begin|do|initiate|launch|commence|open|perform|process} {|a|the} {|new} {{pipelineVariable}} {|pipeline|build|job|C.I. pipeline|C.D. pipeline|process} {|on|to} {|the|my|our} {|code|project|app|software}
+
+{pipelineVariable}:
+build
+deploy
+deployment
+test
+testing
+analyze
+analysis
+lint
+linting
 
 AMAZON.CancelIntent:
 AMAZON.HelpIntent:
