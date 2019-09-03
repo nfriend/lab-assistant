@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Install git
+# TODO: create a new Docker image with git preinstalled
+apt-get update
+apt-get upgrade -y
+apt-get install -y git
+
 # Generate a new skill model
 npm run model
 
