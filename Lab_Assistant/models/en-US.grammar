@@ -1,0 +1,53 @@
+Invocation: lab assistant
+
+ConnectAccountIntent:
+{connect|log in|authenticate|register} {|to|with} {|my} {|gitlab|gitlab.com} {|account}
+
+CountTodosIntent:
+{|my|any} {todos}
+do i have {any|many|lots of} {todos}
+how many {todos} do I have
+check my {todos}
+count my {todos}
+will it be a busy day {|today}
+{what's|what is} on my plate {|for } today
+{how|what} does my day look {|like} {|today}
+how is my day {|looking}
+
+ReadTodosIntent:
+read {|me} {|my} {|list of} {todos} {|in detail}
+
+{todos}: to-do, to-dos, notification, notifications
+
+CountMergeRequestsIntent:
+{|my|any} {|open} {mrs} {|assigned to me}
+do i have {any|many|lots of} {|open} {mrs} {|assigned to me}
+how many {|open} {mrs} {|do I have} {|assigned to me}
+{count|check} {my|the} {|open} {mrs} {|assigned to me}
+
+ReadMergeRequestsIntent:
+read {|me} {|my} {|list of} {mrs} {|in detail}
+
+{mrs}: merge request, merge requests, M.R, M.Rs, pull request, pull requests, P.R, P.Rs
+
+CountIssuesIntent:
+{|my|any} {|open} {issues} {|assigned to me}
+do i have {any|many|lots of} {|open} {issues} {|assigned to me}
+how many {|open} {issues} {|do I have} {|assigned to me}
+{count|check} {my|the} {|open} {issues} {|assigned to me}
+
+ReadIssuesIntent:
+read {|me} {|my} {|list of} {issues} {|in detail}
+
+{issues}: issue, issues, bug, bugs, feature, features, feature request, feature requests, ticket, tickets, story, stories, task, tasks, card, cards
+
+RunPipelineIntent:
+{{PipelineVariable:AMAZON.SearchQuery}}
+{run|start|create|execute|begin|do|initiate|launch|commence|open|perform|process} {|a|the} {|new} {{PipelineVariable:AMAZON.SearchQuery}} {|pipeline|build|job|C.I. pipeline|C.D. pipeline|process}
+
+AMAZON.CancelIntent:
+AMAZON.HelpIntent:
+AMAZON.StopIntent:
+AMAZON.NavigateHomeIntent:
+AMAZON.YesIntent:
+AMAZON.NoIntent:

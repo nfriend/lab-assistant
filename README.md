@@ -65,6 +65,10 @@ If you _do_ want to use this skill with a self-managed GitLab instance, you can 
 3. `npm install`
 4. `npm run build`
 
+### Building the model
+
+This skill's model is generated using the [Alexa Skill Utterance and Schema Generator](https://github.com/KayLerch/alexa-utterance-generator) library. This library takes [en-US.grammar](./Lab_Assistant/models/en-US.grammar) and outputs [en-US.json](./Lab_Assistant/models/en-US.json). To run this process, run `npm run model`. Note that you will need a JDK installed for this command to run; it executes [alexa-generate.jar](./Lab_Assistant/models/alexa-generate.jar) which is included in this repository.
+
 ### Testing
 
 The easiest way to develop on this project is using test-driven development through [Jest](https://jestjs.io/). You can run the tests using `npm run test` or `npm run test-watch`. See the [existing tests](https://gitlab.com/nfriend/lab-assistant/tree/master/Lab_Assistant/lambda/custom/tests) for some examples.
