@@ -16,7 +16,7 @@
             },
             {
               "name": "projectName",
-              "type": "AMAZON.SearchQuery",
+              "type": "projectName",
               "confirmationRequired": false,
               "elicitationRequired": true,
               "prompts": {
