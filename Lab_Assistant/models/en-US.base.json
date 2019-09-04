@@ -9,7 +9,7 @@
           "slots": [
             {
               "name": "pipelineVariable",
-              "type": "AMAZON.SearchQuery",
+              "type": "pipelineVariable",
               "confirmationRequired": false,
               "elicitationRequired": false,
               "prompts": {}

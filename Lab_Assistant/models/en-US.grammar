@@ -46,7 +46,8 @@ read {|me} {|my} {|list of} {issues} {|in detail}
 RunPipelineIntent:
 {{pipelineVariable}}
 {run} {|a|the} {|new} {{pipelineVariable}} {|pipeline}
-{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to} {the|my|our} {code|project|app|software}
+{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to|for} {|project} {{projectName:AMAZON.SearchQuery}}
+{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to|for} {the|my|our} {code|project|app|software}
 
 {run}: run, start, create, execute, begin, do, initiate, launch, commence, open, perform, process
 {pipeline}: pipeline, build, job, C.I. pipeline, C.D. pipeline, process
