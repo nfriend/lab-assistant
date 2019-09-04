@@ -1,7 +1,9 @@
 Invocation: lab assistant
 
 ConnectAccountIntent:
-{connect|log in|authenticate|register} {|to|with} {|my} {|gitlab|gitlab.com} {|account}
+{connect} {|to|with} {|my} {|gitlab|gitlab.com} {|account}
+
+{connect}: connect, log in, authenticate, register
 
 CountTodosIntent:
 {|my|any} {todos}
@@ -43,7 +45,11 @@ read {|me} {|my} {|list of} {issues} {|in detail}
 
 RunPipelineIntent:
 {{pipelineVariable}}
-{run|start|create|execute|begin|do|initiate|launch|commence|open|perform|process} {|a|the} {|new} {{pipelineVariable}} {|pipeline|build|job|C.I. pipeline|C.D. pipeline|process} {|on|to} {|the|my|our} {|code|project|app|software}
+{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline}
+{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to} {the|my|our} {code|project|app|software}
+
+{run}: run, start, create, execute, begin, do, initiate, launch, commence, open, perform, process
+{pipeline}: pipeline, build, job, C.I. pipeline, C.D. pipeline, process
 
 {pipelineVariable}:
 build
