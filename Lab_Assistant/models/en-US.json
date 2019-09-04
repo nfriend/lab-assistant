@@ -8,14 +8,14 @@
           "prompts": {},
           "slots": [
             {
-              "name": "PipelineVariable",
+              "name": "pipelineVariable",
               "type": "AMAZON.SearchQuery",
               "confirmationRequired": false,
               "elicitationRequired": false,
               "prompts": {}
             },
             {
-              "name": "ProjectName",
+              "name": "projectName",
               "type": "AMAZON.SearchQuery",
               "confirmationRequired": false,
               "elicitationRequired": true,
