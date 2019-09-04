@@ -1,61 +1,59 @@
 {
   "interactionModel": {
-    "languageModel": {
-      "dialog": {
-        "intents": [
-          {
-            "name": "RunPipelineIntent",
-            "confirmationRequired": false,
-            "prompts": {},
-            "slots": [
-              {
-                "name": "PipelineVariable",
-                "type": "AMAZON.SearchQuery",
-                "confirmationRequired": false,
-                "elicitationRequired": false,
-                "prompts": {}
-              },
-              {
-                "name": "ProjectName",
-                "type": "AMAZON.SearchQuery",
-                "confirmationRequired": false,
-                "elicitationRequired": true,
-                "prompts": {
-                  "elicitation": "which-project"
-                }
-              }
-            ]
-          }
-        ],
-        "delegationStrategy": "ALWAYS"
-      },
-      "prompts": [
+    "dialog": {
+      "intents": [
         {
-          "id": "which-project",
-          "variations": [
+          "name": "RunPipelineIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
             {
-              "type": "PlainText",
-              "value": "Okay, which project?"
+              "name": "PipelineVariable",
+              "type": "AMAZON.SearchQuery",
+              "confirmationRequired": false,
+              "elicitationRequired": false,
+              "prompts": {}
             },
             {
-              "type": "PlainText",
-              "value": "What is the name of the project?"
-            },
-            {
-              "type": "PlainText",
-              "value": "Sure, for which project?"
-            },
-            {
-              "type": "PlainText",
-              "value": "Okay, what project is this for?"
-            },
-            {
-              "type": "PlainText",
-              "value": "Sure, what project?"
+              "name": "ProjectName",
+              "type": "AMAZON.SearchQuery",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "which-project"
+              }
             }
           ]
         }
-      ]
-    }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "which-project",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Okay, which project?"
+          },
+          {
+            "type": "PlainText",
+            "value": "What is the name of the project?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Sure, for which project?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Okay, what project is this for?"
+          },
+          {
+            "type": "PlainText",
+            "value": "Sure, what project?"
+          }
+        ]
+      }
+    ]
   }
 }
