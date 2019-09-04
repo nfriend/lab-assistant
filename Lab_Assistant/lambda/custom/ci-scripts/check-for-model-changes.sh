@@ -6,6 +6,10 @@ apt-get update
 apt-get upgrade -y
 apt-get install -y git
 
+# Build the project (since the merge-model script 
+# is written in TypeScript)
+npm run build
+
 # Generate a new skill model
 npm run model
 
