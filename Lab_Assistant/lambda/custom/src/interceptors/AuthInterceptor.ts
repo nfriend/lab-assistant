@@ -14,8 +14,7 @@ export class AuthInterceptor implements Alexa.RequestInterceptor {
 
     // if the user has already connected their account
     // set up the request to send along the credentials
-    const accessToken =
-      handlerInput.requestEnvelope.context.System.user.accessToken;
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
     if (accessToken) {
       defaults.auth = { bearer: accessToken };
     }

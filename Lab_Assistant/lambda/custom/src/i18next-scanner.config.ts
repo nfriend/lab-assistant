@@ -11,8 +11,7 @@ module.exports = {
     lngs: ['en'],
 
     defaultLng: 'en',
-    defaultValue: (lng: string, ns: string, key: string) =>
-      lng === 'en' ? key : '',
+    defaultValue: (lng: string, ns: string, key: string) => (lng === 'en' ? key : ''),
     nsSeparator: false,
     keySeparator: false,
   },

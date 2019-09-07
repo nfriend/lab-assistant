@@ -19,8 +19,7 @@ export class YesIntentHandler implements Alexa.RequestHandler {
 
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        'AMAZON.YesIntent' &&
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent' &&
       Object.values(YesIntentQuestion).includes(question)
     );
   }

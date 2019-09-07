@@ -8,8 +8,6 @@ export class NoIntentHandler implements Alexa.RequestHandler {
     );
   }
   async handle(handlerInput: Alexa.HandlerInput) {
-    return handlerInput.responseBuilder
-      .withShouldEndSession(true)
-      .getResponse();
+    return handlerInput.responseBuilder.withShouldEndSession(true).getResponse();
   }
 }

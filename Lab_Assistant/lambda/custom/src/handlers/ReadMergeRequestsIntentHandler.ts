@@ -2,10 +2,7 @@ import * as Alexa from 'ask-sdk-core';
 import * as i18n from 'i18next';
 import * as moment from 'moment';
 import * as requestPromise from 'request-promise';
-import {
-  MergeRequest,
-  SimpleMergeRequest,
-} from '../api-interfaces/MergeRequest';
+import { MergeRequest, SimpleMergeRequest } from '../api-interfaces/MergeRequest';
 import { User } from '../api-interfaces/User';
 import { buildUrlParams } from '../util/build-url-params';
 import { chooseOne } from '../util/choose-one';
@@ -21,16 +18,13 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        'ReadMergeRequestsIntent'
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'ReadMergeRequestsIntent'
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
-    const page =
-      handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
+    const page = handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
 
     const apiParams = buildUrlParams({
       view: 'simple',
@@ -108,16 +102,13 @@ export class ReadMergeRequestsIntentHandler extends AuthenticatedCheckRequestHan
           i18n.t('has a pipeline that was skipped'),
         );
       } else {
-        pipelineDescription = chooseOne(
-          i18n.t('has a pipeline with an unknown status'),
-        );
+        pipelineDescription = chooseOne(i18n.t('has a pipeline with an unknown status'));
       }
 
       const translationValues: { [key: string]: string } = {
         id: makeIdsSpeakable(mr.iid),
         title: await makeMarkDownSpeakable(mr.title, rp),
-        author:
-          mr.author.id === currentUser.id ? i18n.t('you') : mr.author.name,
+        author: mr.author.id === currentUser.id ? i18n.t('you') : mr.author.name,
         timeAgo: moment(mr.created_at).fromNow(),
         pipelineDescription,
       };

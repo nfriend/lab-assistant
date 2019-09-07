@@ -47,9 +47,7 @@ describe('CountTodosIntentHandler', () => {
       lambdaPath: path.join(__dirname, '../../src/index.ts'),
     });
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have no to-dos. Good job!</speak>',
-    );
+    expect(result.response.outputSpeech.ssml).toBe('<speak>You have no to-dos. Good job!</speak>');
   });
 
   test('when the user has 1 todo', async () => {

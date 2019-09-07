@@ -4,6 +4,7 @@
       "intents": [
         {
           "name": "RunPipelineIntent",
+          "delegationStrategy": "SKILL_RESPONSE",
           "confirmationRequired": false,
           "prompts": {},
           "slots": [
@@ -15,8 +16,8 @@
               "prompts": {}
             },
             {
-              "name": "projectName",
-              "type": "projectName",
+              "name": "projectId",
+              "type": "AMAZON.NUMBER",
               "confirmationRequired": false,
               "elicitationRequired": true,
               "prompts": {
@@ -34,23 +35,11 @@
         "variations": [
           {
             "type": "PlainText",
-            "value": "Okay, which project?"
+            "value": "Sure, what's the ID of the project? You can find the project ID on the project's page on Gitlab.com underneath the project name."
           },
           {
             "type": "PlainText",
-            "value": "What is the name of the project?"
-          },
-          {
-            "type": "PlainText",
-            "value": "Sure, for which project?"
-          },
-          {
-            "type": "PlainText",
-            "value": "Okay, what project is this for?"
-          },
-          {
-            "type": "PlainText",
-            "value": "Sure, what project?"
+            "value": "Okay, what is the ID of the project? You can find the project ID on the project's page on Gitlab.com underneath the project name."
           }
         ]
       }

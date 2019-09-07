@@ -36,12 +36,8 @@ export const getPagination = (
 
     const remainingText =
       remaining === 1
-        ? mft(
-            'You have one more {{typeSingular}}. Would you like me to read it?',
-          )
-        : mft(
-            'You have {{remaining}} more {{typePlural}}. Would you like me to keep going?',
-          );
+        ? mft('You have one more {{typeSingular}}. Would you like me to read it?')
+        : mft('You have {{remaining}} more {{typePlural}}. Would you like me to keep going?');
 
     return {
       isMore: true,

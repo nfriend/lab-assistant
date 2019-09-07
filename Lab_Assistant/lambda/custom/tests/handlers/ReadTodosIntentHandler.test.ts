@@ -372,9 +372,7 @@ describe('ReadTodosIntentHandler', () => {
       lambdaPath: path.join(__dirname, '../../src/index.ts'),
     });
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>test\n<break time="1s"/>test</speak>',
-    );
+    expect(result.response.outputSpeech.ssml).toBe('<speak>test\n<break time="1s"/>test</speak>');
   });
 
   test('for targets with IDs less that 100', async () => {

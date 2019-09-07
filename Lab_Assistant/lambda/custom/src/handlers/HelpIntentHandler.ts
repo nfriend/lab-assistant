@@ -28,9 +28,7 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     speeches.push(
       chooseOne(
-        i18n.t(
-          "But be sure to check back in regularly as I'll be getting smarter every day.",
-        ),
+        i18n.t("But be sure to check back in regularly as I'll be getting smarter every day."),
         i18n.t("I know it's not much, but much more is coming soon!"),
         i18n.t(
           'If you have ideas for other things I should do, please open an issue on the Lab Assistant Gitlab repo.',

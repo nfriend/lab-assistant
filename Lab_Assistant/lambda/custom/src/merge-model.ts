@@ -14,7 +14,4 @@ const model = require(path.resolve(basePath, 'en-US.json'));
 
 const merged = _.defaultsDeep({}, base, model);
 
-fs.writeFileSync(
-  path.resolve(basePath, 'en-US.json'),
-  JSON.stringify(merged, null, 2),
-);
+fs.writeFileSync(path.resolve(basePath, 'en-US.json'), JSON.stringify(merged, null, 2));

@@ -15,7 +15,5 @@ test('LaunchRequestHandler', async () => {
     lambdaPath: path.join(__dirname, '../../src/index.ts'),
   });
 
-  expect(result.response.outputSpeech.ssml).toBe(
-    '<speak>Welcome! How can I help?</speak>',
-  );
+  expect(result.response.outputSpeech.ssml).toBe('<speak>Welcome! How can I help?</speak>');
 });

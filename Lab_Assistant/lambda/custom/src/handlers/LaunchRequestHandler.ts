@@ -4,9 +4,7 @@ import { chooseOne } from '../util/choose-one';
 
 export class LaunchRequestHandler implements Alexa.RequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
-    return (
-      Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest'
-    );
+    return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
   }
   handle(handlerInput: Alexa.HandlerInput) {
     const speakOutput = chooseOne(

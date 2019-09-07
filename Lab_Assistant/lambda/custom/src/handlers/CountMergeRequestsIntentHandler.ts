@@ -9,13 +9,11 @@ export class CountMergeRequestsIntentHandler extends AuthenticatedCheckRequestHa
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        'CountMergeRequestsIntent'
+      Alexa.getIntentName(handlerInput.requestEnvelope) === 'CountMergeRequestsIntent'
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
     const result = await rp.get(
       'https://gitlab.com/api/v4/merge_requests?state=opened&scope=assigned_to_me',
@@ -48,17 +46,12 @@ export class CountMergeRequestsIntentHandler extends AuthenticatedCheckRequestHa
         speechText += i18n.t('Would you like me to read it?');
         repromptText = i18n.t('Would you like me to read your merge request?');
       } else {
-        speechText = i18n.t(
-          'You have {{count}} open merge requests assigned to you. ',
-          {
-            count,
-          },
-        );
+        speechText = i18n.t('You have {{count}} open merge requests assigned to you. ', {
+          count,
+        });
 
         speechText += i18n.t('Would you like me to read them to you?');
-        repromptText = i18n.t(
-          'Would you like me to read your open merge requests?',
-        );
+        repromptText = i18n.t('Would you like me to read your open merge requests?');
       }
 
       handlerInput.attributesManager.setSessionAttributes({

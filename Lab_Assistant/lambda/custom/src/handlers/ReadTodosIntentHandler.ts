@@ -19,19 +19,14 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
     const currentUser: User = await rp.get('https://gitlab.com/api/v4/user');
 
-    const page =
-      handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
-    const result = await rp.get(
-      `https://gitlab.com/api/v4/todos?per_page=5&page=${page}`,
-      {
-        resolveWithFullResponse: true,
-      },
-    );
+    const page = handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
+    const result = await rp.get(`https://gitlab.com/api/v4/todos?per_page=5&page=${page}`, {
+      resolveWithFullResponse: true,
+    });
 
     const todos: Todo[] = result.body;
     const todoSpeeches: string[] = [];
@@ -41,10 +36,7 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
       let speech: string;
 
       const translationValues = {
-        target:
-          todo.target_type === 'Issue'
-            ? i18n.t('issue')
-            : i18n.t('merge request'),
+        target: todo.target_type === 'Issue' ? i18n.t('issue') : i18n.t('merge request'),
         id: makeIdsSpeakable(todo.target.iid),
         author: todo.author.name,
         body: await makeMarkDownSpeakable(todo.body, rp, true),
@@ -53,17 +45,11 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
       if (todo.action_name === TodoAction.Mentioned) {
         speech = isFromCurrentUser
           ? mft('You mentioned yourself on {{target}} number {{id}}: {{body}}')
-          : mft(
-              '{{author}} mentioned you on {{target}} number {{id}}: {{body}}',
-            );
+          : mft('{{author}} mentioned you on {{target}} number {{id}}: {{body}}');
       } else if (todo.action_name === TodoAction.DirectlyAddressed) {
         speech = isFromCurrentUser
-          ? mft(
-              'You directly addressed yourself on {{target}} number {{id}}: {{body}}',
-            )
-          : mft(
-              '{{author}} directly addressed you on {{target}} number {{id}}: {{body}}',
-            );
+          ? mft('You directly addressed yourself on {{target}} number {{id}}: {{body}}')
+          : mft('{{author}} directly addressed you on {{target}} number {{id}}: {{body}}');
       } else if (todo.action_name === TodoAction.Assigned) {
         speech = isFromCurrentUser
           ? mft('You assigned {{target}} number {{id}} to yourself')
@@ -77,9 +63,7 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
       } else if (todo.action_name === TodoAction.ApprovalRequired) {
         speech = isFromCurrentUser
           ? mft('You set yourself as an approver for {{target}} number {{id}}')
-          : mft(
-              '{{author}} set you as an approver for {{target}} number {{id}}',
-            );
+          : mft('{{author}} set you as an approver for {{target}} number {{id}}');
       } else {
         speech = mft('{{body}}');
       }
@@ -87,11 +71,7 @@ export class ReadTodosIntentHandler extends AuthenticatedCheckRequestHandler {
       todoSpeeches.push(i18n.t(speech, translationValues));
     }
 
-    const paginationInfo = getPagination(
-      result.headers,
-      i18n.t('to-do'),
-      i18n.t('to-dos'),
-    );
+    const paginationInfo = getPagination(result.headers, i18n.t('to-do'), i18n.t('to-dos'));
 
     if (paginationInfo.isMore) {
       todoSpeeches.push(paginationInfo.moreText);

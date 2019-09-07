@@ -5,7 +5,5 @@
  * @param id The number to make speakable
  */
 export const makeIdsSpeakable = (id: number): string => {
-  return id <= 100
-    ? String(id)
-    : `<say-as interpret-as="digits">${id}</say-as>`;
+  return id <= 100 ? String(id) : `<say-as interpret-as="digits">${id}</say-as>`;
 };

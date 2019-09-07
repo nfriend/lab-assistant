@@ -22,11 +22,9 @@ export class ReadIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
-    const page =
-      handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
+    const page = handlerInput.attributesManager.getSessionAttributes().nextPage || 1;
 
     const apiParams = buildUrlParams({
       state: 'opened',
@@ -51,10 +49,7 @@ export class ReadIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
       const translationValues: { [key: string]: string } = {
         id: makeIdsSpeakable(issue.iid),
         title: await makeMarkDownSpeakable(issue.title, rp),
-        author:
-          issue.author.id === currentUser.id
-            ? i18n.t('you')
-            : issue.author.name,
+        author: issue.author.id === currentUser.id ? i18n.t('you') : issue.author.name,
         timeAgo: moment(issue.created_at).fromNow(),
       };
 
@@ -69,11 +64,7 @@ export class ReadIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
       issueSpeeches.push(i18n.t(speech, translationValues));
     }
 
-    const paginationInfo = getPagination(
-      result.headers,
-      i18n.t('issue'),
-      i18n.t('issues'),
-    );
+    const paginationInfo = getPagination(result.headers, i18n.t('issue'), i18n.t('issues'));
 
     if (paginationInfo.isMore) {
       issueSpeeches.push(paginationInfo.moreText);

@@ -13,8 +13,7 @@ export class CountTodosIntentHandler extends AuthenticatedCheckRequestHandler {
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
     const result = await rp.get('https://gitlab.com/api/v4/todos', {
       resolveWithFullResponse: true,

@@ -4,25 +4,17 @@ import * as i18n from 'i18next';
 import { isNil } from 'lodash';
 import { chooseOne } from '../util/choose-one';
 
-export abstract class AuthenticatedCheckRequestHandler
-  implements Alexa.RequestHandler {
-  abstract canHandle(
-    handlerInput: Alexa.HandlerInput,
-  ): Promise<boolean> | boolean;
+export abstract class AuthenticatedCheckRequestHandler implements Alexa.RequestHandler {
+  abstract canHandle(handlerInput: Alexa.HandlerInput): Promise<boolean> | boolean;
 
   handle(handlerInput: Alexa.HandlerInput) {
-    const accessToken =
-      handlerInput.requestEnvelope.context.System.user.accessToken;
+    const accessToken = handlerInput.requestEnvelope.context.System.user.accessToken;
 
     if (isNil(accessToken)) {
       let speechText = chooseOne(
-        i18n.t(
-          "Before you can do that, you'll need to connect your gitlab.com account. ",
-        ),
+        i18n.t("Before you can do that, you'll need to connect your gitlab.com account. "),
         i18n.t("You'll need to connect your gitlab.com account first. "),
-        i18n.t(
-          "Looks like you haven't connected your gitlab.com account yet. ",
-        ),
+        i18n.t("Looks like you haven't connected your gitlab.com account yet. "),
       );
 
       speechText += chooseOne(

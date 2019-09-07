@@ -59,10 +59,7 @@ const markdownToPlainText = async (text: string): Promise<string> => {
  * @rp A request-promise instance that is setup to make
  * authenticated calls to the GitLab.com API
  */
-const replaceUserNames = async (
-  text: string,
-  rp: typeof requestPromise,
-): Promise<string> => {
+const replaceUserNames = async (text: string, rp: typeof requestPromise): Promise<string> => {
   // Get a list of all usernames mentioned in the text
   let usernames = text.match(/(?![a-z0-9])@[a-z0-9-_]+(?![a-z0-9])/gi);
 
@@ -89,10 +86,7 @@ const replaceUserNames = async (
   // perform the replacements
   replacements.forEach(r => {
     text = text.replace(
-      new RegExp(
-        `(?![a-z0-9-_])${escapeRegExp(r.username)}(?![a-z0-9-_])`,
-        'gi',
-      ),
+      new RegExp(`(?![a-z0-9-_])${escapeRegExp(r.username)}(?![a-z0-9-_])`, 'gi'),
       r.name,
     );
   });

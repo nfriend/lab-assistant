@@ -13,8 +13,7 @@ export class CountIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
     );
   }
   async handleAfterAuthenticationCheck(handlerInput: Alexa.HandlerInput) {
-    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes()
-      .rp;
+    const rp: typeof requestPromise = handlerInput.attributesManager.getRequestAttributes().rp;
 
     const result = await rp.get(
       'https://gitlab.com/api/v4/issues?state=opened&scope=assigned_to_me',
@@ -47,12 +46,9 @@ export class CountIssuesIntentHandler extends AuthenticatedCheckRequestHandler {
         speechText += i18n.t('Would you like me to read it?');
         repromptText = i18n.t('Would you like me to read your issue?');
       } else {
-        speechText = i18n.t(
-          'You have {{count}} open issues assigned to you. ',
-          {
-            count,
-          },
-        );
+        speechText = i18n.t('You have {{count}} open issues assigned to you. ', {
+          count,
+        });
 
         speechText += i18n.t('Would you like me to read them to you?');
         repromptText = i18n.t('Would you like me to read your open issue?');

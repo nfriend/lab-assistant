@@ -5,7 +5,5 @@ test('leaves ids <= 100 alone', () => {
 });
 
 test('adds <say-as> tags to ids > 100 so that they are spoken as individual digits', () => {
-  expect(makeIdsSpeakable(101)).toBe(
-    '<say-as interpret-as="digits">101</say-as>',
-  );
+  expect(makeIdsSpeakable(101)).toBe('<say-as interpret-as="digits">101</say-as>');
 });

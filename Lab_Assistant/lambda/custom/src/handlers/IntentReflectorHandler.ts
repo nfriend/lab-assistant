@@ -7,9 +7,7 @@ import * as i18n from 'i18next';
  */
 export class IntentReflectorHandler implements Alexa.RequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
-    return (
-      Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-    );
+    return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
   }
   handle(handlerInput: Alexa.HandlerInput) {
     const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);

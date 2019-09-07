@@ -6,10 +6,8 @@ export class CancelAndStopIntentHandler implements Alexa.RequestHandler {
   canHandle(handlerInput: Alexa.HandlerInput) {
     return (
       Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest' &&
-      (Alexa.getIntentName(handlerInput.requestEnvelope) ===
-        'AMAZON.CancelIntent' ||
-        Alexa.getIntentName(handlerInput.requestEnvelope) ===
-          'AMAZON.StopIntent')
+      (Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.CancelIntent' ||
+        Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.StopIntent')
     );
   }
   handle(handlerInput: Alexa.HandlerInput) {
