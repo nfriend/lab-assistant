@@ -42,11 +42,52 @@ _Don't see your local Amazon store? You can help out by translating Lab Assistan
 - "How many merge requests do I have"
 - "Read me my merge requests"
 
+### Pipelines
+
+- "Run a new pipeline"
+- "Execute a deployment"
+- "Create a test pipeline"
+- "Initiate a test build"
+- "Begin a new analysis job on my project"
+
+This command in particular is quite flexible in how it can be invoked. To get a better understanding of all the ways you can run a pipeline on your project, see the `RunPipelineIntent` entry in [this skill's grammar file](./Lab_Assistant/models/en-US.grammar).
+
+#### Selecting a project
+
+The first time you run this command, Lab Assistant will ask you for the project's ID. You can find your project's ID on the project's page under the project name:
+
+![A demonstration of how to find the project ID](./images/project-id.png)
+
+Lab Assistant will remember this ID for future invokations and won't ask you for it again.
+
+#### Pipeline variables
+
+Lab Assistant will **always** trigger your pipeline with the environment variable `LAB_ASSISTANT=true`.
+
+You can trigger your pipeline with an additional environment variable in the format `LAB_ASSISTANT_<VARIABLE>=true` by including this variable in your invocation:
+
+- "Run a new **test** pipeline"
+- "Execute a **test**"
+- "Launch a new **test** job"
+- "Perform the **test** process"
+- "Start a **test** on our code"
+
+All of the invocations above will result in your pipeline being triggered with the following variables:
+
+- `LAB_ASSISTANT=true`
+- `LAB_ASSISTANT_TEST=true`
+
+#### Pipeline ref
+
+All pipelines are executed against the `master` branch of the project you specify. Interested in the ability to execute pipeline against branches other than `master`? [Open an issue](https://gitlab.com/nfriend/lab-assistant/issues/new) and let me know.
+
 ### Connecting to your GitLab.com account
 
 Any command that requires you to connect your GitLab.com account will automatically prompt you to login, so you shouldn't have to worry about manually connecting your account. If for some reason you _do_ want to explicity connect your account, you can say:
 
 - "Connect my account"
+
+To disconnect your account, disable and re-enable the Lab Assistant skill.
 
 ## FAQ
 
