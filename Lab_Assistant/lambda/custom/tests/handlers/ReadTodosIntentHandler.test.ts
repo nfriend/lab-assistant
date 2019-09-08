@@ -1,12 +1,10 @@
-const lambdaLocal = require('lambda-local');
-import * as path from 'path';
-import { createAlexaEvent } from './create-alexa-event';
 import * as rp from 'request-promise';
 import { TodoAction } from '../../src/api-interfaces/Todo';
+import { createAlexaEvent } from './create-alexa-event';
+import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
 
 describe('ReadTodosIntentHandler', () => {
-  let result: any;
   let response: any;
   let headers: any = {
     'x-page': '1',
@@ -26,7 +24,7 @@ describe('ReadTodosIntentHandler', () => {
 
   jest.spyOn(rp, 'defaults').mockImplementation(
     () =>
-      <any>{
+      ({
         get: (url: string) => {
           if (url.includes('api/v4/user')) {
             return Promise.resolve({
@@ -39,7 +37,7 @@ describe('ReadTodosIntentHandler', () => {
             });
           }
         },
-      },
+      } as any),
   );
 
   test('when you mention yourself', async () => {
@@ -59,10 +57,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You mentioned yourself on merge request number 5: test</speak>',
@@ -86,10 +81,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You directly addressed yourself on merge request number 5: test</speak>',
@@ -113,10 +105,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend directly addressed you on merge request number 5: test</speak>',
@@ -140,10 +129,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You assigned merge request number 5 to yourself</speak>',
@@ -167,10 +153,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend assigned you merge request number 5</speak>',
@@ -194,10 +177,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>The build failed for merge request number 5</speak>',
@@ -221,10 +201,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You added a to-do for merge request number 5</speak>',
@@ -248,10 +225,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Could not merge merge request number 5</speak>',
@@ -275,10 +249,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You set yourself as an approver for merge request number 5</speak>',
@@ -302,10 +273,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend set you as an approver for merge request number 5</speak>',
@@ -329,10 +297,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe('<speak>test</speak>');
   });
@@ -367,10 +332,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe('<speak>test\n<break time="1s"/>test</speak>');
   });
@@ -392,10 +354,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend mentioned you on merge request number 88: test</speak>',
@@ -419,10 +378,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Nathan Friend mentioned you on merge request number <say-as interpret-as="digits">882</say-as>: test</speak>',
@@ -453,10 +409,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toContain(
       '<speak>test\n<break time="1s"/>You have one more to-do. Would you like me to read it?</speak>',
@@ -487,10 +440,7 @@ describe('ReadTodosIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toContain(
       '<speak>test\n<break time="1s"/>You have 2 more to-dos. Would you like me to keep going?</speak>',

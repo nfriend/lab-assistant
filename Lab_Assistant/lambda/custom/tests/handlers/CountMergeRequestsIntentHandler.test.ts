@@ -1,11 +1,9 @@
-const lambdaLocal = require('lambda-local');
-import * as path from 'path';
-import { createAlexaEvent } from './create-alexa-event';
 import * as rp from 'request-promise';
+import { createAlexaEvent } from './create-alexa-event';
+import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
 
 describe('CountMergeRequestsIntentHandler', () => {
-  let response: any;
   let headers: any = {
     'x-page': '1',
     'x-total': '1',
@@ -25,14 +23,14 @@ describe('CountMergeRequestsIntentHandler', () => {
 
   jest.spyOn(rp, 'defaults').mockImplementation(
     () =>
-      <any>{
+      ({
         get: () => {
           return Promise.resolve({
-            body: response,
+            body: {},
             headers,
           });
         },
-      },
+      } as any),
   );
 
   test('when the user has no merge requests', async () => {
@@ -42,10 +40,7 @@ describe('CountMergeRequestsIntentHandler', () => {
       'x-per-page': '5',
     };
 
-    const result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You have no open merge requests assigned to you.</speak>',
@@ -59,10 +54,7 @@ describe('CountMergeRequestsIntentHandler', () => {
       'x-per-page': '5',
     };
 
-    const result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You only have one open merge request assigned to you. Would you like me to read it?</speak>',
@@ -76,10 +68,7 @@ describe('CountMergeRequestsIntentHandler', () => {
       'x-per-page': '5',
     };
 
-    const result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>You have 10 open merge requests assigned to you. Would you like me to read them to you?</speak>',

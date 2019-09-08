@@ -1,6 +1,5 @@
-const lambdaLocal = require('lambda-local');
-import * as path from 'path';
 import { createAlexaEvent } from './create-alexa-event';
+import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
 
 test('IntentReflectionHandler', async () => {
@@ -14,10 +13,7 @@ test('IntentReflectionHandler', async () => {
     },
   });
 
-  const result = await lambdaLocal.execute({
-    event,
-    lambdaPath: path.join(__dirname, '../../src/index.ts'),
-  });
+  const result = await executeLambda(event);
 
   expect(result.response.outputSpeech.ssml).toBe(
     '<speak>You just triggered NotARealIntent, but no handler was able to handle the request.</speak>',

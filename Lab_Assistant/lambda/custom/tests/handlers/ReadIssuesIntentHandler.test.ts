@@ -1,12 +1,10 @@
-const lambdaLocal = require('lambda-local');
-import * as path from 'path';
-import { createAlexaEvent } from './create-alexa-event';
 import * as rp from 'request-promise';
+import { createAlexaEvent } from './create-alexa-event';
+import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
 
 describe('ReadIssuesIntentHandler', () => {
   let response: any[];
-  let result: any;
   let headers: any;
 
   const event = createAlexaEvent({
@@ -21,7 +19,7 @@ describe('ReadIssuesIntentHandler', () => {
 
   jest.spyOn(rp, 'defaults').mockImplementation(
     () =>
-      <any>{
+      ({
         get: (url: string) => {
           const paths = [
             {
@@ -42,7 +40,7 @@ describe('ReadIssuesIntentHandler', () => {
 
           throw new Error(`Unmocked URL: "${url}"`);
         },
-      },
+      } as any),
   );
 
   beforeEach(() => {
@@ -67,10 +65,7 @@ describe('ReadIssuesIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       '<speak>Number 2 was created an hour ago by you: test</speak>',
@@ -99,10 +94,7 @@ describe('ReadIssuesIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toBe(
       [
@@ -135,10 +127,7 @@ describe('ReadIssuesIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toContain(
       '<speak>Number 2 was created an hour ago by you: test\n<break time="1s"/>You have one more issue. Would you like me to read it?</speak>',
@@ -165,10 +154,7 @@ describe('ReadIssuesIntentHandler', () => {
       },
     ];
 
-    result = await lambdaLocal.execute({
-      event,
-      lambdaPath: path.join(__dirname, '../../src/index.ts'),
-    });
+    const result = await executeLambda(event);
 
     expect(result.response.outputSpeech.ssml).toContain(
       '<speak>Number 2 was created an hour ago by you: test\n<break time="1s"/>You have 2 more issues. Would you like me to keep going?</speak>',

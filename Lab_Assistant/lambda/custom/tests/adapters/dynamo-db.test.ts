@@ -8,7 +8,7 @@ interface LabAssistantAttributesMock extends LabAssistantAttributes {
 }
 
 describe('dynamo-db', () => {
-  let values: LabAssistantAttributesMock = {
+  const values: LabAssistantAttributesMock = {
     projectId: '4',
     mockProperty: 'test',
   };

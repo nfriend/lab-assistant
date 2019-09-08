@@ -1,4 +1,4 @@
-import { PaginationInfo, getPagination } from '../../src/util/get-pagination';
+import { getPagination, PaginationInfo } from '../../src/util/get-pagination';
 
 describe('getPagination', () => {
   test('when there are no more pages', () => {
