@@ -58,7 +58,7 @@ The first time you run this command, Lab Assistant will ask you for the project'
 
 ![A demonstration of how to find the project ID](./images/project-id.png)
 
-Lab Assistant will remember this ID for future invokations and won't ask you for it again.
+Lab Assistant will remember this ID for future invocations and won't ask you for it again.
 
 #### Pipeline variables
 
@@ -83,7 +83,7 @@ All pipelines are executed against the `master` branch of the project you specif
 
 ### Connecting to your GitLab.com account
 
-Any command that requires you to connect your GitLab.com account will automatically prompt you to login, so you shouldn't have to worry about manually connecting your account. If for some reason you _do_ want to explicity connect your account, you can say:
+Any command that requires you to connect your GitLab.com account will automatically prompt you to login, so you shouldn't have to worry about manually connecting your account. If for some reason you _do_ want to explicitly connect your account, you can say:
 
 - "Connect my account"
 
