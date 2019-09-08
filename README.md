@@ -2,6 +2,8 @@
 
 An Alexa skill for managing your open-source projects hosted on [GitLab.com](https://gitlab.com/) using your voice.
 
+<img alt="The GitLab logo" src="./images/gitlab-logo-512.png" width="250" />
+
 ## Installation
 
 Enable the Lab Assistant skill on your Amazon site of choice:
@@ -77,15 +79,93 @@ All of the invocations above will result in your pipeline being triggered with t
 - `LAB_ASSISTANT=true`
 - `LAB_ASSISTANT_TEST=true`
 
+**Pro tip:** To avoid misunderstandings, use simple, one-word variables that are easy for Alexa to understand. Some good examples are "deployment", "test", "analysis", or "lint".
+
+##### Using these variables in your `.gitlab-ci.yml`
+
+Here's an example of how you might use these variables in your `.gitlab-ci.yml`:
+
+```yml
+a normal job:
+  script:
+    - echo 'This job will always run'
+
+a normal job:
+  script:
+    - echo 'This job will not run when trigged by Lab Assistant'
+  except:
+    variables:
+      - $LAB_ASSISTANT
+
+a lab assistant job:
+  script:
+    - echo 'This job will only run when triggered by Lab Assistant'
+  only:
+    variables:
+      - $LAB_ASSISTANT
+
+a lab assistant deploy job:
+  script:
+    - echo 'This job will only run when triggered by Lab Assistant AND when the $LAB_ASSISTANT_DEPLOY variable is set'
+  only:
+    variables:
+      - $LAB_ASSISTANT
+      - $LAB_ASSISTANT_DEPLOY
+
+a lab assistant test job:
+  script:
+    - echo 'This job will only run when triggered by Lab Assistant AND when the $LAB_ASSISTANT_TEST variable is set'
+  only:
+    variables:
+      - $LAB_ASSISTANT
+      - $LAB_ASSISTANT_TEST
+```
+
+If only a few of your jobs should run when triggered by Lab Assistant, and you'd like to avoid the boilerplate of adding `except: variables: [$LAB_ASSISTANT]` to all of the jobs the _shouldn't_ be executed by Lab Assistant, you can make use of a default job definition like this:
+
+```yml
+.except-default: &except-default
+  except:
+    variables:
+      - $LAB_ASSISTANT
+
+build:
+  <<: *except-default
+  script:
+    - echo 'This job will run as long as the pipeline was not triggered by Lab Assistant'
+
+test:
+  <<: *except-default
+  script:
+    - echo 'Same as above'
+
+deploy:
+  script:
+    - echo 'This job will always run, regardless of how the pipeline is triggered'
+
+report:
+  script:
+    - echo 'This job will ONLY run when the pipeline is triggered by Lab Assistant'
+  only:
+    variables:
+      - $LAB_ASSISTANT
+```
+
+For more information on how to use `only` and `except` in a `.gitlab-ci.yml` file, see [this page](https://docs.gitlab.com/ee/ci/yaml/#onlyvariablesexceptvariables).
+
 #### Pipeline ref
 
-All pipelines are executed against the `master` branch of the project you specify. Interested in the ability to execute pipeline against branches other than `master`? [Open an issue](https://gitlab.com/nfriend/lab-assistant/issues/new) and let me know.
+All pipelines are executed against the `master` branch of the project you specify. Interested in the ability to execute pipelines against branches other than `master`? [Open an issue](https://gitlab.com/nfriend/lab-assistant/issues/new) and let me know.
 
 ### Connecting to your GitLab.com account
 
 Any command that requires you to connect your GitLab.com account will automatically prompt you to login, so you shouldn't have to worry about manually connecting your account. If for some reason you _do_ want to explicitly connect your account, you can say:
 
 - "Connect my account"
+- "Log in to my GitLab.com account"
+- "Authenticate to GitLab.com"
+
+### Disconnecting your GitLab.com account
 
 To disconnect your account, disable and re-enable the Lab Assistant skill.
 
@@ -96,6 +176,10 @@ To disconnect your account, disable and re-enable the Lab Assistant skill.
 No, this skill only integrates with [GitLab.com](https://gitlab.com/). This is because Alexa Skills must specify an OAuth provider at build time.
 
 If you _do_ want to use this skill with a self-managed GitLab instance, you can clone this repo and deploy this code as a separate skill that is pointed at your GitLab instance.
+
+### Why does the skill ask for the project ID instead of asking for the project's name?
+
+Alexa's speech detection is really good at some things and really terrible at others. Alexa is really good at accurately understanding numbers; Alexa is really bad at accurately understanding open-ended phrases, like project names. To cut down on frustration, this skill asks for project IDs to ensure you can select the project you want.
 
 ## Developing
 
@@ -114,9 +198,17 @@ This skill's model is generated using the [Alexa Skill Utterance and Schema Gene
 
 The easiest way to develop on this project is using test-driven development through [Jest](https://jestjs.io/). You can run the tests using `npm run test` or `npm run test-watch`. See the [existing tests](https://gitlab.com/nfriend/lab-assistant/tree/master/Lab_Assistant/lambda/custom/tests) for some examples.
 
+#### Compilation errors in VSCode
+
+The Jest tests (`*.test.ts`) are `exclude`d by this project's [`tsconfig.json`](./Lab_Assistant/lambda/custom/tsconfig.json). Because of this, VSCode shows TypeScript errors when editing a test file, even though there are no build errors when running the tests using `npm run test`.
+
+To get around this, you can temporarily delete the `**/tests/*` entry from the `tsconfig.json`'s `exclude` array while working on tests. This is obviously not an ideal solution; if you know a way to avoid this issue, let me know.
+
+If you do this, don't forget to add the `**/tests/*` entry back before running `npm run build`. If you run the build without this entry, the test files will be compiled, and the corresponding `.js` test files will fail when the tests are run locally.
+
 ### i18n
 
-This project uses [`i18next`](https://www.i18next.com/) for internationalization ("i18n"). [`i18next-scanner`](https://github.com/i18next/i18next-scanner) is used to extract the strings directly from the source into this project's [i18n directory](https://gitlab.com/nfriend/lab-assistant/tree/master/Lab_Assistant/lambda/custom/i18n). You can run this extraction process by building the project (`npm run build`) and then running `npm run translate`. Alternatively, you can run `npm run build-and-translate`.
+This project uses [`i18next`](https://www.i18next.com/) for internationalization ("i18n"). [`i18next-scanner`](https://github.com/i18next/i18next-scanner) is used to extract the strings directly from the source into this project's [i18n directory](./Lab_Assistant/lambda/custom/i18n). You can run this extraction process by building the project (`npm run build`) and then running `npm run translate`. Alternatively, you can run `npm run build-and-translate`.
 
 ### Linting
 
