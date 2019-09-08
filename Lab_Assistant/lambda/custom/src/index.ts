@@ -1,7 +1,7 @@
 import * as Alexa from 'ask-sdk-core';
 import { adapter } from './adapters/dynamo-db';
 import { CancelAndStopIntentHandler } from './handlers/CancelAndStopIntentHandler';
-import { ConnectAccountHandler } from './handlers/ConnectAccountHandler';
+import { ConnectAccountIntentHandler } from './handlers/ConnectAccountIntentHandler';
 import { CountIssuesIntentHandler } from './handlers/CountIssuesIntentHandler';
 import { CountMergeRequestsIntentHandler } from './handlers/CountMergeRequestsIntentHandler';
 import { CountTodosIntentHandler } from './handlers/CountTodosIntentHandler';
@@ -27,7 +27,7 @@ rp.defaults({ json: true });
 export const handler = Alexa.SkillBuilders.custom()
   .addRequestHandlers(
     new LaunchRequestHandler(),
-    new ConnectAccountHandler(),
+    new ConnectAccountIntentHandler(),
     new CountTodosIntentHandler(),
     new HelpIntentHandler(),
     new CancelAndStopIntentHandler(),
