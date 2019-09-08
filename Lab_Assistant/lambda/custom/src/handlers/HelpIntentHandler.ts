@@ -19,6 +19,24 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
     );
 
     speeches.push(
+      i18n.t(
+        'To run a pipeline, say something like <break strength="strong"/> <prosody pitch="+10%">"run a pipeline"</prosody> or <break strength="strong"/> <prosody pitch="+10%">"execute a new deployment"</prosody>.',
+      ),
+    );
+
+    speeches.push(
+      i18n.t(
+        'To take full advantage of the pipeline feature, make sure your C.I. config file is setup up properly.',
+      ),
+    );
+
+    speeches.push(
+      i18n.t(
+        "Check out the Lab Assistant skill's homepage or the Lab Assistant Gitlab repo for instructions.",
+      ),
+    );
+
+    speeches.push(
       chooseOne(
         i18n.t("That's all I can do at the moment!"),
         i18n.t("And that's it!"),
@@ -28,8 +46,6 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     speeches.push(
       chooseOne(
-        i18n.t("But be sure to check back in regularly as I'll be getting smarter every day."),
-        i18n.t("I know it's not much, but much more is coming soon!"),
         i18n.t(
           'If you have ideas for other things I should do, please open an issue on the Lab Assistant Gitlab repo.',
         ),
@@ -44,9 +60,6 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     const speakOutput = speeches.join(' ');
 
-    return handlerInput.responseBuilder
-      .speak(speakOutput)
-      .reprompt(speakOutput)
-      .getResponse();
+    return handlerInput.responseBuilder.speak(speakOutput).getResponse();
   }
 }
