@@ -118,16 +118,14 @@ a lab assistant deploy job:
     - echo 'This job will only run when triggered by Lab Assistant AND when the $LAB_ASSISTANT_DEPLOY variable is set'
   only:
     variables:
-      - $LAB_ASSISTANT
-      - $LAB_ASSISTANT_DEPLOY
+      - $LAB_ASSISTANT && $LAB_ASSISTANT_DEPLOY
 
 a lab assistant test job:
   script:
     - echo 'This job will only run when triggered by Lab Assistant AND when the $LAB_ASSISTANT_TEST variable is set'
   only:
     variables:
-      - $LAB_ASSISTANT
-      - $LAB_ASSISTANT_TEST
+      - $LAB_ASSISTANT && $LAB_ASSISTANT_TEST
 ```
 
 If only a few of your jobs should run when triggered by Lab Assistant, and you'd like to avoid the boilerplate of adding `except: variables: [$LAB_ASSISTANT]` to all of the jobs the _shouldn't_ be executed by Lab Assistant, you can make use of a default job definition like this:

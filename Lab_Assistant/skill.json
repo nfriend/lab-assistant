@@ -8,11 +8,7 @@
           "examplePhrases": [
             "Alexa, open Lab Assistant",
             "Alexa, ask Lab Assistant to deploy",
-            "Run a new analysis job",
-            "Execute a new test pipeline",
-            "Do I have any todos?",
-            "How many merge requests are assigned to me?",
-            "Read me my issues"
+            "Do I have any todos?"
           ],
           "keywords": [
             "gitlab",

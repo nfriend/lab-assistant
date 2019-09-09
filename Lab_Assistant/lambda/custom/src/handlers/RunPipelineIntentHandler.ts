@@ -93,8 +93,6 @@ export class RunPipelineIntentHandler extends AuthenticatedCheckRequestHandler {
     }
 
     await rp.post(`https://gitlab.com/api/v4/projects/${projectId}/pipeline?ref=master"`, {
-      resolveWithFullResponse: true,
-      simple: false,
       body: { variables },
     });
 

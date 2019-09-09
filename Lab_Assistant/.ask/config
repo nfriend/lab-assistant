@@ -6,11 +6,11 @@
       "merge": {},
       "resources": {
         "manifest": {
-          "eTag": "2193f2157037ba3b8312344afe27eb08"
+          "eTag": "c4dc920c0ca3d36e802711ea4fac1270"
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "cf07bfb5ddaafbe10ea983ddbe08e2d8"
+            "eTag": "8a1669e0a08318990c2c9ea80f3f764b"
           }
         },
         "lambda": [
@@ -23,7 +23,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
             "handler": "build/index.handler",
-            "revisionId": "742e4cd2-9712-4d39-9d38-698755f824bb",
+            "revisionId": "c3297e74-2de9-4802-b018-a483f1087d3c",
             "runtime": "nodejs10.x"
           }
         ]
