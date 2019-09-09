@@ -7,7 +7,6 @@ import { User } from '../api-interfaces/User';
 import { buildUrlParams } from '../util/build-url-params';
 import { chooseOne } from '../util/choose-one';
 import { getPagination } from '../util/get-pagination';
-import { getUsersName } from '../util/get-users-name';
 import { makeIdsSpeakable } from '../util/make-ids-speakable';
 import { makeMarkDownSpeakable } from '../util/make-markdown-speakable';
 import { mft } from '../util/mark-for-translation';
