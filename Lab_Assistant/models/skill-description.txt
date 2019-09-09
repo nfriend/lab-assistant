@@ -59,6 +59,14 @@ Here's a synopsis of what you can do with this skill:
 
 See https://gitlab.com/nfriend/lab-assistant for full instructions on setting up your pipelines to integrate with Lab Assistant.
 
+### Selecting a project
+
+- "Switch projects"
+- "Select my default project"
+- "Choose a different project"
+- "Select project 1234"
+- "Change my default project to project number 1234"
+
 ### Connecting to your GitLab.com account
 
 - "Connect my account"

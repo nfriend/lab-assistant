@@ -55,13 +55,21 @@ _Don't see your local Amazon store? You can help out by translating Lab Assistan
 
 This command in particular is quite flexible in how it can be invoked. To get a better understanding of all the ways you can run a pipeline on your project, see the `RunPipelineIntent` entry in [this skill's grammar file](./Lab_Assistant/models/en-US.grammar).
 
-#### Selecting a project
+### Selecting a project
 
-The first time you run this command, Lab Assistant will ask you for the project's ID. You can find your project's ID on the project's page under the project name:
+The first time you run a command that runs in the context of a project, Lab Assistant will ask you for the project's ID. You can find your project's ID on the project's page under the project name:
 
 ![A demonstration of how to find the project ID](./images/project-id.png)
 
 Lab Assistant will remember this ID for future invocations and won't ask you for it again.
+
+If you'd like to switch projects, you can say:
+
+- "Switch projects"
+- "Select my default project"
+- "Choose a different project"
+- "Select project 1234"
+- "Change my default project to project number 1234"
 
 #### Pipeline variables
 

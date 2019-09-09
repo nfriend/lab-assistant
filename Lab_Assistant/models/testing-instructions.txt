@@ -14,4 +14,46 @@ Password: <insert password here before submissions>
 
 Below are some different ways to invoke the skill and the expected response from the skill. Note that most of the responses are randomly selected from a number of possible responses, so the dialog may not line up exactly with the conversations below.  The overall content and message, howeve, should be the the same.
 
-TODO: Add test phrases here
+### Launching
+
+User:  Alexa, open Lab Assistant.
+Alexa: Welcome! How can I help?
+
+### Todos
+
+User:  How many todos do I have?
+Alexa: You have 2 todos.  Would you like me to read them to you?
+User:  Yes.
+Alexa: You assigned merge request number 1 to yourself.
+Alexa: You assigned issue number 1 to yourself.
+
+### Merge requests
+
+User:  How many merge requests do I have?
+Alexa: You only have one open merge request assigned to you. Would you like me to read it?
+User:  Yes.
+Alexa: Number 1 was authored 3 days ago* by you: Test merge request
+
+* Time will differ
+
+### Issues
+
+User:  How many issues do I have?
+Alexa: You only have one open issue assigned to you. Would you like me to read them to you?
+User:  Yes.
+Alexa: Number 1 was create 3 days ago* by you: Test issue
+
+* Time will differ
+
+### Pipelines
+
+User:  Run a new deployment pipeline
+Alexa: Sure, what's the ID of the project? You can find the project ID on the project's page on Gitlab.com underneath the project name.
+User:  14193928.
+Alexa: Great, I'll use project 14193928 as your default project so you won't have to specify it in the future.
+Alexa: Hooray! A deployment pipeline has been created.
+
+Subsuquent invocations of this intent will not ask for the project ID. For example:
+
+User:  Run a new deployment pipeline
+Alexa: Hooray! A deployment pipeline has been created.
