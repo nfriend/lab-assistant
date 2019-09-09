@@ -64,10 +64,18 @@ export class RunPipelineIntentHandler extends AuthenticatedCheckRequestHandler {
       speeches.push(
         i18n.t(
           chooseOne(
-            mft("I couldn't find a project number {{projectId}}."),
-            mft("I couldn't find a project with an ID of {{projectId}}."),
-            mft("Sorry, but I don't see a project with an ID of {{projectId}}."),
-            mft("Sorry, but I counldn't find project number {{projectId}}."),
+            mft(
+              'I couldn\'t find a project number <say-as interpret-as="digits">{{projectId}}</say-as>.',
+            ),
+            mft(
+              'I couldn\'t find a project with an ID of <say-as interpret-as="digits">{{projectId}}</say-as>.',
+            ),
+            mft(
+              'Sorry, but I don\'t see a project with an ID of <say-as interpret-as="digits">{{projectId}}</say-as>.',
+            ),
+            mft(
+              'Sorry, but I couldn\'t find project number <say-as interpret-as="digits">{{projectId}}</say-as>.',
+            ),
           ),
           { projectId },
         ),
