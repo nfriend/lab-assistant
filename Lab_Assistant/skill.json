@@ -4,11 +4,14 @@
       "locales": {
         "en-US": {
           "summary": "Manage your open-source projects hosted on GitLab.com using your voice.",
-          "description": "TODO: Add description here",
+          "description": "Lab Assistant allows you to trigger pipelines and check the status of your todos, issues, and merge requests.\n\nFor a detailed description of what you can do with Lab Assistant, and for instructions on how to set up your project to allow for pipeline integration, visit the Lab Assistant project on GitLab.com: https://gitlab.com/nfriend/lab-assistant\n\nHere's a synopsis of what you can do with this skill:\n\n### Opening the skill\n\n- \"Alexa, open Lab Assistant\"\n- \"Alexa, ask Lab Assistant to [any of the commands below]\"\n\n### Todos\n\n- \"Todos\"\n- \"Do I have any todos?\"\n- \"How many todos do I have?\"\n- \"What does my day look like?\"\n- \"Read me my todos\"\n\n### Issues\n\n- \"Issues\"\n- \"Do I have any issues assigned to me?\"\n- \"How many issues do I have?\"\n- \"Read me my issues\"\n\n### Merge Requests\n\n- \"Merge requests\"\n- \"Do I have any merge requests?\"\n- \"How many merge requests do I have\"\n- \"Read me my merge requests\"\n\n### Pipelines\n\n- \"Run a new pipeline\"\n- \"Execute a deployment\"\n- \"Create a test pipeline\"\n- \"Initiate a test build\"\n- \"Begin a new analysis job on my project\"\n\nSee https://gitlab.com/nfriend/lab-assistant for full instructions on setting up your pipelines to integrate with Lab Assistant.\n\n### Connecting to your GitLab.com account\n\n- \"Connect my account\"\n- \"Log in to my GitLab.com account\"\n- \"Authenticate to GitLab.com\"\n\n### Disconnecting your GitLab.com account\n\nTo disconnect your account, disable and re-enable the Lab Assistant skill.",
           "examplePhrases": [
-            "Alexa, TODO add an example phrase",
-            "Alexa, TODO add another",
-            "Alexa, TODO and one more"
+            "Alexa, open Lab Assistant",
+            "Alexa, ask Lab Assistant to deploy",
+            "Run a new analysis job",
+            "Do I have any todos?",
+            "How many merge requests are assigned to me?",
+            "Read me my issues"
           ],
           "keywords": [
             "gitlab",

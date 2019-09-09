@@ -1,0 +1,70 @@
+// This is the source of the "description" field in skill.json
+// It's really hard to edit something this big in a single field of JSON,
+// so this file is used to edit the contents, and then they can be converted
+// into a JSON-friendly string (i.e. with \n's and escaped double quotes).
+//
+// I usually accomplish this by doing something silly like copying this file's contents
+// into the browser's dev tools like
+//
+//     var something = { str: `
+//     <paste content here>
+//     ` };
+//
+// and then running
+// 
+//     something
+//
+// which should print the string in a nicely JSON-friendly format.
+
+Lab Assistant allows you to trigger pipelines and check the status of your todos, issues, and merge requests.
+
+For a detailed description of what you can do with Lab Assistant, and for instructions on how to set up your project to allow for pipeline integration, visit the Lab Assistant project on GitLab.com: https://gitlab.com/nfriend/lab-assistant
+
+Here's a synopsis of what you can do with this skill:
+
+### Opening the skill
+
+- "Alexa, open Lab Assistant"
+- "Alexa, ask Lab Assistant to [any of the commands below]"
+
+### Todos
+
+- "Todos"
+- "Do I have any todos?"
+- "How many todos do I have?"
+- "What does my day look like?"
+- "Read me my todos"
+
+### Issues
+
+- "Issues"
+- "Do I have any issues assigned to me?"
+- "How many issues do I have?"
+- "Read me my issues"
+
+### Merge Requests
+
+- "Merge requests"
+- "Do I have any merge requests?"
+- "How many merge requests do I have"
+- "Read me my merge requests"
+
+### Pipelines
+
+- "Run a new pipeline"
+- "Execute a deployment"
+- "Create a test pipeline"
+- "Initiate a test build"
+- "Begin a new analysis job on my project"
+
+See https://gitlab.com/nfriend/lab-assistant for full instructions on setting up your pipelines to integrate with Lab Assistant.
+
+### Connecting to your GitLab.com account
+
+- "Connect my account"
+- "Log in to my GitLab.com account"
+- "Authenticate to GitLab.com"
+
+### Disconnecting your GitLab.com account
+
+To disconnect your account, disable and re-enable the Lab Assistant skill.

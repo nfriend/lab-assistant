@@ -1,0 +1,17 @@
+// This is the source of the "testingInstructions" field in skill.json
+// See skill-description.txt for an explanation.
+
+Open the skill by saying "Alexa, open Lab Assistant".
+
+Connect your account by saying "Alexa, connect my GitLab.com account". Alexa should prompt you to open the Alexa app and complete account linking.
+
+Alternatively, you can skip the connection step above and simply run any of the commands described below.  If you haven't already connected your GitLab.com account, Alexa will prompt you to link your account before executing the command.
+
+You can use the following account for testing:
+
+Username: <insert username here before submissions>
+Password: <insert password here before submissions>
+
+Below are some different ways to invoke the skill and the expected response from the skill. Note that most of the responses are randomly selected from a number of possible responses, so the dialog may not line up exactly with the conversations below.  The overall content and message, howeve, should be the the same.
+
+TODO: Add test phrases here

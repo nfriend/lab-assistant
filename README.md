@@ -21,6 +21,7 @@ _Don't see your local Amazon store? You can help out by translating Lab Assistan
 ## Usage
 
 - "Alexa, open Lab Assistant"
+- "Alexa, ask Lab Assistant to [_any of the commands below_]"
 
 ### Todos
 
