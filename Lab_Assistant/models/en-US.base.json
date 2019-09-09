@@ -25,6 +25,22 @@
               }
             }
           ]
+        },
+        {
+          "name": "SwitchProjectIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "projectId",
+              "type": "AMAZON.NUMBER",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "which-project"
+              }
+            }
+          ]
         }
       ],
       "delegationStrategy": "ALWAYS"

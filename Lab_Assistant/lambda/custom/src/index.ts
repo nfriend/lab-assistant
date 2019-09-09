@@ -15,6 +15,7 @@ import { ReadMergeRequestsIntentHandler } from './handlers/ReadMergeRequestsInte
 import { ReadTodosIntentHandler } from './handlers/ReadTodosIntentHandler';
 import { RunPipelineIntentHandler } from './handlers/RunPipelineIntentHandler';
 import { SessionEndedRequestHandler } from './handlers/SessionEndedRequestHandler';
+import { SwitchProjectIntentHandler } from './handlers/SwitchProjectIntentHandler';
 
 import { YesIntentHandler } from './handlers/YesIntentHandler';
 
@@ -40,6 +41,7 @@ export const handler = Alexa.SkillBuilders.custom()
     new YesIntentHandler(),
     new NoIntentHandler(),
     new RunPipelineIntentHandler(),
+    new SwitchProjectIntentHandler(),
 
     // IntentReflectorHandler needs to be last so that it doesn't
     // override any custom intent handlers

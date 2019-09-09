@@ -5,6 +5,7 @@ import * as requestPromise from 'request-promise';
 import { db } from '../adapters/dynamo-db';
 import { chooseOne } from '../util/choose-one';
 import { getFailureInterjection } from '../util/get-failure-interjection';
+import { getProject } from '../util/get-project';
 import { getSuccessInterjection } from '../util/get-success-interjection';
 import { mft } from '../util/mark-for-translation';
 import { AuthenticatedCheckRequestHandler } from './AuthenticatedCheckRequestHandler';
@@ -55,21 +56,18 @@ export class RunPipelineIntentHandler extends AuthenticatedCheckRequestHandler {
     }
 
     // Validate that the project exists
-    const response = await rp.get(`https://gitlab.com/api/v4/projects/${projectId}`, {
-      resolveWithFullResponse: true,
-      simple: false,
-    });
+    const project = await getProject(rp, projectId);
 
-    if (response.statusCode === 404) {
+    if (!project) {
       speeches = [];
       speeches.push(getFailureInterjection());
       speeches.push(
         i18n.t(
           chooseOne(
-            mft("I couldn't find a project number {{projectId}}"),
-            mft("I couldn't find a project with an ID of {{projectId}}"),
-            mft("Sorry, but I don't see a project with an ID of {{projectId}}"),
-            mft("Sorry, but I counldn't find project number {{projectId}}"),
+            mft("I couldn't find a project number {{projectId}}."),
+            mft("I couldn't find a project with an ID of {{projectId}}."),
+            mft("Sorry, but I don't see a project with an ID of {{projectId}}."),
+            mft("Sorry, but I counldn't find project number {{projectId}}."),
           ),
           { projectId },
         ),

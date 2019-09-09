@@ -46,7 +46,7 @@ read {|me} {|my} {|list of} {issues} {|in detail}
 RunPipelineIntent:
 {{pipelineVariable}}
 {run} {|a|the} {|new} {{pipelineVariable}} {|pipeline}
-{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to|for} {the|my|our} {code|project|app|software}
+{run} {|a|the} {|new} {{pipelineVariable}} {|pipeline} {on|to|for} {the|my|our} {code|project|app|software|repository|repo}
 a placeholder phrase to allow {{projectId:AMAZON.NUMBER}} to be created
 
 {run}: run, start, create, execute, begin, do, initiate, launch, commence, open, perform, process
@@ -62,6 +62,32 @@ analyze
 analysis
 lint
 linting
+
+SwitchProjectIntent:
+{switch} {projects}
+{switch} {|my|a} {|default} {project}
+{switch} {|to} a {|different} {project}
+{switch} {|my|a} {|default} {project} to {project} {|I.D.|number} {{projectId:AMAZON.NUMBER}}
+{switch} {|project} {|I.D.|number} {{projectId:AMAZON.NUMBER}}
+
+{switch}:
+switch
+change
+select
+choose
+set
+
+{project}:
+project
+repository
+repo
+
+{projects}:
+projects
+repositories
+repos
+
+
 
 AMAZON.CancelIntent:
 AMAZON.HelpIntent:

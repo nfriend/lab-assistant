@@ -145,6 +145,6 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result).toSpeek("Shoot! I couldn't find a project number 1234");
+    expect(result).toSpeek("Shoot! I couldn't find a project number 1234.");
   });
 });

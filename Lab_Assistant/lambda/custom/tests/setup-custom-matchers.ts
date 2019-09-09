@@ -24,7 +24,7 @@ expect.extend({
 
     const message = pass
       ? () =>
-          this.utils.matcherHint('toBe', undefined, undefined, options) +
+          this.utils.matcherHint('toSpeek', undefined, undefined, options) +
           '\n\n' +
           `Expected: ${this.utils.printExpected(speech)}\n` +
           `Received: ${this.utils.printReceived(ssmlWithoutTags)}`
@@ -33,7 +33,7 @@ expect.extend({
             expand: this.expand,
           });
           return (
-            this.utils.matcherHint('toBe', undefined, undefined, options) +
+            this.utils.matcherHint('toSpeek', undefined, undefined, options) +
             '\n\n' +
             (diffString && diffString.includes('- Expect')
               ? `Difference:\n\n${diffString}`
