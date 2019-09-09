@@ -15,7 +15,7 @@ test('IntentReflectionHandler', async () => {
 
   const result = await executeLambda(event);
 
-  expect(result.response.outputSpeech.ssml).toBe(
-    '<speak>You just triggered NotARealIntent, but no handler was able to handle the request.</speak>',
+  expect(result).toSpeek(
+    'You just triggered NotARealIntent, but no handler was able to handle the request.',
   );
 });

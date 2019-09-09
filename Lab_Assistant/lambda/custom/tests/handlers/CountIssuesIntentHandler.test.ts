@@ -42,9 +42,7 @@ describe('CountIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have no open issues assigned to you.</speak>',
-    );
+    expect(result).toSpeek('You have no open issues assigned to you.');
   });
 
   test('when the user has 1 issue', async () => {
@@ -56,8 +54,8 @@ describe('CountIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You only have one open issue assigned to you. Would you like me to read it?</speak>',
+    expect(result).toSpeek(
+      'You only have one open issue assigned to you. Would you like me to read it?',
     );
   });
 
@@ -70,8 +68,8 @@ describe('CountIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have 10 open issues assigned to you. Would you like me to read them to you?</speak>',
+    expect(result).toSpeek(
+      'You have 10 open issues assigned to you. Would you like me to read them to you?',
     );
   });
 });

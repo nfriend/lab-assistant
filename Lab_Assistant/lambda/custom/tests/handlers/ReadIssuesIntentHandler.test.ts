@@ -67,9 +67,7 @@ describe('ReadIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you: test</speak>',
-    );
+    expect(result).toSpeek('Number 2 was created an hour ago by you: test');
   });
 
   test('for multiple issues', async () => {
@@ -96,13 +94,11 @@ describe('ReadIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
+    expect(result).toSpeek(
       [
-        '<speak>',
         'Number 2 was created an hour ago by you: test\n',
         '<break time="1s"/>',
         'Number 3 was created an hour ago by Test User: another',
-        '</speak>',
       ].join(''),
     );
   });
@@ -129,8 +125,8 @@ describe('ReadIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>Number 2 was created an hour ago by you: test\n<break time="1s"/>You have one more issue. Would you like me to read it?</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you: test\n<break time="1s"/>You have one more issue. Would you like me to read it?',
     );
   });
 
@@ -156,8 +152,8 @@ describe('ReadIssuesIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>Number 2 was created an hour ago by you: test\n<break time="1s"/>You have 2 more issues. Would you like me to keep going?</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you: test\n<break time="1s"/>You have 2 more issues. Would you like me to keep going?',
     );
   });
 });

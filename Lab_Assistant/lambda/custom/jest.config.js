@@ -128,7 +128,11 @@ module.exports = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ['./tests/setup-i18n.ts', './tests/setup-time.ts'],
+  setupFilesAfterEnv: [
+    './tests/setup-i18n.ts',
+    './tests/setup-time.ts',
+    './tests/setup-custom-matchers.ts',
+  ],
 
   // A list of paths to snapshot serializer modules Jest should use for snapshot testing
   // snapshotSerializers: [],
@@ -157,10 +161,7 @@ module.exports = {
   // testRegex: [],
 
   // This option allows the use of a custom results processor
-  testResultsProcessor: path.resolve(
-    __dirname,
-    'node_modules/jest-junit-reporter',
-  ),
+  testResultsProcessor: path.resolve(__dirname, 'node_modules/jest-junit-reporter'),
 
   // This option allows use of a custom test runner
   // testRunner: "jasmine2",

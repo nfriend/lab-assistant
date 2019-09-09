@@ -22,8 +22,6 @@ describe('ErrorHandler', () => {
   test('when an error occurs', async () => {
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Shoot! I had trouble doing what you asked. Please try again.</speak>',
-    );
+    expect(result).toSpeek('Shoot! I had trouble doing what you asked. Please try again.');
   });
 });

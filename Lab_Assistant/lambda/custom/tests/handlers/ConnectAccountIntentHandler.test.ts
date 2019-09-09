@@ -24,8 +24,8 @@ describe('ConnectAccountIntentHandler', () => {
 
     expect(result.response.card.type).toBe('LinkAccount');
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Sure. Open your Alexa app to finish connecting your Gitlab.com account.</speak>',
+    expect(result).toSpeek(
+      'Sure. Open your Alexa app to finish connecting your Gitlab.com account.',
     );
   });
 
@@ -34,8 +34,8 @@ describe('ConnectAccountIntentHandler', () => {
 
     expect(result.response.card).toBeUndefined();
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      "<speak>You've already connected your Gitlab.com account! If you'd like to switch or disconnect your account, please disable and re-enable the Lab Assistant skill.</speak>",
+    expect(result).toSpeek(
+      "You've already connected your Gitlab.com account! If you'd like to switch or disconnect your account, please disable and re-enable the Lab Assistant skill.",
     );
   });
 });

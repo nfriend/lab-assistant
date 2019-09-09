@@ -42,7 +42,7 @@ describe('CountTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe('<speak>You have no to-dos. Good job!</speak>');
+    expect(result).toSpeek('You have no to-dos. Good job!');
   });
 
   test('when the user has 1 todo', async () => {
@@ -54,9 +54,7 @@ describe('CountTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You only have one to-do. Would you like me to read it?</speak>',
-    );
+    expect(result).toSpeek('You only have one to-do. Would you like me to read it?');
   });
 
   test('when the user has 10 todos', async () => {
@@ -68,8 +66,6 @@ describe('CountTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have 10 to-dos. Would you like me to read them to you?</speak>',
-    );
+    expect(result).toSpeek('You have 10 to-dos. Would you like me to read them to you?');
   });
 });

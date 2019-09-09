@@ -11,5 +11,5 @@ test('LaunchRequestHandler', async () => {
 
   const result = await executeLambda(event);
 
-  expect(result.response.outputSpeech.ssml).toBe('<speak>Welcome! How can I help?</speak>');
+  expect(result).toSpeek('Welcome! How can I help?');
 });

@@ -42,9 +42,7 @@ describe('CountMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have no open merge requests assigned to you.</speak>',
-    );
+    expect(result).toSpeek('You have no open merge requests assigned to you.');
   });
 
   test('when the user has 1 merge request', async () => {
@@ -56,8 +54,8 @@ describe('CountMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You only have one open merge request assigned to you. Would you like me to read it?</speak>',
+    expect(result).toSpeek(
+      'You only have one open merge request assigned to you. Would you like me to read it?',
     );
   });
 
@@ -70,8 +68,8 @@ describe('CountMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You have 10 open merge requests assigned to you. Would you like me to read them to you?</speak>',
+    expect(result).toSpeek(
+      'You have 10 open merge requests assigned to you. Would you like me to read them to you?',
     );
   });
 });

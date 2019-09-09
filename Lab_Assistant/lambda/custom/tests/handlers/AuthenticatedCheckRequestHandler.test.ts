@@ -24,8 +24,8 @@ describe('AuthenticatedCheckRequestHandler', () => {
 
     expect(result.response.card.type).toBe('LinkAccount');
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      "<speak>Before you can do that, you'll need to connect your gitlab.com account. Open your Alexa app to finish this setup.</speak>",
+    expect(result).toSpeek(
+      "Before you can do that, you'll need to connect your gitlab.com account. Open your Alexa app to finish this setup.",
     );
   });
 

@@ -59,9 +59,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You mentioned yourself on merge request number 5: test</speak>',
-    );
+    expect(result).toSpeek('You mentioned yourself on merge request number 5: test');
   });
 
   test('when you directly address yourself', async () => {
@@ -83,9 +81,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You directly addressed yourself on merge request number 5: test</speak>',
-    );
+    expect(result).toSpeek('You directly addressed yourself on merge request number 5: test');
   });
 
   test('when someone else directly addressed you', async () => {
@@ -107,9 +103,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend directly addressed you on merge request number 5: test</speak>',
-    );
+    expect(result).toSpeek('Nathan Friend directly addressed you on merge request number 5: test');
   });
 
   test('when you assign something to yourself', async () => {
@@ -131,9 +125,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You assigned merge request number 5 to yourself</speak>',
-    );
+    expect(result).toSpeek('You assigned merge request number 5 to yourself');
   });
 
   test('when someone else directly addressed you', async () => {
@@ -155,9 +147,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend assigned you merge request number 5</speak>',
-    );
+    expect(result).toSpeek('Nathan Friend assigned you merge request number 5');
   });
 
   test('when a build fails', async () => {
@@ -179,9 +169,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>The build failed for merge request number 5</speak>',
-    );
+    expect(result).toSpeek('The build failed for merge request number 5');
   });
 
   test('when you mark something as a todo', async () => {
@@ -203,9 +191,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You added a to-do for merge request number 5</speak>',
-    );
+    expect(result).toSpeek('You added a to-do for merge request number 5');
   });
 
   test('when a merge request cannot be merged', async () => {
@@ -227,9 +213,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Could not merge merge request number 5</speak>',
-    );
+    expect(result).toSpeek('Could not merge merge request number 5');
   });
 
   test('when you set yourself as an approver', async () => {
@@ -251,9 +235,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>You set yourself as an approver for merge request number 5</speak>',
-    );
+    expect(result).toSpeek('You set yourself as an approver for merge request number 5');
   });
 
   test('when someone else sets you as an approver', async () => {
@@ -275,9 +257,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend set you as an approver for merge request number 5</speak>',
-    );
+    expect(result).toSpeek('Nathan Friend set you as an approver for merge request number 5');
   });
 
   test('for other types of todos', async () => {
@@ -299,7 +279,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe('<speak>test</speak>');
+    expect(result).toSpeek('test');
   });
 
   test('for multiple todos', async () => {
@@ -334,7 +314,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe('<speak>test\n<break time="1s"/>test</speak>');
+    expect(result).toSpeek('test\n<break time="1s"/>test');
   });
 
   test('for targets with IDs less that 100', async () => {
@@ -356,9 +336,7 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend mentioned you on merge request number 88: test</speak>',
-    );
+    expect(result).toSpeek('Nathan Friend mentioned you on merge request number 88: test');
   });
 
   test('for targets with IDs greater than or equal to that 100', async () => {
@@ -380,8 +358,8 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Nathan Friend mentioned you on merge request number <say-as interpret-as="digits">882</say-as>: test</speak>',
+    expect(result).toSpeek(
+      'Nathan Friend mentioned you on merge request number <say-as interpret-as="digits">882</say-as>: test',
     );
   });
 
@@ -411,8 +389,8 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>test\n<break time="1s"/>You have one more to-do. Would you like me to read it?</speak>',
+    expect(result).toSpeek(
+      'test\n<break time="1s"/>You have one more to-do. Would you like me to read it?',
     );
   });
 
@@ -442,8 +420,8 @@ describe('ReadTodosIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>test\n<break time="1s"/>You have 2 more to-dos. Would you like me to keep going?</speak>',
+    expect(result).toSpeek(
+      'test\n<break time="1s"/>You have 2 more to-dos. Would you like me to keep going?',
     );
   });
 });

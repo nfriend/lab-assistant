@@ -71,8 +71,8 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Great, I\'ll use project 1234 as your default project so you won\'t have to specify it in the future. <break time="1s"/> Hooray! A test pipeline has been created.</speak>',
+    expect(result).toSpeek(
+      'Great, I\'ll use project 1234 as your default project so you won\'t have to specify it in the future. <break time="1s"/> Hooray! A test pipeline has been created.',
     );
 
     expect(db.put).toHaveBeenCalledWith(expect.any(Object), { projectId: '1234' });
@@ -102,9 +102,7 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Hooray! A new pipeline has been created.</speak>',
-    );
+    expect(result).toSpeek('Hooray! A new pipeline has been created.');
 
     expect(rpMock.post).toHaveBeenCalledWith(
       expect.stringContaining('api/v4/projects/1234/pipeline'),
@@ -137,9 +135,7 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Hooray! A test pipeline has been created.</speak>',
-    );
+    expect(result).toSpeek('Hooray! A test pipeline has been created.');
   });
 
   test('when the project does not exist', async () => {
@@ -149,8 +145,6 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      "<speak>Shoot! I couldn't find a project number 1234</speak>",
-    );
+    expect(result).toSpeek("Shoot! I couldn't find a project number 1234");
   });
 });

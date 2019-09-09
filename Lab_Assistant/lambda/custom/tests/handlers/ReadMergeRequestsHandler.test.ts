@@ -83,9 +83,7 @@ describe('ReadMergeRequestsIntentHandler', () => {
   test('when you have one merge request', async () => {
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has no pipeline: test</speak>',
-    );
+    expect(result).toSpeek('Number 2 was created an hour ago by you and has no pipeline: test');
   });
 
   test('for multiple merge requests', async () => {
@@ -93,13 +91,11 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
+    expect(result).toSpeek(
       [
-        '<speak>',
         'Number 2 was created an hour ago by you and has no pipeline: test\n',
         '<break time="1s"/>',
         'Number 3 was created an hour ago by Test User and has no pipeline: another',
-        '</speak>',
       ].join(''),
     );
   });
@@ -114,8 +110,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>Number 2 was created an hour ago by you and has no pipeline: test\n<break time="1s"/>You have one more merge request. Would you like me to read it?</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has no pipeline: test\n<break time="1s"/>You have one more merge request. Would you like me to read it?',
     );
   });
 
@@ -129,8 +125,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toContain(
-      '<speak>Number 2 was created an hour ago by you and has no pipeline: test\n<break time="1s"/>You have 2 more merge requests. Would you like me to keep going?</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has no pipeline: test\n<break time="1s"/>You have 2 more merge requests. Would you like me to keep going?',
     );
   });
 
@@ -141,8 +137,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has an in-progress pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has an in-progress pipeline: test',
     );
   });
 
@@ -153,8 +149,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a successful pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a successful pipeline: test',
     );
   });
 
@@ -165,8 +161,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a failed pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a failed pipeline: test',
     );
   });
 
@@ -177,8 +173,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a cancelled pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a cancelled pipeline: test',
     );
   });
 
@@ -189,8 +185,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a pending pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a pending pipeline: test',
     );
   });
 
@@ -201,8 +197,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a skipped pipeline: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a skipped pipeline: test',
     );
   });
 
@@ -213,8 +209,8 @@ describe('ReadMergeRequestsIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result.response.outputSpeech.ssml).toBe(
-      '<speak>Number 2 was created an hour ago by you and has a pipeline with an unknown status: test</speak>',
+    expect(result).toSpeek(
+      'Number 2 was created an hour ago by you and has a pipeline with an unknown status: test',
     );
   });
 });
