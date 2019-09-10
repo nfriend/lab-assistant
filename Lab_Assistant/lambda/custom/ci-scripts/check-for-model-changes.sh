@@ -22,5 +22,8 @@ if git diff-index --quiet HEAD --; then
     exit 0
 else
     echo -e "\033[31;1m⚠️  The model has been changed! Please run \"npm run model\" and commit these changes. ⚠️\033[0m"
+    echo "Diff:"
+    git diff ../../models/en-US.json
+    
     exit 1
 fi
