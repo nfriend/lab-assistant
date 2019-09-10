@@ -40,13 +40,13 @@ export class RunPipelineIntentHandler extends AuthenticatedCheckRequestHandler {
 
       const projectIdSpeech = chooseOne(
         mft(
-          "Great, I'll use project {{projectId}} as your default project so you won't have to specify it in the future.",
+          'Great, I\'ll use project <say-as interpret-as="digits">{{projectId}}</say-as> as your default project so you won\'t have to specify it in the future.',
         ),
         mft(
-          "Okay, I've set {{projectId}} as your default project. You won't have to specify it in the future.",
+          'Okay, I\'ve set <say-as interpret-as="digits">{{projectId}}</say-as> as your default project. You won\'t have to specify it in the future.',
         ),
         mft(
-          "Sure, project {{projectId}} in now your default project. You won't have to specify it in the future.",
+          'Sure, project <say-as interpret-as="digits">{{projectId}}</say-as> is now your default project. You won\'t have to specify it in the future.',
         ),
       );
       speeches.push(i18n.t(projectIdSpeech, { projectId }));

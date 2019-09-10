@@ -56,9 +56,15 @@ export class SwitchProjectIntentHandler extends AuthenticatedCheckRequestHandler
     await db.put(handlerInput.requestEnvelope, { projectId });
 
     const projectIdSpeech = chooseOne(
-      mft("Great, I'll use project {{projectId}} as your default project."),
-      mft("Okay, I've set {{projectId}} as your default project."),
-      mft('Sure, project {{projectId}} in now your default project.'),
+      mft(
+        'Great, I\'ll use project <say-as interpret-as="digits">{{projectId}}</say-as> as your default project.',
+      ),
+      mft(
+        'Okay, I\'ve set <say-as interpret-as="digits">{{projectId}}</say-as> as your default project.',
+      ),
+      mft(
+        'Sure, project <say-as interpret-as="digits">{{projectId}}</say-as> in now your default project.',
+      ),
     );
     speeches.push(i18n.t(projectIdSpeech, { projectId }));
 
