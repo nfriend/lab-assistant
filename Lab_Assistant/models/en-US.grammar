@@ -11,6 +11,7 @@ do i have {any|many|lots of} {todos}
 how many {todos} do I have
 check my {todos}
 count my {todos}
+what are my {todos}
 will it be a busy day {|today}
 {what's|what is} on my plate {|for } today
 {how|what} does my day look {|like} {|today}
@@ -26,6 +27,7 @@ CountMergeRequestsIntent:
 do i have {any|many|lots of} {|open} {mrs} {|assigned to me}
 how many {|open} {mrs} {|do I have} {|assigned to me}
 {count|check} {my|the} {|open} {mrs} {|assigned to me}
+what are my {|open} {mrs}
 
 ReadMergeRequestsIntent:
 read {|me} {|my} {|list of} {mrs} {|in detail}
@@ -37,6 +39,7 @@ CountIssuesIntent:
 do i have {any|many|lots of} {|open} {issues} {|assigned to me}
 how many {|open} {issues} {|do I have} {|assigned to me}
 {count|check} {my|the} {|open} {issues} {|assigned to me}
+what are my {|open} {issues}
 
 ReadIssuesIntent:
 read {|me} {|my} {|list of} {issues} {|in detail}
