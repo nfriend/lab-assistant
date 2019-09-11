@@ -53,7 +53,9 @@ describe('SwitchProjectIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result).toSpeek("Great, I'll use project 1234 as your default project.");
+    expect(result).toSpeek(
+      'Great, I\'ll use project <say-as interpret-as="digits">1234</say-as> as your default project.',
+    );
   });
 
   test("when the project ID provided by the user doesn't exist", async () => {
@@ -66,6 +68,8 @@ describe('SwitchProjectIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result).toSpeek("Shoot! I couldn't find a project number 1234.");
+    expect(result).toSpeek(
+      'Shoot! I couldn\'t find a project number <say-as interpret-as="digits">1234</say-as>.',
+    );
   });
 });

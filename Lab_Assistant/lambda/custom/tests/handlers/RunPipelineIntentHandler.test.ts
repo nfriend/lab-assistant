@@ -72,7 +72,7 @@ describe('RunPipelineIntentHandler', () => {
     const result = await executeLambda(event);
 
     expect(result).toSpeek(
-      'Great, I\'ll use project 1234 as your default project so you won\'t have to specify it in the future. <break time="1s"/> Hooray! A test pipeline has been created.',
+      'Great, I\'ll use project <say-as interpret-as="digits">1234</say-as> as your default project so you won\'t have to specify it in the future. <break time="1s"/> Hooray! A test pipeline has been created.',
     );
 
     expect(db.put).toHaveBeenCalledWith(expect.any(Object), { projectId: '1234' });
@@ -145,6 +145,8 @@ describe('RunPipelineIntentHandler', () => {
 
     const result = await executeLambda(event);
 
-    expect(result).toSpeek("Shoot! I couldn't find a project number 1234.");
+    expect(result).toSpeek(
+      'Shoot! I couldn\'t find a project number <say-as interpret-as="digits">1234</say-as>.',
+    );
   });
 });
