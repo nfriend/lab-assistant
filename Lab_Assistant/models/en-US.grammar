@@ -20,7 +20,7 @@ how is my day {|looking}
 ReadTodosIntent:
 read {|me} {|my} {|list of} {todos} {|in detail}
 
-{todos}: to-do, to-dos, notification, notifications
+{todos}: to-do, to-dos, todo, todos, notification, notifications
 
 CountMergeRequestsIntent:
 {|my|any} {|open} {mrs} {|assigned to me}
