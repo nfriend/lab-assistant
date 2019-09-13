@@ -24,9 +24,9 @@ describe('LaunchRequestHandler', () => {
 
     const expected = [
       'Welcome to Lab Assistant!',
-      'Looks this is your first visit! I\'ll explain a few things you can do, and feel free to say <break strength="strong"/> <prosody pitch="+10%">"help"</prosody> at any time for assistance.',
-      'You can trigger a pipeline by saying <break strength="strong"/> <prosody pitch="+10%">"run a new pipeline"</prosody>.',
-      'Catch up on your workload by saying <break strength="strong"/> <prosody pitch="+10%">"to-dos"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"issues"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"merge requests"</prosody>.',
+      'Looks like this is your first visit! I\'ll explain a few things you can do, and feel free to say "help" at any time for assistance.',
+      'You can trigger a pipeline by saying <break strength="strong"/> <prosody pitch="+10%">"run a new pipeline."</prosody>',
+      'Catch up on your workload by saying <break strength="strong"/> <prosody pitch="+10%">"to-dos"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"issues"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"merge requests."</prosody>',
       'What would you like to do?',
     ].join(' ');
 

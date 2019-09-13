@@ -20,13 +20,13 @@ export class LaunchRequestHandler implements Alexa.RequestHandler {
           i18n.t('Happy gitlabing!'),
         ),
         i18n.t(
-          'Looks this is your first visit! I\'ll explain a few things you can do, and feel free to say <break strength="strong"/> <prosody pitch="+10%">"help"</prosody> at any time for assistance.',
+          'Looks like this is your first visit! I\'ll explain a few things you can do, and feel free to say "help" at any time for assistance.',
         ),
         i18n.t(
-          'You can trigger a pipeline by saying <break strength="strong"/> <prosody pitch="+10%">"run a new pipeline"</prosody>.',
+          'You can trigger a pipeline by saying <break strength="strong"/> <prosody pitch="+10%">"run a new pipeline."</prosody>',
         ),
         i18n.t(
-          'Catch up on your workload by saying <break strength="strong"/> <prosody pitch="+10%">"to-dos"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"issues"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"merge requests"</prosody>.',
+          'Catch up on your workload by saying <break strength="strong"/> <prosody pitch="+10%">"to-dos"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"issues"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"merge requests."</prosody>',
         ),
         i18n.t('What would you like to do?'),
       );
