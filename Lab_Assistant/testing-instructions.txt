@@ -9,12 +9,19 @@ Alternatively, you can skip the connection step above and simply run any of the 
 
 You can use the following account for testing:
 
-Username: <insert username here before submissions>
-Password: <insert password here before submissions>
+Username: <insert username here before submission>
+Password: <insert password here before submission>
 
 Below are some different ways to invoke the skill and the expected response from the skill. Note that most of the responses are randomly selected from a number of possible responses, so the dialog may not line up exactly with the conversations below.  The overall content and message, however, should be the the same.
 
 ### Launching
+
+When launching the skill for the first time:
+
+User:  Alexa, open Lab Assistant.
+Alexa: Hello! Looks like this is your first visit! I'll explain a few things you can do, and feel free to say "help" at any time for assistance. You can trigger a pipeline by saying "run a new pipeline." Catch up on your workload by saying "to-dos", "issues", or "merge requests". What would you like to do?
+
+When the skill has been launched previously:
 
 User:  Alexa, open Lab Assistant.
 Alexa: Welcome! How can I help?
