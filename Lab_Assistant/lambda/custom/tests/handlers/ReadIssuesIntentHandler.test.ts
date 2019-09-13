@@ -2,6 +2,7 @@ import * as rp from 'request-promise';
 import { createAlexaEvent } from './create-alexa-event';
 import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
+jest.mock('../../src/adapters/dynamo-db');
 
 describe('ReadIssuesIntentHandler', () => {
   let response: any[];

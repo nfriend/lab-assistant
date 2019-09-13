@@ -1,9 +1,27 @@
+import * as rp from 'request-promise';
 import { createAlexaEvent } from './create-alexa-event';
 import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
+jest.mock('../../src/adapters/dynamo-db');
 
 describe('AuthenticatedCheckRequestHandler', () => {
   let event: any;
+
+  jest.spyOn(rp, 'defaults').mockImplementation(
+    () =>
+      ({
+        get: () => {
+          return Promise.resolve({
+            body: {},
+            headers: {
+              'x-page': '1',
+              'x-total': '1',
+              'x-per-page': '5',
+            },
+          });
+        },
+      } as any),
+  );
 
   beforeEach(() => {
     event = createAlexaEvent({

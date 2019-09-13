@@ -20,6 +20,7 @@ import { SwitchProjectIntentHandler } from './handlers/SwitchProjectIntentHandle
 import { YesIntentHandler } from './handlers/YesIntentHandler';
 
 import { AuthInterceptor } from './interceptors/AuthInterceptor';
+import { FirstLaunchInterceptor } from './interceptors/FirstLaunchInterceptor';
 import { LocalizationInterceptor } from './interceptors/LocalizationInterceptor';
 
 import * as rp from 'request-promise';
@@ -49,6 +50,7 @@ export const handler = Alexa.SkillBuilders.custom()
   )
   .addRequestInterceptors(new LocalizationInterceptor())
   .addRequestInterceptors(new AuthInterceptor())
+  .addRequestInterceptors(new FirstLaunchInterceptor())
   .addErrorHandlers(new ErrorHandler())
   .withPersistenceAdapter(adapter)
   .lambda();

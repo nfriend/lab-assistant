@@ -1,6 +1,7 @@
 import { createAlexaEvent } from './create-alexa-event';
 import { executeLambda } from './execute-lambda';
 jest.mock('../../src/util/choose-one');
+jest.mock('../../src/adapters/dynamo-db');
 
 test('IntentReflectionHandler', async () => {
   const event = createAlexaEvent({

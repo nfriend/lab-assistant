@@ -8,6 +8,7 @@ export const adapter = new Adapter.DynamoDbPersistenceAdapter({
 
 export interface LabAssistantAttributes {
   projectId?: string;
+  lastLaunch?: string;
 }
 
 export const db = {

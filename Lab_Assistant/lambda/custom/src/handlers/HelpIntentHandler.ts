@@ -58,6 +58,15 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
       ),
     );
 
+    speeches.push('<break strength="strong"/>');
+
+    speeches.push(
+      chooseOne(
+        i18n.t('Now that you know some of the things you can ask me, what would you like to do?'),
+        i18n.t('Now that you know some of the things you can ask me, how can I help?'),
+      ),
+    );
+
     const speakOutput = speeches.join(' ');
 
     return handlerInput.responseBuilder.speak(speakOutput).getResponse();
