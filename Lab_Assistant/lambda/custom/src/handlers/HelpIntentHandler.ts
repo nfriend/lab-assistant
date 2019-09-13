@@ -14,7 +14,7 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     speeches.push(
       i18n.t(
-        'To get information about your workload, try saying <break strength="strong"/> <prosody pitch="+10%">"issues"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"do I have any merge requests?"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"what issues are assigned to me?"</prosody>',
+        'To get information about your workload, try saying <break strength="strong"/> <prosody pitch="+10%">"to-dos"</prosody>, <break strength="strong"/> <prosody pitch="+10%">"do I have any merge requests?"</prosody>, or <break strength="strong"/> <prosody pitch="+10%">"what issues are assigned to me?"</prosody>',
       ),
     );
 
