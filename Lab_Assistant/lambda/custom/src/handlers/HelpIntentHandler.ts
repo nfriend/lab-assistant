@@ -20,20 +20,18 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     speeches.push(
       i18n.t(
-        'To run a pipeline, say something like <break strength="strong"/> <prosody pitch="+10%">"run a pipeline"</prosody> or <break strength="strong"/> <prosody pitch="+10%">"execute a new deployment"</prosody>.',
+        'To run a pipe line, say something like <break strength="strong"/> <prosody pitch="+10%">"run a pipeline,"</prosody> or <break strength="strong"/> <prosody pitch="+10%">"execute a new deployment."</prosody>',
       ),
     );
 
     speeches.push(
       i18n.t(
-        'To take full advantage of the pipeline feature, make sure your C.I. config file is setup up properly.',
+        'To take full advantage of the pipeline feature, make sure your C.I. config file is set up properly.',
       ),
     );
 
     speeches.push(
-      i18n.t(
-        "Check out the Lab Assistant skill's homepage or the Lab Assistant Gitlab repo for instructions.",
-      ),
+      i18n.t("Check out the Lab Assistant skill's homepage or Gitlab repo for instructions."),
     );
 
     speeches.push(
@@ -58,7 +56,7 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
       ),
     );
 
-    speeches.push('<break strength="strong"/>');
+    speeches.push('<break time="500ms"/>');
 
     speeches.push(
       chooseOne(
@@ -69,6 +67,11 @@ export class HelpIntentHandler implements Alexa.RequestHandler {
 
     const speakOutput = speeches.join(' ');
 
-    return handlerInput.responseBuilder.speak(speakOutput).getResponse();
+    const repromptSpeech = i18n.t('What would you like to do?');
+
+    return handlerInput.responseBuilder
+      .speak(speakOutput)
+      .reprompt(repromptSpeech)
+      .getResponse();
   }
 }
