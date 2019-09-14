@@ -205,14 +205,6 @@ This skill's model is generated using the [Alexa Skill Utterance and Schema Gene
 
 The easiest way to develop on this project is using test-driven development through [Jest](https://jestjs.io/). You can run the tests using `npm run test` or `npm run test-watch`. See the [existing tests](https://gitlab.com/nfriend/lab-assistant/tree/master/Lab_Assistant/lambda/custom/tests) for some examples.
 
-#### Compilation errors in VSCode
-
-The Jest tests (`*.test.ts`) are `exclude`d by this project's [`tsconfig.json`](./Lab_Assistant/lambda/custom/tsconfig.json). Because of this, VSCode shows TypeScript errors when editing a test file, even though there are no build errors when running the tests using `npm run test`.
-
-To get around this, you can temporarily delete the `**/tests/*` entry from the `tsconfig.json`'s `exclude` array while working on tests. This is obviously not an ideal solution; if you know a way to avoid this issue, let me know.
-
-If you do this, don't forget to add the `**/tests/*` entry back before running `npm run build`. If you run the build without this entry, the test files will be compiled, and the corresponding `.js` test files will fail when the tests are run locally.
-
 ### i18n
 
 This project uses [`i18next`](https://www.i18next.com/) for internationalization ("i18n"). [`i18next-scanner`](https://github.com/i18next/i18next-scanner) is used to extract the strings directly from the source into this project's [i18n directory](./Lab_Assistant/lambda/custom/i18n). You can run this extraction process by building the project (`npm run build`) and then running `npm run translate`. Alternatively, you can run `npm run build-and-translate`.
