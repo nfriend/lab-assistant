@@ -1,7 +1,6 @@
 image: node:latest
 
 stages:
-  - dummy
   - build
   - lint
   - test
@@ -17,16 +16,8 @@ before_script:
   - cd Lab_Assistant/lambda/custom
   - npm install
 
-dummy:
-  stage: dummy
-  script:
-    - "echo 'This is a dummy job until needs:[] is supported: https://gitlab.com/gitlab-org/gitlab-foss/issues/65504/designs'"
-  except:
-    - deploy@nfriend/lab-assistant
-
 build:
   stage: build
-  needs: ['dummy']
   script:
     - npm run build
   except:
@@ -34,7 +25,6 @@ build:
 
 lint code:
   stage: lint
-  needs: ['dummy']
   script:
     - npm run lint
   except:
@@ -42,7 +32,6 @@ lint code:
 
 lint translations:
   stage: lint
-  needs: ['dummy']
   script:
     - ./ci-scripts/check-for-new-translations.sh
   except:
@@ -51,7 +40,6 @@ lint translations:
 lint model:
   image: nathanfriend/java-node-git:latest
   stage: lint
-  needs: ['dummy']
   script:
     - ./ci-scripts/check-for-model-changes.sh
   except:
