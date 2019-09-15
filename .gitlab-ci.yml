@@ -20,7 +20,7 @@ before_script:
 dummy:
   stage: dummy
   script:
-    - echo "This is a dummy job until needs:[] is supported: https://gitlab.com/gitlab-org/gitlab-foss/issues/65504/designs"
+    - "echo 'This is a dummy job until needs:[] is supported: https://gitlab.com/gitlab-org/gitlab-foss/issues/65504/designs'"
   except:
     - deploy@nfriend/lab-assistant
 
