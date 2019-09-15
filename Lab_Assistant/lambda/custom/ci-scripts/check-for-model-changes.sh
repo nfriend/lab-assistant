@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Install git
-# TODO: create a new Docker image with git preinstalled
-apt-get update
-apt-get upgrade -y
-apt-get install -y git
-
 # Build the project (since the merge-model script 
 # is written in TypeScript)
 npm run build

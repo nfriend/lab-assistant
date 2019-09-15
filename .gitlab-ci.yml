@@ -38,7 +38,7 @@ lint translations:
     - deploy@nfriend/lab-assistant
 
 lint model:
-  image: timbru31/java-node:latest
+  image: nathanfriend/java-node-git:latest
   stage: lint
   script:
     - ./ci-scripts/check-for-model-changes.sh
