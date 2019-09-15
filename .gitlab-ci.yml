@@ -47,6 +47,7 @@ lint model:
 
 jest:
   stage: test
+  needs: ['build']
   script:
     - npm run test
   artifacts:
