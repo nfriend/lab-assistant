@@ -17,36 +17,38 @@ before_script:
   - cd Lab_Assistant/lambda/custom
   - npm install
 
+.except-default: &except-default
+  except:
+    variables:
+      - $LAB_ASSISTANT
+
 build:
+  <<: *except-default
   stage: build
   script:
     - npm run build
-  except:
-    - deploy@nfriend/lab-assistant
 
 lint code:
+  <<: *except-default
   stage: lint
   script:
     - npm run lint
-  except:
-    - deploy@nfriend/lab-assistant
 
 lint translations:
+  <<: *except-default
   stage: lint
   script:
     - ./ci-scripts/check-for-new-translations.sh
-  except:
-    - deploy@nfriend/lab-assistant
 
 lint model:
+  <<: *except-default
   image: nathanfriend/java-node-git:latest
   stage: lint
   script:
     - ./ci-scripts/check-for-model-changes.sh
-  except:
-    - deploy@nfriend/lab-assistant
 
 jest:
+  <<: *except-default
   stage: test
   needs: ['build']
   script:
@@ -56,8 +58,6 @@ jest:
       - Lab_Assistant/lambda/custom/test-report.xml
     reports:
       junit: Lab_Assistant/lambda/custom/test-report.xml
-  except:
-    - deploy@nfriend/lab-assistant
 
 deploy:
   stage: deploy
@@ -73,6 +73,9 @@ deploy:
     - npm run deploy
   only:
     - deploy@nfriend/lab-assistant
+  except:
+    variables:
+      - $LAB_ASSISTANT
 
 demo:
   stage: demo
