@@ -5,6 +5,7 @@ stages:
   - lint
   - test
   - deploy
+  - demo
 
 # Cache npm modules in between jobs
 cache:
@@ -72,3 +73,12 @@ deploy:
     - npm run deploy
   only:
     - deploy@nfriend/lab-assistant
+
+demo:
+  stage: demo
+  script:
+    - echo "This job was triggered by Lab Assistant with the following environment variables:"
+    - env | grep "LAB_ASSISTANT"
+  only:
+    variables:
+      - $LAB_ASSISTANT
