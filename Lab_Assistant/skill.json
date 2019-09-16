@@ -238,6 +238,22 @@
         "en-US": {
           "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
           "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
+        },
+        "en-CA": {
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
+        },
+        "en-GB": {
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
+        },
+        "en-AU": {
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
+        },
+        "en-IN": {
+          "privacyPolicyUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/privacy-policy.md",
+          "termsOfUseUrl": "https://gitlab.com/nfriend/lab-assistant/blob/master/terms-of-use.md"
         }
       }
     },

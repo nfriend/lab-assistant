@@ -6,10 +6,22 @@
       "merge": {},
       "resources": {
         "manifest": {
-          "eTag": "bad575ed7f1a68171c23c00aea10ff47"
+          "eTag": "069e80bc869c0eebb146467632469480"
         },
         "interactionModel": {
           "en-US": {
+            "eTag": "91366cf446602714b1ee3c87057b00fd"
+          },
+          "en-AU": {
+            "eTag": "91366cf446602714b1ee3c87057b00fd"
+          },
+          "en-CA": {
+            "eTag": "91366cf446602714b1ee3c87057b00fd"
+          },
+          "en-GB": {
+            "eTag": "91366cf446602714b1ee3c87057b00fd"
+          },
+          "en-IN": {
             "eTag": "91366cf446602714b1ee3c87057b00fd"
           }
         },
@@ -23,7 +35,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-Lab_Assistant-default",
             "handler": "build/index.handler",
-            "revisionId": "b931cbe1-b424-4ade-af34-b4a744bf85c3",
+            "revisionId": "313e0e52-6567-4efd-84a3-3bda7d709161",
             "runtime": "nodejs10.x"
           }
         ]
