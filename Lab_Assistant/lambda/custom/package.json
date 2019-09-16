@@ -16,7 +16,8 @@
     "prettier": "prettier --check '**/*.ts'",
     "prettier-fix": "prettier --write '**/*.ts'",
     "lint": "npm run prettier; npm run tslint",
-    "lint-fix": "npm run prettier-fix; npm run tslint-fix"
+    "lint-fix": "npm run prettier-fix; npm run tslint-fix",
+    "copy-english-files": "node utility-scripts/copy-english-files.js"
   },
   "author": "Nathan Friend",
   "license": "MIT",

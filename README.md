@@ -207,6 +207,8 @@ The easiest way to develop on this project is using test-driven development thro
 
 This project uses [`i18next`](https://www.i18next.com/) for internationalization ("i18n"). [`i18next-scanner`](https://github.com/i18next/i18next-scanner) is used to extract the strings directly from the source into this project's [i18n directory](./Lab_Assistant/lambda/custom/i18n). You can run this extraction process by building the project (`npm run build`) and then running `npm run translate`. Alternatively, you can run `npm run build-and-translate`.
 
+To make this skill available in all English-speaking Amazon stores, a utility script ([./Lab_Assistant/lambda/custom/utility-scripts/copy-english-files.js](./Lab_Assistant/lambda/custom/utility-scripts/copy-english-files.js)) can be run using `npm run copy-english-files` to copy the appropriate `en-US` files/sections to `en-CA`, `en-GB`, `en-AU`, and `en-IN`.
+
 ### Linting
 
 This project uses [Prettier](https://prettier.io/) and [TSLint](https://palantir.github.io/tslint/) to help keep the codebase consistent. You can run all linting checks using `npm run lint`. Many of the more tedious errors can be fixed automatically; to do this, run `npm run lint-fix`.
