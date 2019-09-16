@@ -8,13 +8,11 @@ An Alexa skill for managing your open-source projects hosted on [GitLab.com](htt
 
 Enable the Lab Assistant skill on your Amazon site of choice:
 
-_Note: these are placeholder links until the skill is live._
-
-- [Amazon.com]()
-- [Amazon.ca]()
-- [Amazon.co.uk]()
-- [Amazon.com.au]()
-- [Amazon.in]()
+- [Amazon.com](https://www.amazon.com/dp/B07XY2NBQC)
+- _~~Amazon.ca~~ (coming soon)_
+- _~~Amazon.co.uk~~ (coming soon)_
+- _~~Amazon.com.au~~ (coming soon)_
+- _~~Amazon.in~~ (coming soon)_
 
 _Don't see your local Amazon store? You can help out by translating Lab Assistant into your language! See the **Contributing** section below for more details._
 
