@@ -140,6 +140,8 @@ report:
       - $LAB_ASSISTANT
 ```
 
+For a real-life example, see this project's [`.gitlab.ci.yml`](./.gitlab.ci.yml).
+
 For more information on how to use `only` and `except` in a `.gitlab-ci.yml` file, see [this page](https://docs.gitlab.com/ee/ci/yaml/#onlyvariablesexceptvariables).
 
 #### Pipeline ref
