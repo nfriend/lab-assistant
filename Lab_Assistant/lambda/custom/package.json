@@ -32,7 +32,7 @@
     "remark": "11.0.1",
     "remark-emoji": "2.0.2",
     "request": "2.88.0",
-    "request-promise": "4.2.4",
+    "request-promise": "4.2.5",
     "strip-markdown": "3.1.1"
   },
   "devDependencies": {
