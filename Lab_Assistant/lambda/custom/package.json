@@ -47,7 +47,7 @@
     "lambda-local": "1.6.3",
     "prettier": "1.18.2",
     "ts-jest": "24.1.0",
-    "tslint": "5.20.0",
+    "tslint": "5.20.1",
     "typescript": "3.7.2",
     "yargs": "14.2.0"
   }
