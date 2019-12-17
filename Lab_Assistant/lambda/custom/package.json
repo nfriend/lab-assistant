@@ -38,7 +38,7 @@
   "devDependencies": {
     "@types/jest": "24.0.18",
     "@types/lodash": "4.14.149",
-    "@types/node": "12.12.18",
+    "@types/node": "12.12.19",
     "@types/request-promise": "4.1.45",
     "chalk": "3.0.0",
     "i18next-scanner": "2.10.3",
