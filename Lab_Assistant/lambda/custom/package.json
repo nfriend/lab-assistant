@@ -46,7 +46,7 @@
     "jest-junit-reporter": "1.1.0",
     "lambda-local": "1.6.3",
     "prettier": "1.19.1",
-    "ts-jest": "24.2.0",
+    "ts-jest": "24.3.0",
     "tslint": "5.20.1",
     "typescript": "3.7.4",
     "yargs": "15.1.0"
