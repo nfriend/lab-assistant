@@ -44,7 +44,7 @@
     "i18next-scanner": "2.10.3",
     "jest": "24.9.0",
     "jest-junit-reporter": "1.1.0",
-    "lambda-local": "1.7.0",
+    "lambda-local": "1.7.1",
     "prettier": "1.19.1",
     "ts-jest": "24.3.0",
     "tslint": "5.20.1",
