@@ -41,7 +41,7 @@
     "@types/node": "12.12.30",
     "@types/request-promise": "4.1.45",
     "chalk": "3.0.0",
-    "i18next-scanner": "2.10.3",
+    "i18next-scanner": "2.11.0",
     "jest": "24.9.0",
     "jest-junit-reporter": "1.1.0",
     "lambda-local": "1.7.1",
