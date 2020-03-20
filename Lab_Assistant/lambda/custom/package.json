@@ -39,7 +39,7 @@
     "@types/jest": "24.9.1",
     "@types/lodash": "4.14.149",
     "@types/node": "12.12.30",
-    "@types/request-promise": "4.1.45",
+    "@types/request-promise": "4.1.46",
     "chalk": "3.0.0",
     "i18next-scanner": "2.11.0",
     "jest": "24.9.0",
