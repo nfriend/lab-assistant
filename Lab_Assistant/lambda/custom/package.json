@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/jest": "24.9.1",
-    "@types/lodash": "4.14.158",
+    "@types/lodash": "4.14.159",
     "@types/node": "12.12.53",
     "@types/request-promise": "4.1.46",
     "chalk": "4.1.0",
