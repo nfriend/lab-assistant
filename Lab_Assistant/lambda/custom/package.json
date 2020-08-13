@@ -27,7 +27,7 @@
     "ask-sdk-model": "1.29.0",
     "aws-sdk": "2.683.0",
     "i18next": "18.0.1",
-    "lodash": "4.17.19",
+    "lodash": "4.17.20",
     "moment": "2.27.0",
     "remark": "12.0.1",
     "remark-emoji": "2.1.0",
