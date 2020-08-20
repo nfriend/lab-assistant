@@ -42,7 +42,7 @@
     "@types/request-promise": "4.1.46",
     "chalk": "4.1.0",
     "i18next-scanner": "2.11.0",
-    "jest": "26.4.0",
+    "jest": "26.4.1",
     "jest-junit-reporter": "1.1.0",
     "lambda-local": "1.7.3",
     "prettier": "2.0.5",
